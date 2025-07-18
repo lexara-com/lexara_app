@@ -1,0 +1,139 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeaderLexara from '@/components/HeaderLexara.astro';
+import Footer from '@/components/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+
+const categories = [
+  {
+    title: 'Getting Started',
+    icon: 'rocket',
+    articles: [
+      'Quick Start Guide',
+      'Setting Up Your First Agent',
+      'Customizing Practice Areas',
+      'User Management'
+    ]
+  },
+  {
+    title: 'Features & Usage',
+    icon: 'cog',
+    articles: [
+      'AI Conversation Training',
+      'Analytics Dashboard',
+      'Lead Routing Rules',
+      'White-Label Options'
+    ]
+  },
+  {
+    title: 'Integrations',
+    icon: 'link',
+    articles: [
+      'API Documentation',
+      'Webhook Configuration',
+      'Third-Party Apps',
+      'Data Import/Export'
+    ]
+  },
+  {
+    title: 'Billing & Account',
+    icon: 'credit-card',
+    articles: [
+      'Managing Your Subscription',
+      'Understanding Usage Limits',
+      'Invoices & Receipts',
+      'Upgrading Your Plan'
+    ]
+  }
+];
+---
+
+<Layout title="Help Center - Engage by Lexara">
+  <HeaderLexara />
+  
+  <main>
+    <Section background="smoke" padding="xlarge">
+      <Container size="medium">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-semibold text-lexara-dark-navy mb-6">
+            How can we help you?
+          </h1>
+          <div class="max-w-xl mx-auto">
+            <input 
+              type="search" 
+              placeholder="Search for articles..." 
+              class="w-full px-6 py-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-lexara-mahogany focus:border-transparent"
+            />
+          </div>
+        </div>
+      </Container>
+    </Section>
+    
+    <Section background="white" padding="xlarge">
+      <Container size="large">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {categories.map((category) => (
+            <div class="bg-lexara-white-smoke rounded-2xl p-8">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 bg-lexara-dark-navy rounded-lg flex items-center justify-center">
+                  {category.icon === 'rocket' && (
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  )}
+                  {category.icon === 'cog' && (
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  )}
+                  {category.icon === 'link' && (
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                  )}
+                  {category.icon === 'credit-card' && (
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                  )}
+                </div>
+                <h2 class="text-xl font-semibold text-lexara-dark-navy">{category.title}</h2>
+              </div>
+              <ul class="space-y-3">
+                {category.articles.map((article) => (
+                  <li>
+                    <a href="#" class="text-gray-700 hover:text-lexara-mahogany transition-colors">
+                      {article}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        
+        <div class="mt-16 text-center">
+          <h3 class="text-2xl font-semibold text-lexara-dark-navy mb-4">
+            Still need help?
+          </h3>
+          <p class="text-gray-600 mb-8">
+            Our support team is available 24/7 to assist you.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <Button href="/contact" variant="primary">
+              Contact Support
+            </Button>
+            <Button href="/demo" variant="outline">
+              Schedule a Demo
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+  
+  <Footer />
+</Layout>

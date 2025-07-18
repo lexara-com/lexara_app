@@ -1,0 +1,111 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeaderLexara from '@/components/HeaderLexara.astro';
+import Footer from '@/components/Footer.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+
+const lastUpdated = 'January 18, 2025';
+---
+
+<Layout title="Cookie Policy - Engage by Lexara">
+  <HeaderLexara />
+  
+  <main>
+    <Section background="white" padding="xlarge">
+      <Container size="medium">
+        <div class="prose prose-lg max-w-none">
+          <h1 class="text-4xl font-semibold text-lexara-dark-navy mb-4">Cookie Policy</h1>
+          <p class="text-gray-600 mb-8">Last updated: {lastUpdated}</p>
+          
+          <div class="bg-lexara-white-smoke rounded-2xl p-8 mb-8">
+            <p class="text-gray-700 mb-0">
+              This Cookie Policy explains how Lexara Consulting, LLC ("Lexara", "we", "our", or "us") uses cookies and similar technologies when you visit our website or use Engage, our AI-powered client intake platform.
+            </p>
+          </div>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">What Are Cookies?</h2>
+          <p class="text-gray-700 mb-8">
+            Cookies are small text files that are placed on your device when you visit a website. They help the website remember information about your visit, making your next visit easier and the site more useful to you.
+          </p>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">Types of Cookies We Use</h2>
+          
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+            <h3 class="text-lg font-semibold text-lexara-dark-navy mb-2">Essential Cookies</h3>
+            <p class="text-gray-700 mb-2">
+              These cookies are necessary for the website to function properly. They enable basic functions like page navigation and access to secure areas of the website.
+            </p>
+            <p class="text-sm text-gray-600">
+              <strong>userId:</strong> Maintains a unique identifier for analytics and feature customization (1 year)
+            </p>
+          </div>
+          
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+            <h3 class="text-lg font-semibold text-lexara-dark-navy mb-2">Analytics Cookies</h3>
+            <p class="text-gray-700 mb-0">
+              We use analytics cookies to understand how visitors interact with our website. This helps us improve our service and user experience.
+            </p>
+          </div>
+          
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+            <h3 class="text-lg font-semibold text-lexara-dark-navy mb-2">Functionality Cookies</h3>
+            <p class="text-gray-700 mb-0">
+              These cookies allow the website to remember choices you make (such as your language preference) and provide enhanced features.
+            </p>
+          </div>
+          
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-8">
+            <h3 class="text-lg font-semibold text-lexara-dark-navy mb-2">Marketing Cookies</h3>
+            <p class="text-gray-700 mb-0">
+              These cookies track your online activity to help advertisers deliver more relevant advertising or to limit how many times you see an ad.
+            </p>
+          </div>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">Managing Cookies</h2>
+          <p class="text-gray-700 mb-4">
+            You can control and manage cookies in various ways:
+          </p>
+          <ul class="list-disc pl-6 mb-8 text-gray-700">
+            <li>Most browsers allow you to refuse or accept cookies</li>
+            <li>You can delete cookies that have already been set</li>
+            <li>You can set your browser to notify you when cookies are being set</li>
+          </ul>
+          
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-8">
+            <p class="text-amber-800 mb-0">
+              <strong>Note:</strong> Disabling cookies may affect the functionality of our website and limit your ability to use certain features.
+            </p>
+          </div>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">Third-Party Cookies</h2>
+          <p class="text-gray-700 mb-8">
+            We may use third-party services that set their own cookies, including Statsig for feature flags and analytics, and Stripe for payment processing. These third parties have their own privacy policies.
+          </p>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">Updates to This Policy</h2>
+          <p class="text-gray-700 mb-8">
+            We may update this Cookie Policy from time to time. We will notify you of any changes by posting the new Cookie Policy on this page and updating the "Last updated" date.
+          </p>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">Contact Us</h2>
+          <p class="text-gray-700 mb-8">
+            If you have questions about our use of cookies, please contact us at:
+          </p>
+          <div class="bg-lexara-white-smoke rounded-lg p-6">
+            <p class="text-gray-700 mb-2">
+              <strong>Email:</strong> privacy@lexara.com
+            </p>
+            <p class="text-gray-700 mb-2">
+              <strong>Address:</strong> Lexara Consulting, LLC<br />
+              123 Legal Tech Way, Suite 100<br />
+              San Francisco, CA 94105
+            </p>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+  
+  <Footer />
+</Layout>

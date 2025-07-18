@@ -1,0 +1,114 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navigation from '@/components/Navigation.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Layout title="Documentation">
+  <Navigation />
+  
+  <main>
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-center mb-4">Documentation</h1>
+        <p class="text-xl text-gray-600 text-center max-w-2xl mx-auto">
+          Everything you need to know to get started with Engage and make the most of its features.
+        </p>
+      </div>
+    </section>
+    
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-1">
+              <nav class="sticky top-8">
+                <h3 class="font-semibold mb-4">Contents</h3>
+                <ul class="space-y-2">
+                  <li><a href="#getting-started" class="text-gray-600 hover:text-gray-900">Getting Started</a></li>
+                  <li><a href="#setup" class="text-gray-600 hover:text-gray-900">Initial Setup</a></li>
+                  <li><a href="#features" class="text-gray-600 hover:text-gray-900">Core Features</a></li>
+                  <li><a href="#api" class="text-gray-600 hover:text-gray-900">API Reference</a></li>
+                  <li><a href="#integrations" class="text-gray-600 hover:text-gray-900">Integrations</a></li>
+                </ul>
+              </nav>
+            </div>
+            
+            <div class="md:col-span-2 space-y-12">
+              <section id="getting-started">
+                <h2 class="text-2xl font-bold mb-4">Getting Started</h2>
+                <p class="text-gray-600 mb-4">
+                  Welcome to Engage! This guide will help you get up and running quickly with our platform.
+                </p>
+                <div class="bg-gray-100 p-4 rounded-lg">
+                  <code class="text-sm">npm install @lexara/engage-sdk</code>
+                </div>
+              </section>
+              
+              <section id="setup">
+                <h2 class="text-2xl font-bold mb-4">Initial Setup</h2>
+                <p class="text-gray-600 mb-4">
+                  Follow these steps to configure Engage for your application:
+                </p>
+                <ol class="list-decimal list-inside space-y-2 text-gray-600">
+                  <li>Create your Engage account</li>
+                  <li>Generate your API keys</li>
+                  <li>Install the SDK</li>
+                  <li>Initialize the client</li>
+                </ol>
+              </section>
+              
+              <section id="features">
+                <h2 class="text-2xl font-bold mb-4">Core Features</h2>
+                <p class="text-gray-600 mb-4">
+                  Explore the main features available in Engage:
+                </p>
+                <ul class="space-y-2 text-gray-600">
+                  <li>• Customer profiles and segmentation</li>
+                  <li>• Event tracking and analytics</li>
+                  <li>• Automated workflows</li>
+                  <li>• Multi-channel messaging</li>
+                </ul>
+              </section>
+              
+              <section id="api">
+                <h2 class="text-2xl font-bold mb-4">API Reference</h2>
+                <p class="text-gray-600 mb-4">
+                  Complete API documentation is available in our developer portal.
+                </p>
+                <a href="#" class="text-blue-600 hover:text-blue-700">View API Documentation →</a>
+              </section>
+              
+              <section id="integrations">
+                <h2 class="text-2xl font-bold mb-4">Integrations</h2>
+                <p class="text-gray-600 mb-4">
+                  Engage integrates with your favorite tools and platforms:
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold mb-2">CRM Systems</h4>
+                    <p class="text-sm text-gray-600">Salesforce, HubSpot, Pipedrive</p>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold mb-2">Analytics</h4>
+                    <p class="text-sm text-gray-600">Google Analytics, Mixpanel, Segment</p>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold mb-2">Communication</h4>
+                    <p class="text-sm text-gray-600">Slack, Teams, Discord</p>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-semibold mb-2">E-commerce</h4>
+                    <p class="text-sm text-gray-600">Shopify, WooCommerce, Magento</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,93 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeaderLexara from '@/components/HeaderLexara.astro';
+import Footer from '@/components/Footer.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+
+const lastUpdated = 'January 18, 2025';
+---
+
+<Layout title="Terms of Service - Engage by Lexara">
+  <HeaderLexara />
+  
+  <main>
+    <Section background="white" padding="xlarge">
+      <Container size="medium">
+        <div class="prose prose-lg max-w-none">
+          <h1 class="text-4xl font-semibold text-lexara-dark-navy mb-4">Terms of Service</h1>
+          <p class="text-gray-600 mb-8">Last updated: {lastUpdated}</p>
+          
+          <div class="bg-lexara-white-smoke rounded-2xl p-8 mb-8">
+            <p class="text-gray-700 mb-0">
+              These Terms of Service ("Terms") govern your use of Engage, the AI-powered client intake platform provided by Lexara Consulting, LLC ("Lexara", "we", "our", or "us").
+            </p>
+          </div>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">1. Acceptance of Terms</h2>
+          <p class="text-gray-700 mb-8">
+            By accessing or using Engage, you agree to be bound by these Terms. If you disagree with any part of these terms, you may not access our service.
+          </p>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">2. Use of Service</h2>
+          <p class="text-gray-700 mb-4">
+            You may use Engage only for lawful purposes and in accordance with these Terms. You agree not to:
+          </p>
+          <ul class="list-disc pl-6 mb-8 text-gray-700">
+            <li>Use the service in any way that violates applicable laws or regulations</li>
+            <li>Attempt to gain unauthorized access to any portion of the service</li>
+            <li>Use the service to transmit harmful or offensive content</li>
+            <li>Interfere with or disrupt the integrity or performance of the service</li>
+          </ul>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">3. Intellectual Property</h2>
+          <p class="text-gray-700 mb-8">
+            The service and its original content, features, and functionality are owned by Lexara and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
+          </p>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">4. Privacy and Data Protection</h2>
+          <p class="text-gray-700 mb-8">
+            Your use of Engage is also governed by our Privacy Policy. By using our service, you consent to our collection and use of information as described in the Privacy Policy.
+          </p>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">5. Subscription and Payment</h2>
+          <p class="text-gray-700 mb-4">
+            Some aspects of the service are provided on a subscription basis. You will be billed in advance on a recurring basis. You agree to:
+          </p>
+          <ul class="list-disc pl-6 mb-8 text-gray-700">
+            <li>Provide accurate billing information</li>
+            <li>Promptly update payment information if it changes</li>
+            <li>Pay all fees according to the pricing plan you selected</li>
+          </ul>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">6. Limitation of Liability</h2>
+          <p class="text-gray-700 mb-8">
+            To the maximum extent permitted by law, Lexara shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.
+          </p>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">7. Governing Law</h2>
+          <p class="text-gray-700 mb-8">
+            These Terms shall be governed by and construed in accordance with the laws of California, United States, without regard to its conflict of law provisions.
+          </p>
+          
+          <h2 class="text-2xl font-semibold text-lexara-dark-navy mt-12 mb-4">8. Contact Information</h2>
+          <p class="text-gray-700 mb-8">
+            If you have any questions about these Terms, please contact us at:
+          </p>
+          <div class="bg-lexara-white-smoke rounded-lg p-6">
+            <p class="text-gray-700 mb-2">
+              <strong>Email:</strong> legal@lexara.com
+            </p>
+            <p class="text-gray-700 mb-2">
+              <strong>Address:</strong> Lexara Consulting, LLC<br />
+              123 Legal Tech Way, Suite 100<br />
+              San Francisco, CA 94105
+            </p>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+  
+  <Footer />
+</Layout>

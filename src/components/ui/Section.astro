@@ -1,0 +1,34 @@
+---
+export interface Props {
+  class?: string;
+  background?: 'white' | 'smoke' | 'sky' | 'navy' | 'dark-navy';
+  padding?: 'small' | 'medium' | 'large' | 'xlarge';
+}
+
+const { 
+  class: className = '', 
+  background = 'white',
+  padding = 'large'
+} = Astro.props;
+
+const backgroundClasses = {
+  'white': 'bg-white',
+  'smoke': 'bg-lexara-white-smoke',
+  'sky': 'bg-lexara-sky-blue',
+  'navy': 'bg-lexara-light-navy',
+  'dark-navy': 'bg-lexara-dark-navy'
+};
+
+const paddingClasses = {
+  small: 'py-8 md:py-12',
+  medium: 'py-12 md:py-16',
+  large: 'py-16 md:py-20',
+  xlarge: 'py-20 md:py-24'
+};
+
+const classes = `${backgroundClasses[background]} ${paddingClasses[padding]} ${className}`;
+---
+
+<section class={classes}>
+  <slot />
+</section>

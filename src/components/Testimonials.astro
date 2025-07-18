@@ -1,0 +1,46 @@
+---
+// Load testimonials data
+const response = await fetch(new URL('/data/testimonials.json', Astro.url));
+const data = await response.json();
+const testimonials = data.testimonials;
+---
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-semibold text-lexara-dark-navy mb-4">What Our Clients Say</h2>
+      <p class="text-lg text-gray-600">Join hundreds of satisfied law firms transforming their practice</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {testimonials.map((testimonial) => (
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+          <!-- Star Rating -->
+          <div class="flex gap-1 mb-6">
+            {[...Array(testimonial.rating)].map(() => (
+              <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+              </svg>
+            ))}
+          </div>
+          
+          <!-- Testimonial Text -->
+          <p class="text-gray-700 mb-8 leading-relaxed">"{testimonial.text}"</p>
+          
+          <!-- Author Info -->
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-lexara-dark-navy">{testimonial.author}</p>
+              <p class="text-sm text-gray-600">{testimonial.role} • {testimonial.company}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

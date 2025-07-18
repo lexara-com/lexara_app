@@ -1,0 +1,114 @@
+---
+import { checkGate } from '@/lib/statsig-server';
+import Button from './ui/Button.astro';
+
+const showEmailCapture = await checkGate('show-email-capture-form', Astro);
+---
+
+<section class="pt-20 pb-24 bg-lexara-white-smoke">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="text-left">
+        <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 leading-tight">
+          Powerful Features for<br />Modern Law Firms
+        </h1>
+        <p class="text-xl text-gray-600 mb-10">
+          <span class="font-semibold italic">Engage</span> combines advanced AI with legal expertise to deliver the most comprehensive client intake solution for law firms.
+        </p>
+      
+        {showEmailCapture ? (
+        <form class="max-w-md mx-auto mb-4" data-signup-form>
+          <div class="flex gap-3">
+            <input
+              type="email"
+              placeholder="Enter your work email"
+              class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+              required
+            />
+            <button
+              type="submit"
+              class="px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors whitespace-nowrap"
+            >
+              Start Free Trial
+            </button>
+          </div>
+        </form>
+        ) : (
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+          <Button
+            href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?plan=starter&utm_source=engage&utm_campaign=hero`}
+            variant="primary"
+          >
+            Start Free Trial
+          </Button>
+          <Button
+            href="/demo"
+            variant="outline"
+            class="!rounded-lg border-lexara-mahogany text-lexara-mahogany hover:!bg-lexara-mahogany hover:!text-white"
+          >
+            Watch Demo
+          </Button>
+        </div>
+        )}
+        
+        
+        <div class="flex flex-wrap items-center gap-6 text-sm text-gray-600">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-lexara-mahogany rounded-full"></div>
+            <span>Customize to your practice areas</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-lexara-mahogany rounded-full"></div>
+            <span>Responsive, Adaptable Agents</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-lexara-mahogany rounded-full"></div>
+            <span>Fast Setup</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hidden lg:block">
+        <div class="bg-white rounded-xl shadow-2xl p-6">
+          <img src="/images/engage-chat-sample-detail.png" alt="Engage Chat Interface" class="w-full" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { logClick, logConversion } from '@/lib/analytics';
+  
+  const form = document.querySelector('[data-signup-form]') as HTMLFormElement;
+  
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = (e.target as HTMLFormElement).querySelector('input[type="email"]') as HTMLInputElement;
+    
+    if (email?.value) {
+      // Track conversion
+      logConversion('email_capture', 1, {
+        email: email.value,
+        source: 'hero'
+      });
+      
+      // Redirect to console signup with email
+      const signupUrl = new URL(`${import.meta.env.PUBLIC_CONSOLE_URL}/signup`);
+      signupUrl.searchParams.set('email', email.value);
+      signupUrl.searchParams.set('utm_source', 'engage');
+      signupUrl.searchParams.set('utm_campaign', 'hero_email');
+      window.location.href = signupUrl.toString();
+    }
+  });
+  
+  // Track CTA clicks
+  document.querySelectorAll('a[href*="signup"]').forEach(link => {
+    link.addEventListener('click', () => {
+      logClick('hero_cta', {
+        href: link.getAttribute('href'),
+        text: link.textContent?.trim()
+      });
+    });
+  });
+</script>

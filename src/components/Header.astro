@@ -1,0 +1,118 @@
+---
+const navItems = [
+  { href: '/features', label: 'Features' },
+  { href: '/industries', label: 'Industries' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/enterprise', label: 'Enterprise' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-white border-b border-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <a href="/" class="text-2xl font-bold text-gray-900">
+          Engage
+        </a>
+      </div>
+      
+      <nav class="hidden md:flex items-center space-x-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`text-sm font-medium transition-colors ${
+              currentPath === item.href
+                ? 'text-gray-900'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      
+      <div class="hidden md:flex items-center space-x-4">
+        <a href={`${import.meta.env.PUBLIC_CONSOLE_URL}/login`} class="text-sm font-medium text-gray-600 hover:text-gray-900">
+          Login
+        </a>
+        <a 
+          href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=engage&utm_campaign=header`}
+          class="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors"
+        >
+          Get a Demo
+        </a>
+      </div>
+      
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="p-2 rounded-md text-gray-600 hover:bg-gray-100">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100">
+    <div class="px-4 py-4 space-y-3">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`block text-sm font-medium ${
+            currentPath === item.href
+              ? 'text-gray-900'
+              : 'text-gray-600'
+          }`}
+        >
+          {item.label}
+        </a>
+      ))}
+      <div class="pt-3 border-t border-gray-100 space-y-3">
+        <a href={`${import.meta.env.PUBLIC_CONSOLE_URL}/login`} class="block text-sm font-medium text-gray-600">
+          Login
+        </a>
+        <a 
+          href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=engage&utm_campaign=header`}
+          class="block w-full text-center px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg"
+        >
+          Get a Demo
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { logClick } from '@/lib/analytics';
+  
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  
+  button?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    logClick('mobile_menu_toggle');
+  });
+  
+  // Track navigation clicks
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      logClick('navigation', {
+        destination: link.getAttribute('href'),
+        label: link.textContent?.trim()
+      });
+    });
+  });
+  
+  // Track header CTA clicks
+  document.querySelectorAll('a[href*="login"], a[href*="signup"]').forEach(link => {
+    link.addEventListener('click', () => {
+      logClick('header_cta', {
+        destination: link.getAttribute('href'),
+        label: link.textContent?.trim()
+      });
+    });
+  });
+</script>

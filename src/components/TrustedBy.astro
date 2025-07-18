@@ -1,0 +1,23 @@
+---
+// In production, these would be actual law firm logos
+const firms = [
+  { name: 'Smith & Associates', logo: '/logos/firm1.svg' },
+  { name: 'Johnson Law Group', logo: '/logos/firm2.svg' },
+  { name: 'Williams Legal', logo: '/logos/firm3.svg' },
+  { name: 'Brown Partners', logo: '/logos/firm4.svg' },
+  { name: 'Davis Law Firm', logo: '/logos/firm5.svg' },
+];
+---
+
+<section class="py-16 bg-lexara-white-smoke">
+  <div class="container mx-auto px-4">
+    <p class="text-center text-sm font-medium text-gray-500 mb-10 uppercase tracking-wider">
+      Trusted by Leading Law Firms
+    </p>
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+      {firms.map((firm) => (
+        <div class="h-10 w-28 bg-gray-300 rounded opacity-50"></div>
+      ))}
+    </div>
+  </div>
+</section>

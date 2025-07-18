@@ -1,0 +1,125 @@
+---
+// Product showcase section
+---
+
+<section class="py-24 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Intelligent Conversations That Convert
+          </h2>
+          <p class="text-lg text-gray-600 mb-8">
+            Engage uses advanced AI to understand context, ask the right qualifying questions, 
+            and seamlessly hand off warm leads to your team.
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Natural Language Understanding</h3>
+                <p class="text-gray-600">Understands complex legal inquiries and responds appropriately</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Smart Lead Routing</h3>
+                <p class="text-gray-600">Automatically assigns conversations to the right practice area</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-1">Compliance Built-In</h3>
+                <p class="text-gray-600">Follows legal advertising rules and maintains client confidentiality</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-10">
+            <a 
+              href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=engage&utm_campaign=showcase`}
+              class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors"
+            >
+              Start Your Free Trial
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="bg-white rounded-2xl shadow-2xl p-8">
+            <div class="bg-gray-100 rounded-lg p-6 mb-6">
+              <div class="flex items-start space-x-3 mb-4">
+                <div class="w-10 h-10 bg-blue-500 rounded-full flex-shrink-0"></div>
+                <div class="flex-1">
+                  <div class="bg-blue-500 text-white rounded-2xl rounded-tl-none px-4 py-3 inline-block">
+                    <p class="text-sm">Hi! I need help with a personal injury case.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-3 mb-4 justify-end">
+                <div class="flex-1 text-right">
+                  <div class="bg-gray-200 text-gray-900 rounded-2xl rounded-tr-none px-4 py-3 inline-block">
+                    <p class="text-sm">I'd be happy to help. Can you tell me when the injury occurred?</p>
+                  </div>
+                </div>
+                <div class="w-10 h-10 bg-gray-400 rounded-full flex-shrink-0"></div>
+              </div>
+              
+              <div class="flex items-start space-x-3">
+                <div class="w-10 h-10 bg-blue-500 rounded-full flex-shrink-0"></div>
+                <div class="flex-1">
+                  <div class="bg-blue-500 text-white rounded-2xl rounded-tl-none px-4 py-3 inline-block">
+                    <p class="text-sm">It was a car accident last Tuesday.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-green-50 rounded-lg p-4">
+              <div class="flex items-center space-x-2">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p class="text-sm font-medium text-green-800">Lead qualified and routed to Personal Injury team</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="absolute -bottom-6 -right-6 bg-blue-600 text-white rounded-lg px-6 py-3 shadow-lg">
+            <div class="flex items-center space-x-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+              <div>
+                <p class="text-2xl font-bold">87%</p>
+                <p class="text-sm">Lead conversion rate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

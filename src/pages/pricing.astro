@@ -1,0 +1,213 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeaderLexara from '@/components/HeaderLexara.astro';
+import Footer from '@/components/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+import Badge from '@/components/ui/Badge.astro';
+
+const plans = [
+  {
+    name: 'Starter',
+    description: 'Perfect for solo practitioners',
+    price: '$149',
+    period: '/month',
+    features: [
+      'Up to 100 conversations/month',
+      'AI-powered client screening',
+      'Automatic conflict detection',
+      'Basic practice area customization',
+      'Email support'
+    ],
+    popular: false
+  },
+  {
+    name: 'Professional',
+    description: 'For growing law firms',
+    price: '$349',
+    period: '/month',
+    features: [
+      'Up to 500 conversations/month',
+      'Everything in Starter, plus:',
+      'Advanced conversation analytics',
+      'Custom branding & white-label',
+      'Priority phone & email support',
+      'API access for integrations'
+    ],
+    popular: true
+  },
+  {
+    name: 'Enterprise',
+    description: 'For large firms & organizations',
+    price: 'Custom',
+    period: 'pricing',
+    features: [
+      'Unlimited conversations',
+      'Everything in Professional, plus:',
+      'Dedicated account manager',
+      'Custom AI training & optimization',
+      'HIPAA compliance & BAA',
+      '24/7 phone support & SLA'
+    ],
+    popular: false
+  }
+];
+
+const faqs = [
+  {
+    question: "What's included in the free trial?",
+    answer: "Your 14-day free trial includes full access to all features in your chosen plan, including AI conversations, conflict detection, and analytics. No credit card required."
+  },
+  {
+    question: "How does conversation volume pricing work?",
+    answer: "Conversation limits are based on unique client conversations per month. Once a conversation ends, any follow-up within 30 days counts as the same conversation."
+  },
+  {
+    question: "Can I integrate Engage with my existing systems?",
+    answer: "Yes! Professional and Enterprise plans include API access for seamless integration with practice management software, CRMs, and other legal tech tools."
+  },
+  {
+    question: "Is my client data secure?",
+    answer: "Absolutely. We use bank-level encryption, maintain SOC 2 compliance, and never train our AI on your client data. Enterprise plans include HIPAA compliance options."
+  }
+];
+---
+
+<Layout title="Pricing - Engage by Lexara">
+  <HeaderLexara />
+  <main>
+    <!-- Hero Section -->
+    <Section background="white" padding="large">
+      <Container size="medium">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-semibold text-lexara-dark-navy mb-6">
+            Simple, Transparent Pricing
+          </h1>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Choose the plan that fits your firm's size and needs. All plans include our core AI intake features and 24/7 support.
+          </p>
+        </div>
+      </Container>
+    </Section>
+
+    <!-- Pricing Cards -->
+    <Section background="dark-navy" padding="xlarge">
+      <Container>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {plans.map((plan) => (
+            <div class="bg-lexara-white-smoke rounded-2xl p-8 relative">
+              {plan.popular && (
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <Badge variant="info" size="small">Most Popular</Badge>
+                </div>
+              )}
+              
+              <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-lexara-dark-navy mb-2">{plan.name}</h3>
+                <p class="text-gray-600 mb-6">{plan.description}</p>
+                <div class="flex items-baseline justify-center">
+                  <span class="text-4xl font-bold text-lexara-dark-navy">{plan.price}</span>
+                  <span class="text-gray-600 ml-1">{plan.period}</span>
+                </div>
+              </div>
+              
+              <ul class="space-y-3 mb-8">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start gap-2">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <Button 
+                href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?plan=${plan.name.toLowerCase()}&utm_source=pricing&utm_campaign=pricing_cta`}
+                variant="secondary"
+                class="w-full !bg-lexara-dark-navy !text-white hover:!bg-lexara-light-navy"
+              >
+                Start Free Trial
+              </Button>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
+
+    <!-- FAQ Section -->
+    <Section background="white" padding="xlarge">
+      <Container size="medium">
+        <h2 class="text-3xl font-semibold text-center text-lexara-dark-navy mb-12">
+          Frequently Asked Questions
+        </h2>
+        
+        <div class="space-y-1">
+          {faqs.map((faq, index) => (
+            <details class="group border-b border-gray-200">
+              <summary class="py-6 px-4 cursor-pointer list-none flex items-center justify-between hover:bg-gray-50 transition-colors">
+                <h3 class="font-semibold text-lexara-dark-navy pr-8">{faq.question}</h3>
+                <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="px-4 pb-6 text-gray-600">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </Container>
+    </Section>
+
+    <!-- CTA Section -->
+    <Section background="dark-navy" padding="xlarge">
+      <Container size="medium">
+        <div class="text-center">
+          <h2 class="text-3xl font-semibold text-white mb-4">
+            Ready to Get Started?
+          </h2>
+          <p class="text-lg text-gray-300 mb-8">
+            Join hundreds of law firms using Engage to capture more leads and improve client intake.
+          </p>
+          <Button 
+            href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=pricing&utm_campaign=bottom_cta`}
+            class="!bg-white !text-lexara-dark-navy hover:!bg-gray-100"
+            size="large"
+          >
+            Start Free Trial
+          </Button>
+        </div>
+      </Container>
+    </Section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { logClick } from '@/lib/analytics';
+  
+  // Track pricing CTA clicks
+  document.querySelectorAll('a[href*="signup"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const plan = new URL(link.getAttribute('href') || '').searchParams.get('plan');
+      logClick('pricing_cta', {
+        plan: plan || 'unknown',
+        location: link.closest('section')?.querySelector('h2')?.textContent || 'pricing_card'
+      });
+    });
+  });
+  
+  // Track FAQ interactions
+  document.querySelectorAll('details').forEach((detail, index) => {
+    detail.addEventListener('toggle', () => {
+      if (detail.open) {
+        logClick('faq_expand', {
+          question: detail.querySelector('h3')?.textContent,
+          index: index
+        });
+      }
+    });
+  });
+</script>

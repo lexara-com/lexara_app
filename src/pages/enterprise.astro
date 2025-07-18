@@ -1,0 +1,36 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Layout title="Enterprise">
+  <Header />
+  
+  <main>
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-center mb-4">Enterprise Solutions</h1>
+        <p class="text-xl text-gray-600 text-center max-w-2xl mx-auto">
+          Custom solutions for large law firms and legal departments.
+        </p>
+      </div>
+    </section>
+    
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-gray-600 mb-8">Contact our enterprise team to discuss your specific needs.</p>
+          <a
+            href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?plan=enterprise&utm_source=engage&utm_campaign=enterprise_page`}
+            class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors"
+          >
+            Contact Sales
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

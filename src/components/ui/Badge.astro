@@ -1,0 +1,32 @@
+---
+export interface Props {
+  variant?: 'default' | 'success' | 'warning' | 'error' | 'info';
+  size?: 'small' | 'medium';
+  class?: string;
+}
+
+const { 
+  variant = 'default', 
+  size = 'medium',
+  class: className = ''
+} = Astro.props;
+
+const variantClasses = {
+  default: 'bg-lexara-sky-blue text-lexara-dark-navy',
+  success: 'bg-green-100 text-green-700',
+  warning: 'bg-yellow-100 text-yellow-700',
+  error: 'bg-red-100 text-red-700',
+  info: 'bg-lexara-light-navy text-white'
+};
+
+const sizeClasses = {
+  small: 'px-3 py-0.5 text-xs',
+  medium: 'px-4 py-1 text-sm'
+};
+
+const classes = `inline-flex items-center font-medium rounded-full ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+---
+
+<span class={classes}>
+  <slot />
+</span>

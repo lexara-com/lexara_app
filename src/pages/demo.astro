@@ -1,0 +1,80 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeaderLexara from '@/components/HeaderLexara.astro';
+import Footer from '@/components/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+---
+
+<Layout title="Request a Demo - Engage by Lexara">
+  <HeaderLexara />
+  
+  <main>
+    <Section background="white" padding="xlarge">
+      <Container size="medium">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-semibold text-lexara-dark-navy mb-6">
+            See Engage in Action
+          </h1>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-12">
+            Get a personalized demo and see how Engage can transform your law firm's client intake process.
+          </p>
+          
+          <div class="bg-lexara-white-smoke rounded-2xl p-12 max-w-2xl mx-auto">
+            <h2 class="text-2xl font-semibold text-lexara-dark-navy mb-6">
+              Schedule Your Demo
+            </h2>
+            <p class="text-gray-600 mb-8">
+              Our team will show you how Engage can help your firm capture more leads, qualify clients faster, and improve conversion rates.
+            </p>
+            
+            <div class="space-y-4 text-left mb-8">
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-700">Live demonstration of AI-powered intake</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-700">Custom configuration for your practice areas</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-700">Integration options and pricing discussion</span>
+              </div>
+            </div>
+            
+            <Button 
+              href="https://calendly.com/lexara-demo"
+              variant="primary"
+              size="large"
+              class="w-full sm:w-auto"
+            >
+              Schedule Demo
+            </Button>
+            
+            <p class="text-sm text-gray-500 mt-6">
+              Or start your free trial immediately
+            </p>
+            <Button 
+              href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=demo&utm_campaign=demo_page`}
+              variant="outline"
+              size="medium"
+              class="mt-2"
+            >
+              Start Free Trial
+            </Button>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+  
+  <Footer />
+</Layout>

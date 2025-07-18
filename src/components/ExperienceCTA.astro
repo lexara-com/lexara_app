@@ -1,0 +1,52 @@
+---
+import Button from './ui/Button.astro';
+---
+
+<section class="relative">
+  <div class="bg-lexara-dark-navy py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-semibold text-white mb-6">
+          Experience the Power of AI-Driven Client Intake
+        </h2>
+        <p class="text-xl text-gray-300 mb-10 leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis purus in consequat viverra.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <Button 
+            href="/pricing?utm_source=homepage&utm_medium=cta&utm_campaign=experience_cta"
+            class="border-2 border-white !text-lexara-dark-navy !bg-white hover:!bg-gray-100"
+          >
+            Start Free Trial
+          </Button>
+          <Button 
+            href="/demo?utm_source=homepage&utm_medium=cta&utm_campaign=experience_cta"
+            variant="secondary"
+            class="border-2 border-white !bg-transparent hover:!bg-lexara-light-navy"
+          >
+            Watch Demo
+          </Button>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-8 text-white">
+          <div class="flex items-center gap-2">
+            <div class="w-5 h-5 bg-white rounded-full"></div>
+            <span class="text-sm">Customize to your practice Areas</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-5 h-5 bg-white rounded-full"></div>
+            <span class="text-sm">Responsive, Adaptable Agents</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-5 h-5 bg-white rounded-full"></div>
+            <span class="text-sm">Fast Set-up</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- White separator line -->
+  <div class="h-1 bg-white"></div>
+</section>

@@ -1,0 +1,120 @@
+---
+import Badge from './ui/Badge.astro';
+---
+
+<section class="py-20 bg-lexara-sky-blue">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center gap-2 mb-8">
+      <div class="bg-lexara-dark-navy text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <span class="text-sm font-medium">Advanced AI</span>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="text-4xl font-semibold text-lexara-dark-navy mb-6">Intelligent document analysis</h2>
+        <p class="text-gray-700 mb-6 text-lg">
+          Our AI analyzes contracts, identifies risks and suggests automatic improvements. Reduce review time by up to 70% maintaining precision.
+        </p>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-lexara-dark-navy">•</span>
+            <span>Automatic detection of crystical clauses</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-lexara-dark-navy">•</span>
+            <span>Real-time risk analysis</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-lexara-dark-navy">•</span>
+            <span>Aumatic improvement suggestions</span>
+          </li>
+        </ul>
+        
+        <!-- Conflict Check Result -->
+        <div class="mt-12 bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-xl font-semibold text-lexara-dark-navy mb-6">Conflict Check Result</h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200">
+              <span class="text-gray-700">John smith</span>
+              <Badge variant="success">Clear</Badge>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+              <span class="text-gray-700">ABC Corporation</span>
+              <Badge variant="warning">Review</Badge>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200">
+              <span class="text-gray-700">Former Client Match</span>
+              <Badge variant="error">Conflict</Badge>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <!-- Contract Analysis Card -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-semibold text-lexara-dark-navy">Contract Analysis</h3>
+            <Badge variant="success">Complete</Badge>
+          </div>
+          
+          <!-- Progress bar -->
+          <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+            <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Identified Risks:</span>
+              <span class="text-3xl font-semibold text-red-600">3</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Reviewed Clauses:</span>
+              <span class="text-3xl font-semibold text-lexara-dark-navy">24</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-gray-600">Time Saved:</span>
+              <span class="text-2xl font-semibold text-green-600">4.5 hours</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Automatic Conflict Detection Card -->
+        <div class="bg-lexara-dark-navy text-white rounded-2xl p-8">
+          <div class="flex items-center gap-2 mb-6">
+            <div class="bg-white rounded-full p-2">
+              <svg class="w-5 h-5 text-lexara-dark-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium">Compliance</span>
+          </div>
+          
+          <h3 class="text-2xl font-semibold mb-4">Automatic Conflict Detection</h3>
+          <p class="text-gray-300 mb-6">
+            Always keep updated with regulatory changes. Lexara monitors real-time regulations and alerts you about changes that affect your business.
+          </p>
+          
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-start gap-2">
+              <span>•</span>
+              <span>Automatic regulatory change alerts</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span>•</span>
+              <span>Real-time compliance dashboard</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span>•</span>
+              <span>Automated audit reports</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

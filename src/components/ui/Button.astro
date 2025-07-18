@@ -1,0 +1,44 @@
+---
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'small' | 'medium' | 'large';
+  href?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const { 
+  variant = 'primary', 
+  size = 'medium', 
+  href, 
+  class: className = '',
+  ...rest 
+} = Astro.props;
+
+const baseClasses = 'inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-full';
+
+const variantClasses = {
+  primary: 'bg-lexara-mahogany text-white hover:bg-opacity-90',
+  secondary: 'bg-lexara-dark-navy text-white hover:bg-lexara-light-navy',
+  outline: 'bg-transparent text-lexara-dark-navy border-2 border-lexara-dark-navy hover:bg-lexara-dark-navy hover:text-white',
+  ghost: 'bg-transparent text-lexara-dark-navy hover:bg-lexara-sky-blue hover:bg-opacity-20'
+};
+
+const sizeClasses = {
+  small: 'px-4 py-2 text-sm',
+  medium: 'px-6 py-3 text-base',
+  large: 'px-8 py-4 text-lg'
+};
+
+const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag 
+  href={href} 
+  class={classes}
+  {...rest}
+>
+  <slot />
+</Tag>

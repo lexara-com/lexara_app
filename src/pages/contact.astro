@@ -1,0 +1,99 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeaderLexara from '@/components/HeaderLexara.astro';
+import Footer from '@/components/Footer.astro';
+import Button from '@/components/ui/Button.astro';
+import Container from '@/components/ui/Container.astro';
+import Section from '@/components/ui/Section.astro';
+---
+
+<Layout title="Contact - Engage by Lexara">
+  <HeaderLexara />
+  
+  <main>
+    <Section background="smoke" padding="xlarge">
+      <Container size="medium">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-semibold text-lexara-dark-navy mb-6">
+            Get in Touch
+          </h1>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Have questions about Engage? We're here to help you transform your law firm's client intake.
+          </p>
+        </div>
+      </Container>
+    </Section>
+    
+    <Section background="white" padding="xlarge">
+      <Container size="large">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-2xl font-semibold text-lexara-dark-navy mb-6">Let's Start a Conversation</h2>
+            <p class="text-gray-600 mb-8">
+              Whether you're ready to get started or just have questions, our team is here to help.
+            </p>
+            
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-semibold text-lexara-dark-navy mb-2">Sales Inquiries</h3>
+                <p class="text-gray-600">sales@lexara.com</p>
+                <p class="text-gray-600">1-800-LEXARA-1</p>
+              </div>
+              
+              <div>
+                <h3 class="font-semibold text-lexara-dark-navy mb-2">Support</h3>
+                <p class="text-gray-600">support@lexara.com</p>
+                <p class="text-gray-600">Available 24/7</p>
+              </div>
+              
+              <div>
+                <h3 class="font-semibold text-lexara-dark-navy mb-2">Office</h3>
+                <p class="text-gray-600">
+                  Lexara Consulting, LLC<br />
+                  123 Legal Tech Way<br />
+                  Suite 100<br />
+                  San Francisco, CA 94105
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lexara-mahogany focus:border-transparent" />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lexara-mahogany focus:border-transparent" />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Law Firm</label>
+                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lexara-mahogany focus:border-transparent" />
+              </div>
+              
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lexara-mahogany focus:border-transparent"></textarea>
+              </div>
+              
+              <Button 
+                type="submit"
+                variant="primary"
+                size="large"
+                class="w-full"
+              >
+                Send Message
+              </Button>
+            </form>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  </main>
+  
+  <Footer />
+</Layout>

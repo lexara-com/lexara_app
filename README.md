@@ -125,6 +125,13 @@ wrangler r2 object put lexara-static/images/filename.png --file=./public/images/
 4. **Images**: Served from R2 bucket via static.lexara.app
 5. **JSON Data**: Imported directly instead of fetched at runtime
 
+## Testing
+
+For QA and testing teams:
+- 📋 [Quick Test Checklist](./QUICK_TEST_CHECKLIST.md) - 15-20 minute smoke test
+- 📖 [Comprehensive Testing Guide](./TESTING_GUIDE.md) - Full test scenarios
+- 🐛 [Report Issues](https://github.com/lexara-com/engage-lexara-app/issues)
+
 ## Recent Changes
 
 ### 2025-01-18

@@ -6,10 +6,12 @@ export default defineConfig({
   output: 'server',
   adapter: cloudflare({
     mode: 'directory',
-    runtime: {
-      mode: 'local',
-      type: 'pages',
-    }
+    functionPerRoute: false,
   }),
-  integrations: [tailwind()]
+  integrations: [tailwind()],
+  vite: {
+    ssr: {
+      external: ['node:zlib', 'zlib', 'statsig-node'],
+    },
+  },
 });

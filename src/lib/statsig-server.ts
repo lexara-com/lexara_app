@@ -1,11 +1,25 @@
-import Statsig from 'statsig-node';
 import type { APIContext } from 'astro';
 
+let Statsig: any = null;
 let initialized = false;
 
+// Dynamic import to avoid build issues in CloudFlare Workers
+async function getStatsig() {
+  if (!Statsig && typeof process !== 'undefined') {
+    try {
+      const module = await import('statsig-node');
+      Statsig = module.default;
+    } catch (e) {
+      console.warn('Statsig not available in this environment');
+    }
+  }
+  return Statsig;
+}
+
 export async function initStatsig() {
-  if (!initialized && import.meta.env.STATSIG_SERVER_SECRET) {
-    await Statsig.initialize(
+  const StatsigLib = await getStatsig();
+  if (!initialized && StatsigLib && import.meta.env.STATSIG_SERVER_SECRET) {
+    await StatsigLib.initialize(
       import.meta.env.STATSIG_SERVER_SECRET,
       {
         environment: { tier: import.meta.env.MODE }
@@ -36,32 +50,61 @@ export async function getStatsigUser(context: APIContext) {
 }
 
 export async function checkGate(gateName: string, context: APIContext) {
+  const StatsigLib = await getStatsig();
+  if (!StatsigLib) return false;
+  
   await initStatsig();
   const user = await getStatsigUser(context);
-  return Statsig.checkGate(user, gateName);
+  return StatsigLib.checkGate(user, gateName);
 }
 
 export async function getExperiment(experimentName: string, context: APIContext) {
+  const StatsigLib = await getStatsig();
+  if (!StatsigLib) {
+    return {
+      get: (key: string, defaultValue: any) => defaultValue,
+      getID: () => 'default',
+      getGroupName: () => 'control'
+    };
+  }
+  
   await initStatsig();
   const user = await getStatsigUser(context);
-  return Statsig.getExperiment(user, experimentName);
+  return StatsigLib.getExperiment(user, experimentName);
 }
 
 export async function getConfig(configName: string, context: APIContext) {
+  const StatsigLib = await getStatsig();
+  if (!StatsigLib) {
+    return {
+      get: (key: string, defaultValue: any) => defaultValue,
+      getID: () => 'default'
+    };
+  }
+  
   await initStatsig();
   const user = await getStatsigUser(context);
-  return Statsig.getConfig(user, configName);
+  return StatsigLib.getConfig(user, configName);
 }
 
 export async function getClientInitializeValues(context: APIContext) {
+  const StatsigLib = await getStatsig();
+  if (!StatsigLib) return {};
+  
   await initStatsig();
   const user = await getStatsigUser(context);
-  return await Statsig.getClientInitializeResponse(user);
+  return await StatsigLib.getClientInitializeResponse(user);
 }
 
 export async function logServerEvent(eventName: string, user: any, value?: string | number, metadata?: Record<string, any>) {
+  const StatsigLib = await getStatsig();
+  if (!StatsigLib) {
+    console.log('Event:', eventName, { user, value, metadata });
+    return;
+  }
+  
   await initStatsig();
-  Statsig.logEvent(user, eventName, value, metadata);
+  StatsigLib.logEvent(user, eventName, value, metadata);
 }
 
 export async function logPageView(context: APIContext, pageName: string) {

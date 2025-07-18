@@ -9,7 +9,11 @@
       "Bash(curl:*)",
       "Bash(pkill:*)",
       "Bash(mv:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run build:*)",
+      "Bash(wrangler:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }

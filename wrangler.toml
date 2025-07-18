@@ -2,7 +2,7 @@ name = "engage-lexara-app"
 compatibility_date = "2025-01-18"
 
 # CloudFlare account and worker settings
-account_id = "" # Add your CloudFlare account ID
+account_id = "a3cce89f2c57186bc125faa4229cd5a9"
 main = "dist/_worker.js"
 
 # Environment variables (will be set in CloudFlare dashboard)
@@ -10,18 +10,19 @@ main = "dist/_worker.js"
 PUBLIC_CONSOLE_URL = "https://console.lexara.app"
 
 # KV namespace bindings
-[[kv_namespaces]]
-binding = "SESSION"
-id = "" # Add your KV namespace ID after creating it
+# Uncomment after creating KV namespace with: wrangler kv:namespace create "SESSION"
+# [[kv_namespaces]]
+# binding = "SESSION"
+# id = "" # Add your KV namespace ID after creating it
 
 # Build command
 [build]
 command = "npm run build"
 
-# Compatibility flags
-compatibility_flags = ["nodejs_compat"]
-
 # Routes (add your domain after setting up in CloudFlare)
 # route = "engage.lexara.app/*"
 # or use a workers.dev subdomain for testing
-# workers_dev = true
+workers_dev = true
+
+# Compatibility flags
+compatibility_flags = ["nodejs_compat"]

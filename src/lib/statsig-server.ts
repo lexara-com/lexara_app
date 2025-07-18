@@ -17,6 +17,11 @@ async function getStatsig() {
 }
 
 export async function initStatsig() {
+  // Skip initialization in CloudFlare Workers environment
+  if (typeof process === 'undefined') {
+    return;
+  }
+  
   const StatsigLib = await getStatsig();
   if (!initialized && StatsigLib && import.meta.env.STATSIG_SERVER_SECRET) {
     await StatsigLib.initialize(
@@ -50,12 +55,17 @@ export async function getStatsigUser(context: APIContext) {
 }
 
 export async function checkGate(gateName: string, context: APIContext) {
-  const StatsigLib = await getStatsig();
-  if (!StatsigLib) return false;
-  
-  await initStatsig();
-  const user = await getStatsigUser(context);
-  return StatsigLib.checkGate(user, gateName);
+  try {
+    const StatsigLib = await getStatsig();
+    if (!StatsigLib) return false;
+    
+    await initStatsig();
+    const user = await getStatsigUser(context);
+    return StatsigLib.checkGate(user, gateName);
+  } catch (error) {
+    console.warn('Statsig checkGate error:', error);
+    return false;
+  }
 }
 
 export async function getExperiment(experimentName: string, context: APIContext) {
@@ -88,12 +98,17 @@ export async function getConfig(configName: string, context: APIContext) {
 }
 
 export async function getClientInitializeValues(context: APIContext) {
-  const StatsigLib = await getStatsig();
-  if (!StatsigLib) return {};
-  
-  await initStatsig();
-  const user = await getStatsigUser(context);
-  return await StatsigLib.getClientInitializeResponse(user);
+  try {
+    const StatsigLib = await getStatsig();
+    if (!StatsigLib) return {};
+    
+    await initStatsig();
+    const user = await getStatsigUser(context);
+    return await StatsigLib.getClientInitializeResponse(user);
+  } catch (error) {
+    console.warn('Statsig getClientInitializeValues error:', error);
+    return {};
+  }
 }
 
 export async function logServerEvent(eventName: string, user: any, value?: string | number, metadata?: Record<string, any>) {

@@ -43,93 +43,95 @@ import Button from './ui/Button.astro';
   </div>
 </div>
 
-<script>
-  const CONSENT_COOKIE_NAME = 'lexara-cookie-consent';
-  const CONSENT_DURATION = 365; // days
-  
-  // Check if we should show the banner
-  function shouldShowBanner() {
-    const consent = getCookie(CONSENT_COOKIE_NAME);
-    return !consent;
-  }
-  
-  // Get cookie value
-  function getCookie(name: string) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift();
-    return null;
-  }
-  
-  // Set cookie
-  function setCookie(name: string, value: string, days: number) {
-    const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    const expires = `expires=${date.toUTCString()}`;
-    document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
-  }
-  
-  // Handle consent
-  function handleConsent(consentType: 'all' | 'necessary' | 'none') {
-    setCookie(CONSENT_COOKIE_NAME, consentType, CONSENT_DURATION);
-    hideBanner();
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const CONSENT_COOKIE_NAME = 'lexara-cookie-consent';
+    const CONSENT_DURATION = 365; // days
     
-    // Emit custom event for other scripts to listen to
-    window.dispatchEvent(new CustomEvent('cookieConsentUpdate', { 
-      detail: { consent: consentType } 
-    }));
+    // Check if we should show the banner
+    function shouldShowBanner() {
+      const consent = getCookie(CONSENT_COOKIE_NAME);
+      return !consent;
+    }
     
-    // Reload page to apply consent settings
-    if (consentType === 'none' || consentType === 'necessary') {
-      // If rejecting analytics, we should reload to prevent any tracking
-      window.location.reload();
+    // Get cookie value
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+      return null;
     }
-  }
-  
-  // Show banner
-  function showBanner() {
-    const banner = document.getElementById('cookie-banner');
-    if (banner) {
-      setTimeout(() => {
-        banner.classList.remove('translate-y-full');
-      }, 100);
+    
+    // Set cookie
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = `expires=${date.toUTCString()}`;
+      document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
     }
-  }
-  
-  // Hide banner
-  function hideBanner() {
-    const banner = document.getElementById('cookie-banner');
-    if (banner) {
-      banner.classList.add('translate-y-full');
+    
+    // Handle consent
+    function handleConsent(consentType) {
+      setCookie(CONSENT_COOKIE_NAME, consentType, CONSENT_DURATION);
+      hideBanner();
+      
+      // Emit custom event for other scripts to listen to
+      window.dispatchEvent(new CustomEvent('cookieConsentUpdate', { 
+        detail: { consent: consentType } 
+      }));
+      
+      // Reload page to apply consent settings
+      if (consentType === 'none' || consentType === 'necessary') {
+        // If rejecting analytics, we should reload to prevent any tracking
+        window.location.reload();
+      }
     }
-  }
-  
-  // Initialize
-  if (shouldShowBanner()) {
-    showBanner();
-  }
-  
-  // Event listeners
-  document.getElementById('accept-cookies')?.addEventListener('click', () => {
-    handleConsent('all');
-  });
-  
-  document.getElementById('accept-necessary')?.addEventListener('click', () => {
-    handleConsent('necessary');
-  });
-  
-  document.getElementById('reject-cookies')?.addEventListener('click', () => {
-    handleConsent('none');
-  });
-  
-  // Export consent check function for other scripts
-  (window as any).checkCookieConsent = function() {
-    const consent = getCookie(CONSENT_COOKIE_NAME);
-    return {
-      hasConsent: !!consent,
-      consentType: consent || 'none',
-      allowsAnalytics: consent === 'all',
-      allowsNecessary: consent === 'all' || consent === 'necessary'
+    
+    // Show banner
+    function showBanner() {
+      const banner = document.getElementById('cookie-banner');
+      if (banner) {
+        setTimeout(() => {
+          banner.classList.remove('translate-y-full');
+        }, 100);
+      }
+    }
+    
+    // Hide banner
+    function hideBanner() {
+      const banner = document.getElementById('cookie-banner');
+      if (banner) {
+        banner.classList.add('translate-y-full');
+      }
+    }
+    
+    // Initialize
+    if (shouldShowBanner()) {
+      showBanner();
+    }
+    
+    // Event listeners
+    document.getElementById('accept-cookies')?.addEventListener('click', () => {
+      handleConsent('all');
+    });
+    
+    document.getElementById('accept-necessary')?.addEventListener('click', () => {
+      handleConsent('necessary');
+    });
+    
+    document.getElementById('reject-cookies')?.addEventListener('click', () => {
+      handleConsent('none');
+    });
+    
+    // Export consent check function for other scripts
+    window.checkCookieConsent = function() {
+      const consent = getCookie(CONSENT_COOKIE_NAME);
+      return {
+        hasConsent: !!consent,
+        consentType: consent || 'none',
+        allowsAnalytics: consent === 'all',
+        allowsNecessary: consent === 'all' || consent === 'necessary'
+      };
     };
-  };
+  });
 </script>

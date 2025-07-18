@@ -1,8 +1,7 @@
 ---
 // Load testimonials data
-const response = await fetch(new URL('/data/testimonials.json', Astro.url));
-const data = await response.json();
-const testimonials = data.testimonials;
+import testimonialsData from '../../public/data/testimonials.json';
+const testimonials = testimonialsData.testimonials;
 ---
 
 <section class="py-20 bg-white">

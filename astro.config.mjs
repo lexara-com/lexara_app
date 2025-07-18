@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   output: 'server',
   adapter: cloudflare({
-    mode: 'directory',
+    mode: 'advanced',
     functionPerRoute: false,
   }),
   integrations: [tailwind()],
@@ -13,5 +13,12 @@ export default defineConfig({
     ssr: {
       external: ['node:zlib', 'zlib', 'statsig-node'],
     },
+    build: {
+      // Inline all assets to avoid 404 errors
+      assetsInlineLimit: 100000, // 100KB limit for inlining
+    },
+  },
+  build: {
+    inlineStylesheets: 'always', // Inline all CSS
   },
 });

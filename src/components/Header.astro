@@ -85,33 +85,39 @@ const currentPath = Astro.url.pathname;
   </div>
 </header>
 
-<script>
-  import { logClick } from '@/lib/analytics';
-  
-  const button = document.getElementById('mobile-menu-button');
-  const menu = document.getElementById('mobile-menu');
-  
-  button?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-    logClick('mobile_menu_toggle');
-  });
-  
-  // Track navigation clicks
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      logClick('navigation', {
-        destination: link.getAttribute('href'),
-        label: link.textContent?.trim()
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    
+    button?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+      if (window.logClick) {
+        window.logClick('mobile_menu_toggle');
+      }
+    });
+    
+    // Track navigation clicks
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.logClick) {
+          window.logClick('navigation', {
+            destination: link.getAttribute('href'),
+            label: link.textContent?.trim()
+          });
+        }
       });
     });
-  });
-  
-  // Track header CTA clicks
-  document.querySelectorAll('a[href*="login"], a[href*="signup"]').forEach(link => {
-    link.addEventListener('click', () => {
-      logClick('header_cta', {
-        destination: link.getAttribute('href'),
-        label: link.textContent?.trim()
+    
+    // Track header CTA clicks
+    document.querySelectorAll('a[href*="login"], a[href*="signup"]').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.logClick) {
+          window.logClick('header_cta', {
+            destination: link.getAttribute('href'),
+            label: link.textContent?.trim()
+          });
+        }
       });
     });
   });

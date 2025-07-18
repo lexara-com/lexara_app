@@ -185,16 +185,18 @@ const faqs = [
   <Footer />
 </Layout>
 
-<script>
-  import { logClick } from '@/lib/analytics';
-  
+<script is:inline>
   // Track pricing CTA clicks
-  document.querySelectorAll('a[href*="signup"]').forEach(link => {
-    link.addEventListener('click', () => {
-      const plan = new URL(link.getAttribute('href') || '').searchParams.get('plan');
-      logClick('pricing_cta', {
-        plan: plan || 'unknown',
-        location: link.closest('section')?.querySelector('h2')?.textContent || 'pricing_card'
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href*="signup"]').forEach(link => {
+      link.addEventListener('click', () => {
+        const plan = new URL(link.getAttribute('href') || '').searchParams.get('plan');
+        if (window.logClick) {
+          window.logClick('pricing_cta', {
+            plan: plan || 'unknown',
+            location: link.closest('section')?.querySelector('h2')?.textContent || 'pricing_card'
+          });
+        }
       });
     });
   });

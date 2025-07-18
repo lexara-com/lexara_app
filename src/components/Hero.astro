@@ -70,44 +70,48 @@ const showEmailCapture = await checkGate('show-email-capture-form', Astro);
       
       <div class="hidden lg:block">
         <div class="bg-white rounded-xl shadow-2xl p-6">
-          <img src="/images/engage-chat-sample-detail.png" alt="Engage Chat Interface" class="w-full" />
+          <img src="https://static.lexara.app/images/engage-chat-sample-detail.png" alt="Engage Chat Interface" class="w-full" />
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  import { logClick, logConversion } from '@/lib/analytics';
-  
-  const form = document.querySelector('[data-signup-form]') as HTMLFormElement;
-  
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = (e.target as HTMLFormElement).querySelector('input[type="email"]') as HTMLInputElement;
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('[data-signup-form]');
     
-    if (email?.value) {
-      // Track conversion
-      logConversion('email_capture', 1, {
-        email: email.value,
-        source: 'hero'
-      });
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = e.target.querySelector('input[type="email"]');
       
-      // Redirect to console signup with email
-      const signupUrl = new URL(`${import.meta.env.PUBLIC_CONSOLE_URL}/signup`);
-      signupUrl.searchParams.set('email', email.value);
-      signupUrl.searchParams.set('utm_source', 'engage');
-      signupUrl.searchParams.set('utm_campaign', 'hero_email');
-      window.location.href = signupUrl.toString();
-    }
-  });
-  
-  // Track CTA clicks
-  document.querySelectorAll('a[href*="signup"]').forEach(link => {
-    link.addEventListener('click', () => {
-      logClick('hero_cta', {
-        href: link.getAttribute('href'),
-        text: link.textContent?.trim()
+      if (email?.value) {
+        // Track conversion
+        if (window.logConversion) {
+          window.logConversion('email_capture', 1, {
+            email: email.value,
+            source: 'hero'
+          });
+        }
+        
+        // Redirect to console signup with email
+        const signupUrl = new URL(window.__ENV__.PUBLIC_CONSOLE_URL + '/signup');
+        signupUrl.searchParams.set('email', email.value);
+        signupUrl.searchParams.set('utm_source', 'engage');
+        signupUrl.searchParams.set('utm_campaign', 'hero_email');
+        window.location.href = signupUrl.toString();
+      }
+    });
+    
+    // Track CTA clicks
+    document.querySelectorAll('a[href*="signup"]').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.logClick) {
+          window.logClick('hero_cta', {
+            href: link.getAttribute('href'),
+            text: link.textContent?.trim()
+          });
+        }
       });
     });
   });

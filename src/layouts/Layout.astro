@@ -71,9 +71,115 @@ try {
     <slot />
     <CookieBanner />
     <script is:inline>
-      // Analytics initialization will be handled inline to avoid external JS files
-      // This is necessary for CloudFlare Workers compatibility
-      console.log('Analytics initialization deferred for CloudFlare Workers');
+      // Load Statsig from CDN
+      (function() {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/@statsig/js-client@3/build/statsig-js-client.min.js';
+        script.async = true;
+        script.onload = function() {
+          console.log('Statsig library loaded');
+        };
+        document.head.appendChild(script);
+      })();
+    </script>
+    <script is:inline>
+      // Initialize Statsig analytics
+      (function() {
+        let statsigClient = null;
+        
+        // Define analytics functions globally
+        window.logEvent = function(eventName, value, metadata) {
+          if (statsigClient) {
+            statsigClient.logEvent(eventName, value, metadata);
+          }
+        };
+        
+        window.logPageView = function(pageName, metadata) {
+          if (statsigClient) {
+            const enrichedMetadata = {
+              ...metadata,
+              url: window.location.href,
+              path: window.location.pathname,
+              referrer: document.referrer,
+              timestamp: new Date().toISOString(),
+            };
+            statsigClient.logEvent('page_view', pageName, enrichedMetadata);
+          }
+        };
+        
+        window.logClick = function(elementName, metadata) {
+          if (statsigClient) {
+            statsigClient.logEvent('click', elementName, metadata);
+          }
+        };
+        
+        window.logConversion = function(conversionType, value, metadata) {
+          if (statsigClient) {
+            statsigClient.logEvent('conversion', conversionType, {
+              ...metadata,
+              value,
+            });
+          }
+        };
+        
+        function initializeAnalytics() {
+          if (window.__STATSIG_CLIENT_KEY__ && window.StatsigClient) {
+            const consent = window.checkCookieConsent?.();
+            
+            // Only initialize analytics if we have consent
+            if (consent?.allowsAnalytics) {
+              statsigClient = new window.StatsigClient(
+                window.__STATSIG_CLIENT_KEY__,
+                window.__STATSIG_USER__,
+                {
+                  initializeValues: window.__STATSIG_INIT_VALUES__ || {},
+                  environment: { tier: 'production' }
+                }
+              );
+              
+              statsigClient.initializeAsync().then(() => {
+                console.log('Statsig initialized successfully');
+                
+                // Log initial page view
+                const pageTitle = document.title.split('|')[0].trim();
+                window.logPageView(pageTitle, {
+                  utm_source: new URLSearchParams(window.location.search).get('utm_source'),
+                  utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),
+                  utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
+                });
+              }).catch(err => {
+                console.error('Statsig initialization error:', err);
+              });
+            }
+          }
+        }
+        
+        // Wait for Statsig library to load
+        function waitForStatsig() {
+          if (window.StatsigClient) {
+            // Initialize immediately if consent already given
+            if (window.checkCookieConsent?.()?.allowsAnalytics) {
+              initializeAnalytics();
+            }
+            
+            // Listen for consent updates
+            window.addEventListener('cookieConsentUpdate', function(event) {
+              if (event.detail.consent === 'all') {
+                initializeAnalytics();
+              }
+            });
+          } else {
+            setTimeout(waitForStatsig, 100);
+          }
+        }
+        
+        // Start waiting after DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', waitForStatsig);
+        } else {
+          waitForStatsig();
+        }
+      })();
     </script>
   </body>
 </html>

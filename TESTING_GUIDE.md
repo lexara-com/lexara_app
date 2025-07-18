@@ -33,15 +33,15 @@ This guide provides comprehensive testing instructions for the Engage by Lexara 
 - [ ] "Pricing" link navigates to `/pricing`
 - [ ] "Demo" link navigates to `/demo`
 - [ ] "Contact" link navigates to `/contact`
-- [ ] "Sign In" link goes to `https://console.lexara.app/api/auth/login`
-- [ ] "Get Started" button has proper UTM parameters
+- [ ] "Sign In" link goes to `https://console.lexara.app/api/auth/login` (expected)
+- [ ] "Get Started" button goes to `https://console.lexara.app/signup` with UTM parameters (expected)
 - [ ] Mobile menu toggle works on small screens
 - [ ] Mobile menu shows/hides navigation items
 
 #### Hero Section
 - [ ] Headline and subheadline display correctly
-- [ ] "Get Started" button has correct UTM parameters
-- [ ] "Watch Demo" button links to demo page
+- [ ] "Get Started" button goes to console.lexara.app/signup with UTM parameters (expected)
+- [ ] "Watch Demo" button links to `/demo` page
 - [ ] Chat interface preview image loads from `https://static.lexara.app/images/engage-chat-sample-detail.png`
 - [ ] Feature points display with bullet points
 

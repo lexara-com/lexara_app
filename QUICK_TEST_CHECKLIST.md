@@ -53,8 +53,11 @@
 
 ## Known Limitations
 ⚠️ Forms are placeholder only (no backend yet)
-⚠️ Some CTAs go to console signup (expected)
 ⚠️ Analytics only work after cookie consent
+
+## Expected Behavior
+✅ All "Sign Up" and "Get Started" CTAs should go to console.lexara.app
+✅ This is the correct flow - users sign up on the console app
 
 ## Quick Browser Test
 Test in at least:

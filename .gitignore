@@ -28,3 +28,4 @@ dist/
 # cloudflare
 .wrangler/
 _worker.js
+.dev.vars

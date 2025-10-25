@@ -2,28 +2,28 @@
   "testimonials": [
     {
       "id": 1,
-      "text": "Lexara transformó completamente nuestro departamento legal. Reducimos el tiempo de revisión de contratos en un 60%.",
-      "author": "Jhon Doe",
-      "role": "Legal Director",
-      "company": "Smith & Associates",
+      "text": "This is phenomenal. It will save our small firm thousands of dollars in non-billable time per month.",
+      "author": "Janine S.",
+      "role": "Partner",
+      "company": "Small Law Firm",
       "rating": 5,
       "avatar": "/images/avatars/avatar-1.jpg"
     },
     {
       "id": 2,
-      "text": "La automatización de procesos nos permitió enfocar nuestro tiempo en estrategia en lugar de tareas operativas.",
-      "author": "Johana Doe",
-      "role": "Senior Partner",
-      "company": "Johnson Law Group",
+      "text": "Engage is what AI should be for lawyers. It's easy to use for me and my team.",
+      "author": "Bart H.",
+      "role": "Managing Partner",
+      "company": "Law Office",
       "rating": 5,
       "avatar": "/images/avatars/avatar-2.jpg"
     },
     {
       "id": 3,
-      "text": "Implementación rápida y resultados inmediatos. El ROI fue evidente desde el primer mes.",
-      "author": "Jhon Doe",
-      "role": "Managing Partner",
-      "company": "Davis Legal",
+      "text": "I love that you can customize the questions you want to ask in order to screen potential clients.",
+      "author": "Lisa B.",
+      "role": "Attorney",
+      "company": "Legal Practice",
       "rating": 5,
       "avatar": "/images/avatars/avatar-3.jpg"
     }

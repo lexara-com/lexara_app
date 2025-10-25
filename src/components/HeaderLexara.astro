@@ -1,5 +1,6 @@
 ---
 import Button from './ui/Button.astro';
+import { getConsoleUrl } from '../lib/env';
 
 const navItems = [
   { href: '/pricing', label: 'Pricing' },
@@ -8,6 +9,7 @@ const navItems = [
 ];
 
 const currentPath = Astro.url.pathname;
+const consoleUrl = getConsoleUrl(Astro.locals);
 ---
 
 <header class="bg-white border-b border-gray-200">
@@ -35,11 +37,11 @@ const currentPath = Astro.url.pathname;
       </nav>
       
       <div class="hidden md:flex items-center space-x-4">
-        <a href="https://console.lexara.app/api/auth/login" class="text-sm font-medium text-gray-700 hover:text-gray-900">
+        <a href={`${consoleUrl}/api/auth/login`} class="text-sm font-medium text-gray-700 hover:text-gray-900">
           Sign In
         </a>
-        <Button 
-          href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=engage&utm_campaign=header`}
+        <Button
+          href={`${consoleUrl}/signup?utm_source=engage&utm_campaign=header`}
           size="small"
           variant="primary"
           class="!rounded"
@@ -73,11 +75,11 @@ const currentPath = Astro.url.pathname;
         </a>
       ))}
       <div class="pt-3 border-t border-gray-200 space-y-3">
-        <a href="https://console.lexara.app/api/auth/login" class="block text-sm font-medium text-gray-700">
+        <a href={`${consoleUrl}/api/auth/login`} class="block text-sm font-medium text-gray-700">
           Sign In
         </a>
-        <Button 
-          href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=engage&utm_campaign=header`}
+        <Button
+          href={`${consoleUrl}/signup?utm_source=engage&utm_campaign=header`}
           size="small"
           variant="primary"
           class="!rounded w-full text-center"

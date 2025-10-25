@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import { getClientInitializeValues, getStatsigUser } from '@/lib/statsig-server';
+import { getEnvironment, getGAMeasurementId } from '@/lib/analytics';
 import CookieBanner from '@/components/CookieBanner.astro';
 
 export interface Props {
@@ -21,6 +22,10 @@ try {
   // Use fallback values for CloudFlare Workers
   statsigUser = { userID: `anon-${crypto.randomUUID()}` };
 }
+
+// Determine environment for analytics
+const environment = getEnvironment(Astro.url.hostname);
+const gaMeasurementId = getGAMeasurementId();
 ---
 
 <!doctype html>
@@ -34,6 +39,29 @@ try {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <title>{title} | Engage by Lexara</title>
+
+    <!-- Google Analytics -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
+    <script define:vars={{ gaMeasurementId, environment }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Configure GA with environment as custom dimension
+      gtag('config', gaMeasurementId, {
+        'custom_map': {
+          'dimension1': 'environment'
+        },
+        'environment': environment,
+        'send_page_view': true
+      });
+
+      // Set environment as a user property for all events
+      gtag('set', 'user_properties', {
+        'environment': environment
+      });
+    </script>
+
     <script define:vars={{ statsigUser, initializeValues, clientKey: import.meta.env.PUBLIC_STATSIG_CLIENT_KEY }}>
       window.__STATSIG_USER__ = statsigUser;
       window.__STATSIG_INIT_VALUES__ = initializeValues;

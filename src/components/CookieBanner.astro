@@ -21,22 +21,14 @@ import Button from './ui/Button.astro';
           size="small"
           class="!text-lexara-dark-navy !border-lexara-dark-navy hover:!bg-lexara-dark-navy hover:!text-white"
         >
-          Reject All
-        </Button>
-        <Button 
-          id="accept-necessary"
-          variant="outline"
-          size="small"
-          class="!text-lexara-dark-navy !border-lexara-dark-navy hover:!bg-lexara-dark-navy hover:!text-white"
-        >
-          Necessary Only
+          Opt Out
         </Button>
         <Button 
           id="accept-cookies"
           variant="primary"
           size="small"
         >
-          Accept All
+          Accept
         </Button>
       </div>
     </div>
@@ -113,10 +105,6 @@ import Button from './ui/Button.astro';
     // Event listeners
     document.getElementById('accept-cookies')?.addEventListener('click', () => {
       handleConsent('all');
-    });
-    
-    document.getElementById('accept-necessary')?.addEventListener('click', () => {
-      handleConsent('necessary');
     });
     
     document.getElementById('reject-cookies')?.addEventListener('click', () => {

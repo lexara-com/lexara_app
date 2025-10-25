@@ -29,7 +29,11 @@
       "Bash(git remote:*)",
       "Bash(gh repo list:*)",
       "Bash(gh repo create:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(npx wrangler:*)",
+      "WebSearch",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "Bash(basename:*)"
     ],
     "deny": []
   }

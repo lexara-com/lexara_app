@@ -1,8 +1,10 @@
 ---
 import { checkGate } from '@/lib/statsig-server';
+import { getConsoleUrl } from '../lib/env';
 import Button from './ui/Button.astro';
 
 const showEmailCapture = await checkGate('show-email-capture-form', Astro);
+const consoleUrl = getConsoleUrl(Astro.locals);
 ---
 
 <section class="pt-20 pb-24 bg-lexara-white-smoke">
@@ -36,7 +38,7 @@ const showEmailCapture = await checkGate('show-email-capture-form', Astro);
         ) : (
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
           <Button
-            href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?plan=starter&utm_source=engage&utm_campaign=hero`}
+            href={`${consoleUrl}/signup?plan=starter&utm_source=engage&utm_campaign=hero`}
             variant="primary"
           >
             Start Free Trial

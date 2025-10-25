@@ -1,4 +1,5 @@
-name = "engage-lexara-app"
+# Default configuration (Test environment)
+name = "lexara-app-test"
 compatibility_date = "2025-01-18"
 compatibility_flags = ["nodejs_compat"]
 
@@ -6,26 +7,57 @@ compatibility_flags = ["nodejs_compat"]
 account_id = "a3cce89f2c57186bc125faa4229cd5a9"
 main = "functions/_worker.js"
 
+# Enable workers.dev subdomain for testing
+workers_dev = true
+
+# Routes - test.lexara.app DNS record configured
+route = "test.lexara.app/*"
+
 # Enable observability logs
 [observability.logs]
 enabled = true
 
-# Environment variables (will be set in CloudFlare dashboard)
+# Test environment variables
 [vars]
-PUBLIC_CONSOLE_URL = "https://console.lexara.app"
-
+PUBLIC_CONSOLE_URL = "https://test.console.lexara.app"
 
 # KV namespace bindings
-# Uncomment after creating KV namespace with: wrangler kv:namespace create "SESSION"
-# [[kv_namespaces]]
-# binding = "SESSION"
-# id = "" # Add your KV namespace ID after creating it
+[[kv_namespaces]]
+binding = "SESSION"
+id = "2007770273e44a0e8a8938ef8fa4a22a"
 
 # Build command
 [build]
 command = "npm run build"
 
-# Routes (add your domain after setting up in CloudFlare)
-# route = "engage.lexara.app/*"
-# or use a workers.dev subdomain for testing
+# ============================================
+# Development Environment
+# ============================================
+[env.dev]
+name = "lexara-app-dev"
+vars = { PUBLIC_CONSOLE_URL = "https://dev.console.lexara.app" }
 workers_dev = true
+
+[[env.dev.kv_namespaces]]
+binding = "SESSION"
+id = "2007770273e44a0e8a8938ef8fa4a22a"
+
+# route = "dev.lexara.app/*"  # Uncomment when DNS is configured
+
+# ============================================
+# Production Environment
+# ============================================
+[env.production]
+name = "lexara-app"
+vars = { PUBLIC_CONSOLE_URL = "https://console.lexara.app" }
+workers_dev = false
+
+# Production routes - both root domain and www
+routes = [
+  "lexara.app/*",
+  "www.lexara.app/*"
+]
+
+[[env.production.kv_namespaces]]
+binding = "SESSION"
+id = "2007770273e44a0e8a8938ef8fa4a22a"

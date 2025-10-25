@@ -1,5 +1,7 @@
 ---
-// Call to action section
+import { getConsoleUrl } from '../lib/env';
+
+const consoleUrl = getConsoleUrl(Astro.locals);
 ---
 
 <section class="py-20 bg-gray-900">
@@ -9,11 +11,11 @@
         Ready to Transform Your Client Intake?
       </h2>
       <p class="text-xl text-gray-300 mb-8">
-        Join hundreds of law firms using Engage to capture more leads and deliver better client experiences.
+        Join the satisfied law firms saving billable hours every week.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
-          href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=engage&utm_campaign=footer_cta`}
+          href={`${consoleUrl}/signup?utm_source=engage&utm_campaign=footer_cta`}
           class="px-8 py-3 bg-white text-gray-900 font-medium rounded-lg hover:bg-gray-100 transition-colors"
         >
           Start Free 30-Day Trial
@@ -26,7 +28,7 @@
         </a>
       </div>
       <p class="text-sm text-gray-400 mt-6">
-        No credit card required • Setup in minutes • Cancel anytime
+        Free 30 Day Trial • Setup in minutes • Cancel anytime
       </p>
     </div>
   </div>

@@ -1,39 +1,18 @@
-import { getStatsigClient } from './statsig-client';
+// Analytics utilities for environment detection and tracking
 
-export function logEvent(eventName: string, value?: string | number, metadata?: Record<string, any>) {
-  const client = getStatsigClient();
-  if (client) {
-    client.logEvent(eventName, value, metadata);
+export function getEnvironment(hostname: string): string {
+  if (hostname.includes('test.lexara.app') || hostname.includes('lexara-app-test')) {
+    return 'test';
+  } else if (hostname.includes('dev.lexara.app') || hostname.includes('lexara-app-dev')) {
+    return 'development';
+  } else if (hostname.includes('localhost') || hostname.includes('127.0.0.1')) {
+    return 'local';
+  } else if (hostname.includes('lexara.app')) {
+    return 'production';
   }
+  return 'unknown';
 }
 
-export function logPageView(pageName: string, metadata?: Record<string, any>) {
-  const client = getStatsigClient();
-  if (client) {
-    const enrichedMetadata = {
-      ...metadata,
-      url: window.location.href,
-      path: window.location.pathname,
-      referrer: document.referrer,
-      timestamp: new Date().toISOString(),
-    };
-    client.logEvent('page_view', pageName, enrichedMetadata);
-  }
-}
-
-export function logClick(elementName: string, metadata?: Record<string, any>) {
-  const client = getStatsigClient();
-  if (client) {
-    client.logEvent('click', elementName, metadata);
-  }
-}
-
-export function logConversion(conversionType: string, value?: number, metadata?: Record<string, any>) {
-  const client = getStatsigClient();
-  if (client) {
-    client.logEvent('conversion', conversionType, {
-      ...metadata,
-      value,
-    });
-  }
+export function getGAMeasurementId(): string {
+  return 'G-RQ7HHFQ4LE';
 }

@@ -5,7 +5,7 @@ compatibility_flags = ["nodejs_compat"]
 
 # CloudFlare account and worker settings
 account_id = "a3cce89f2c57186bc125faa4229cd5a9"
-main = "functions/_worker.js"
+main = "dist/_worker.js"
 
 # Enable workers.dev subdomain for testing
 workers_dev = true

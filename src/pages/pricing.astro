@@ -7,69 +7,85 @@ import Container from '@/components/ui/Container.astro';
 import Section from '@/components/ui/Section.astro';
 import Badge from '@/components/ui/Badge.astro';
 
-const plans = [
+const features = [
+  'AI-powered client screening',
+  'Automatic conflict detection',
+  'Practice area customization',
+  'Team collaboration features',
+  'Advanced analytics & reporting',
+  'Custom branding options',
+  'API access for integrations',
+  'Priority support',
+  'SOC 2 aligned security',
+  'HIPAA compliance & BAA',
+  'No limit on number of conversations per month',
+  'No limit on support staff',
+  'You control your firm’s data'
+];
+
+const pricingExamples = [
   {
-    name: 'Starter',
-    description: 'Perfect for solo practitioners',
-    price: '$149',
-    period: '/month',
-    features: [
-      'Up to 100 conversations/month',
-      'AI-powered client screening',
-      'Automatic conflict detection',
-      'Basic practice area customization',
-      'Email support'
-    ],
+    attorneys: 1,
+    label: 'Solo Practitioner',
+    monthly: 75,
+    annual: 750,
     popular: false
   },
   {
-    name: 'Professional',
-    description: 'For growing law firms',
-    price: '$349',
-    period: '/month',
-    features: [
-      'Up to 500 conversations/month',
-      'Everything in Starter, plus:',
-      'Advanced conversation analytics',
-      'Custom branding & white-label',
-      'Phone & email support',
-      'API access for integrations'
-    ],
-    popular: true
+    attorneys: 3,
+    label: 'Small Firm',
+    monthly: 175,
+    annual: 1750,
+    popular: false
   },
   {
-    name: 'Enterprise',
-    description: 'For large firms & organizations',
-    price: 'Custom',
-    period: 'pricing',
-    features: [
-      'Unlimited conversations',
-      'Everything in Professional, plus:',
-      'Dedicated account manager',
-      'Custom AI training & optimization',
-      'HIPAA compliance & BAA',
-      'Phone support & SLA'
-    ],
+    attorneys: 10,
+    label: 'Medium Firm',
+    monthly: 525,
+    annual: 5250,
+    popular: false
+  },
+  {
+    attorneys: 25,
+    label: 'Large Firm',
+    monthly: 1275,
+    annual: 12750,
     popular: false
   }
 ];
 
 const faqs = [
   {
+    question: "How does per-attorney pricing work?",
+    answer: "Your first attorney is $75/month, and each additional attorney is $50/month. For example, a 5-attorney firm would pay $75 + (4 × $50) = $275/month. When you pay annually, you save 2 months of fees."
+  },
+  {
     question: "What's included in the free trial?",
-    answer: "Your 30-day free trial includes full access to all features in your chosen plan, including AI conversations, conflict detection, and analytics."
+    answer: "Your 30-day free trial includes full access to all features for your entire team, including AI conversations, conflict detection, analytics, and priority support."
   },
   {
-    question: "How does conversation volume pricing work?",
-    answer: "Conversation limits are based on unique client conversations per month. Once a conversation ends, any follow-up within 30 days counts as the same conversation."
+    question: "How much do I save with annual billing?",
+    answer: "Annual billing gives you 2 months free. For 1 attorney, you pay $750/year instead of $900. Each additional attorney is $500/year instead of $600. The more attorneys you have, the more you save!"
   },
   {
-    question: "Can I integrate Engage with my existing systems?",
-    answer: "Yes! Professional and Enterprise plans include API access for seamless integration with practice management software, CRMs, and other legal tech tools."
+    question: "Can I add or remove attorneys during my subscription?",
+    answer: "Yes! billing will be prorated."
+  },
+  {
+    question: "Can I integrate <em>Engage</em> with my existing systems?",
+    answer: "Yes! All plans include API access for seamless integration with practice management software, CRMs, and other legal tech tools. We are continually adding integrations. If you don’t see the integration you want, please contact us at support@lexara.com with “Integration Request” in the subject line."
   },
   {
     question: "Is my client data secure?",
-    answer: "Absolutely. We use bank-level encryption, are aligned with SOC 2 standards, and never train our AI on your client data. Enterprise plans include HIPAA compliance options."
+    answer: "Absolutely. We use bank-level encryption, are aligned with SOC 2 standards, and never train our AI on your client data. HIPAA compliance and BAA agreements are available for all customers."
+  },
+  {
+    question: "What if our firm has more than 50 attorneys?",
+    answer: "For firms with 50+ attorney, we offer volume discounts. Contact our sales team for a personalized quote and dedicated onbaording, at sales@lexara.com "
+  },
+  {
+    question: "What if our firm has more than 200 attorneys?",
+    answer: "For firms with 200+ attorneys, contact us for custom built enterprise solutions. Contact us at sales@lexara.com"
   }
 ];
 ---
@@ -84,54 +100,125 @@ const faqs = [
           <h1 class="text-4xl md:text-5xl font-semibold text-lexara-dark-navy mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-            Choose the plan that fits your firm's size and needs. All plans include our core AI intake features and expert support.
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+            Pay only for what you need. One price per attorney with all features included.
+          </p>
+          <p class="text-sm text-lexara-dark-navy font-semibold">
+            💰 Save 2 months when you pay annually
           </p>
         </div>
       </Container>
     </Section>
 
-    <!-- Pricing Cards -->
+    <!-- Pricing Calculator Section -->
     <Section background="dark-navy" padding="xlarge">
-      <Container>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {plans.map((plan) => (
-            <div class="bg-lexara-white-smoke rounded-2xl p-8 relative">
-              {plan.popular && (
-                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge variant="info" size="small">Most Popular</Badge>
-                </div>
-              )}
+      <Container size="medium">
+        <!-- Billing Toggle -->
+        <div class="flex justify-center mb-12">
+          <div class="inline-flex items-center bg-lexara-white-smoke rounded-full p-1">
+            <button 
+              id="monthly-toggle"
+              class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 bg-lexara-dark-navy text-white"
+            >
+              Monthly
+            </button>
+            <button 
+              id="annual-toggle"
+              class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-lexara-dark-navy"
+            >
+              Annual
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Save 17%</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Pricing Card -->
+        <div class="bg-lexara-white-smoke rounded-2xl p-8 md:p-12 mb-8">
+          <div class="grid md:grid-cols-2 gap-12">
+            <!-- Pricing Details -->
+            <div>
+              <h2 class="text-3xl font-semibold text-lexara-dark-navy mb-6">
+                Per-Attorney Pricing
+              </h2>
               
-              <div class="text-center mb-8">
-                <h3 class="text-2xl font-semibold text-lexara-dark-navy mb-2">{plan.name}</h3>
-                <p class="text-gray-600 mb-6">{plan.description}</p>
-                <div class="flex items-baseline justify-center">
-                  <span class="text-4xl font-bold text-lexara-dark-navy">{plan.price}</span>
-                  <span class="text-gray-600 ml-1">{plan.period}</span>
+              <div class="space-y-6 mb-8">
+                <div class="border-b border-gray-200 pb-6">
+                  <div class="flex items-baseline justify-between mb-2">
+                    <span class="text-lg text-gray-700">First attorney</span>
+                    <div class="text-right">
+                      <span class="text-3xl font-bold text-lexara-dark-navy monthly-price">$75</span>
+                      <span class="text-3xl font-bold text-lexara-dark-navy annual-price hidden">$750</span>
+                      <span class="text-gray-600 ml-1 monthly-period">/month</span>
+                      <span class="text-gray-600 ml-1 annual-period hidden">/year</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="border-b border-gray-200 pb-6">
+                  <div class="flex items-baseline justify-between mb-2">
+                    <span class="text-lg text-gray-700">Each additional attorney</span>
+                    <div class="text-right">
+                      <span class="text-3xl font-bold text-lexara-dark-navy monthly-price">$50</span>
+                      <span class="text-3xl font-bold text-lexara-dark-navy annual-price hidden">$500</span>
+                      <span class="text-gray-600 ml-1 monthly-period">/month</span>
+                      <span class="text-gray-600 ml-1 annual-period hidden">/year</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              <ul class="space-y-3 mb-8">
-                {plan.features.map((feature) => (
-                  <li class="flex items-start gap-2">
-                    <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span class="text-gray-700 text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
+
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <p class="text-sm text-blue-900">
+                  <strong>Annual savings:</strong> Pay for 10 months, get 12 months of service. 
+                  Save $150/year on your first attorney and $100/year on each additional attorney.
+                </p>
+              </div>
+
               <Button 
-                href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?plan=${plan.name.toLowerCase()}&utm_source=pricing&utm_campaign=pricing_cta`}
-                variant="secondary"
+                href="https://console.lexara.app/signup?utm_source=pricing&utm_campaign=main_cta"
                 class="w-full !bg-lexara-dark-navy !text-white hover:!bg-lexara-light-navy"
+                size="large"
               >
                 Start Free Trial
               </Button>
+              <p class="text-sm text-gray-600 text-center mt-3">
+                30-day free trial • No credit card required
+              </p>
             </div>
-          ))}
+
+            <!-- Features List -->
+            <div>
+              <h3 class="text-xl font-semibold text-lexara-dark-navy mb-6">
+                Everything Included
+              </h3>
+              <ul class="space-y-3">
+                {features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing Examples -->
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-semibold text-white mb-8">
+            Price per Attorney, Not Per Seat
+          </h3>
+        </div>
+
+        <div class="text-center mt-8">
+          <p class="text-gray-300 text-sm">
+            Need pricing for 50+ attorneys? 
+            <a href="https://console.lexara.app/contact-sales" class="text-white underline hover:text-gray-100">
+              Contact sales for volume discounts
+            </a>
+          </p>
         </div>
       </Container>
     </Section>
@@ -147,7 +234,7 @@ const faqs = [
           {faqs.map((faq, index) => (
             <details class="group border-b border-gray-200">
               <summary class="py-6 px-4 cursor-pointer list-none flex items-center justify-between hover:bg-gray-50 transition-colors">
-                <h3 class="font-semibold text-lexara-dark-navy pr-8">{faq.question}</h3>
+                <h3 class="font-semibold text-lexara-dark-navy pr-8" set:html={faq.question}></h3>
                 <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
@@ -169,15 +256,18 @@ const faqs = [
             Ready to Get Started?
           </h2>
           <p class="text-lg text-gray-300 mb-8">
-            Join the satisfied law firms saving billable hours every week.
+            Join hundreds of law firms saving billable hours every week.
           </p>
           <Button 
-            href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=pricing&utm_campaign=bottom_cta`}
+            href="https://console.lexara.app/signup?utm_source=pricing&utm_campaign=bottom_cta"
             class="!bg-white !text-lexara-dark-navy hover:!bg-gray-100"
             size="large"
           >
             Start Free Trial
           </Button>
+          <p class="text-sm text-gray-300 mt-4">
+            30-day free trial • No credit card required • Cancel anytime
+          </p>
         </div>
       </Container>
     </Section>
@@ -186,30 +276,76 @@ const faqs = [
 </Layout>
 
 <script is:inline>
-  // Track pricing CTA clicks
+  // Billing toggle functionality
   document.addEventListener('DOMContentLoaded', () => {
+    const monthlyToggle = document.getElementById('monthly-toggle');
+    const annualToggle = document.getElementById('annual-toggle');
+    const monthlyPrices = document.querySelectorAll('.monthly-price');
+    const annualPrices = document.querySelectorAll('.annual-price');
+    const monthlyPeriods = document.querySelectorAll('.monthly-period');
+    const annualPeriods = document.querySelectorAll('.annual-period');
+
+    function showMonthly() {
+      monthlyToggle.classList.add('bg-lexara-dark-navy', 'text-white');
+      monthlyToggle.classList.remove('text-lexara-dark-navy');
+      annualToggle.classList.remove('bg-lexara-dark-navy', 'text-white');
+      annualToggle.classList.add('text-lexara-dark-navy');
+      
+      monthlyPrices.forEach(el => el.classList.remove('hidden'));
+      annualPrices.forEach(el => el.classList.add('hidden'));
+      monthlyPeriods.forEach(el => el.classList.remove('hidden'));
+      annualPeriods.forEach(el => el.classList.add('hidden'));
+    }
+
+    function showAnnual() {
+      annualToggle.classList.add('bg-lexara-dark-navy', 'text-white');
+      annualToggle.classList.remove('text-lexara-dark-navy');
+      monthlyToggle.classList.remove('bg-lexara-dark-navy', 'text-white');
+      monthlyToggle.classList.add('text-lexara-dark-navy');
+      
+      monthlyPrices.forEach(el => el.classList.add('hidden'));
+      annualPrices.forEach(el => el.classList.remove('hidden'));
+      monthlyPeriods.forEach(el => el.classList.add('hidden'));
+      annualPeriods.forEach(el => el.classList.remove('hidden'));
+    }
+
+    monthlyToggle.addEventListener('click', () => {
+      showMonthly();
+      if (window.logClick) {
+        window.logClick('billing_toggle', { period: 'monthly' });
+      }
+    });
+
+    annualToggle.addEventListener('click', () => {
+      showAnnual();
+      if (window.logClick) {
+        window.logClick('billing_toggle', { period: 'annual' });
+      }
+    });
+
+    // Track pricing CTA clicks
     document.querySelectorAll('a[href*="signup"]').forEach(link => {
       link.addEventListener('click', () => {
-        const plan = new URL(link.getAttribute('href') || '').searchParams.get('plan');
         if (window.logClick) {
+          const isAnnual = !annualPrices[0]?.classList.contains('hidden');
           window.logClick('pricing_cta', {
-            plan: plan || 'unknown',
-            location: link.closest('section')?.querySelector('h2')?.textContent || 'pricing_card'
+            billing_period: isAnnual ? 'annual' : 'monthly',
+            location: link.closest('section')?.querySelector('h2')?.textContent || 'pricing_section'
           });
         }
       });
     });
-  });
-  
-  // Track FAQ interactions
-  document.querySelectorAll('details').forEach((detail, index) => {
-    detail.addEventListener('toggle', () => {
-      if (detail.open) {
-        logClick('faq_expand', {
-          question: detail.querySelector('h3')?.textContent,
-          index: index
-        });
-      }
+
+    // Track FAQ interactions
+    document.querySelectorAll('details').forEach((detail, index) => {
+      detail.addEventListener('toggle', () => {
+        if (detail.open && window.logClick) {
+          window.logClick('faq_expand', {
+            question: detail.querySelector('h3')?.textContent,
+            index: index
+          });
+        }
+      });
     });
   });
 </script>

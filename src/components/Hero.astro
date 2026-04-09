@@ -71,8 +71,13 @@ const consoleUrl = getConsoleUrl(Astro.locals);
       </div>
       
       <div class="hidden lg:block">
-        <div class="bg-white rounded-xl shadow-2xl p-6">
-          <img src="https://static.lexara.app/images/engage-chat-sample-detail.png" alt="Engage Chat Interface" class="w-full" />
+        <div class="bg-white rounded-xl shadow-2xl overflow-hidden" style="height: 600px;">
+          <iframe
+            src="https://engage.lexara.app/demo"
+            class="w-full h-full border-0"
+            title="Engage Demo"
+            allow="microphone"
+          ></iframe>
         </div>
       </div>
     </div>

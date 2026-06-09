@@ -1,17 +1,14 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare({
-    mode: 'advanced',
-    functionPerRoute: false,
-  }),
-  integrations: [tailwind()],
+  adapter: cloudflare(),
   vite: {
+    plugins: [tailwindcss()],
     ssr: {
-      external: ['node:zlib', 'zlib', 'statsig-node'],
+      external: ['node:zlib', 'zlib'],
     },
     build: {
       // Inline all assets to avoid 404 errors

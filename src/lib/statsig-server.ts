@@ -1,135 +1,77 @@
 import type { APIContext } from 'astro';
 
-let Statsig: any = null;
-let initialized = false;
+// NOTE: The `statsig-node` SDK is a Node-only package that cannot run in the
+// Cloudflare Workers (workerd) runtime this site deploys to. Server-side
+// Statsig evaluation therefore always fell back to defaults, so the dependency
+// has been removed and these helpers return those defaults directly.
+//
+// Real Statsig analytics runs client-side via the CDN script in Layout.astro
+// using `@statsig/js-client`. If server-side evaluation is needed in the
+// future, use the Statsig HTTP API (fetch-based) instead of the Node SDK.
 
-// Dynamic import to avoid build issues in CloudFlare Workers
-async function getStatsig() {
-  if (!Statsig && typeof process !== 'undefined') {
-    try {
-      const module = await import('statsig-node');
-      Statsig = module.default;
-    } catch (e) {
-      console.warn('Statsig not available in this environment');
-    }
-  }
-  return Statsig;
-}
-
-export async function initStatsig() {
-  // Skip initialization in CloudFlare Workers environment
-  if (typeof process === 'undefined') {
-    return;
-  }
-  
-  const StatsigLib = await getStatsig();
-  if (!initialized && StatsigLib && import.meta.env.STATSIG_SERVER_SECRET) {
-    await StatsigLib.initialize(
-      import.meta.env.STATSIG_SERVER_SECRET,
-      {
-        environment: { tier: import.meta.env.MODE }
-      }
-    );
-    initialized = true;
-  }
+export async function initStatsig(): Promise<void> {
+  // No-op: no server-side Statsig SDK in the Workers runtime.
 }
 
 export async function getStatsigUser(context: APIContext) {
   const userId = context.cookies.get('userId')?.value || `anon-${crypto.randomUUID()}`;
-  
+
   if (!context.cookies.has('userId')) {
     context.cookies.set('userId', userId, {
       httpOnly: true,
       secure: import.meta.env.PROD,
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 365
+      maxAge: 60 * 60 * 24 * 365,
     });
   }
 
   return {
     userID: userId,
     customIDs: {
-      stableID: userId
-    }
+      stableID: userId,
+    },
   };
 }
 
-export async function checkGate(gateName: string, context: APIContext) {
-  try {
-    const StatsigLib = await getStatsig();
-    if (!StatsigLib) return false;
-    
-    await initStatsig();
-    const user = await getStatsigUser(context);
-    return StatsigLib.checkGate(user, gateName);
-  } catch (error) {
-    console.warn('Statsig checkGate error:', error);
-    return false;
-  }
+export async function checkGate(_gateName: string, _context: APIContext): Promise<boolean> {
+  return false;
 }
 
-export async function getExperiment(experimentName: string, context: APIContext) {
-  const StatsigLib = await getStatsig();
-  if (!StatsigLib) {
-    return {
-      get: (key: string, defaultValue: any) => defaultValue,
-      getID: () => 'default',
-      getGroupName: () => 'control'
-    };
-  }
-  
-  await initStatsig();
+export async function getExperiment(_experimentName: string, _context: APIContext) {
+  return {
+    get: (_key: string, defaultValue: any) => defaultValue,
+    getID: () => 'default',
+    getGroupName: () => 'control',
+  };
+}
+
+export async function getConfig(_configName: string, _context: APIContext) {
+  return {
+    get: (_key: string, defaultValue: any) => defaultValue,
+    getID: () => 'default',
+  };
+}
+
+export async function getClientInitializeValues(_context: APIContext): Promise<Record<string, any>> {
+  return {};
+}
+
+export async function logServerEvent(
+  eventName: string,
+  user: any,
+  value?: string | number,
+  metadata?: Record<string, any>
+): Promise<void> {
+  console.log('Event:', eventName, { user, value, metadata });
+}
+
+export async function logPageView(context: APIContext, pageName: string): Promise<void> {
   const user = await getStatsigUser(context);
-  return StatsigLib.getExperiment(user, experimentName);
-}
-
-export async function getConfig(configName: string, context: APIContext) {
-  const StatsigLib = await getStatsig();
-  if (!StatsigLib) {
-    return {
-      get: (key: string, defaultValue: any) => defaultValue,
-      getID: () => 'default'
-    };
-  }
-  
-  await initStatsig();
-  const user = await getStatsigUser(context);
-  return StatsigLib.getConfig(user, configName);
-}
-
-export async function getClientInitializeValues(context: APIContext) {
-  try {
-    const StatsigLib = await getStatsig();
-    if (!StatsigLib) return {};
-    
-    await initStatsig();
-    const user = await getStatsigUser(context);
-    return await StatsigLib.getClientInitializeResponse(user);
-  } catch (error) {
-    console.warn('Statsig getClientInitializeValues error:', error);
-    return {};
-  }
-}
-
-export async function logServerEvent(eventName: string, user: any, value?: string | number, metadata?: Record<string, any>) {
-  const StatsigLib = await getStatsig();
-  if (!StatsigLib) {
-    console.log('Event:', eventName, { user, value, metadata });
-    return;
-  }
-  
-  await initStatsig();
-  StatsigLib.logEvent(user, eventName, value, metadata);
-}
-
-export async function logPageView(context: APIContext, pageName: string) {
-  const user = await getStatsigUser(context);
-  const metadata = {
+  await logServerEvent('page_view_server', user, pageName, {
     url: context.url.href,
     path: context.url.pathname,
     userAgent: context.request.headers.get('user-agent'),
     referer: context.request.headers.get('referer'),
     timestamp: new Date().toISOString(),
-  };
-  await logServerEvent('page_view_server', user, pageName, metadata);
+  });
 }

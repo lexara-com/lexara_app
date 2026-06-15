@@ -5,7 +5,9 @@ compatibility_flags = ["nodejs_compat"]
 
 # CloudFlare account and worker settings
 account_id = "a3cce89f2c57186bc125faa4229cd5a9"
-main = "dist/_worker.js"
+# @astrojs/cloudflare v13 provides a single entrypoint used for both
+# `astro dev`/`preview` (workerd) and production deployments.
+main = "@astrojs/cloudflare/entrypoints/server"
 
 # Enable workers.dev subdomain for testing
 workers_dev = true

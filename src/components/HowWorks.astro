@@ -1,0 +1,36 @@
+---
+const steps = [
+    {
+        number: "01",
+        header: "Prospects Reach Out at Their Convenience And Instantly Feel Heard",
+        body: "A prospect opens your intake link and <span class='italic'>Engage</span> gathers the background info you need and conducts an interview. More than a chatbot, better than a form, <span class='italic'>Engage</span> asks what you would ask."
+    },
+    {
+        number: "02",
+        header: "You Choose What Info to Collect and When the Conflict Check Runs",
+        body: "Customize your intake. Run a conflicts check before interviewing the prospect, or run it at the same time as the interview. Customize conversations for different practice areas."
+    },
+    {
+        number: "03",
+        header: "Go Into Your Initial Client Meeting Knowing the Background",
+        body: "The story, the timeline, the conflicts result-- all ready when you are. Add a link and send an engagement letter with one click. Your client meets an attorney who already knows their case."
+    },
+
+]
+---
+<section class="bg-lexara-white-smoke px-4 py-10 text-lexara-dark-navy sm:px-6 sm:py-14 lg:px-12 lg:py-16">
+    <div class="mx-auto max-w-[1920px]">
+        <p class="mb-8 text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-xl">HOW ENGAGE WORKS</p>
+        <h2 class="font-serif text-3xl font-normal leading-[1.15] sm:text-4xl lg:text-5xl 2xl:text-[4.5rem]">For less than the cost of 1 billable hour per month, you get smart intake and real-time conflicts checks.</h2>
+        <p class="font-serif text-3xl italic leading-[1.15] sm:text-4xl lg:text-5xl 2xl:text-[4.5rem]">And, you get your time back.</p>
+        <ol role="list" class="mt-14 grid list-none grid-cols-1 gap-12 lg:mt-24 lg:grid-cols-3 lg:gap-14 2xl:mt-28">
+            {steps.map((step) => (
+                <li>
+                    <span aria-hidden="true" class="mb-6 block font-serif text-4xl leading-none text-lexara-mahogany lg:mb-12 2xl:text-[3.5rem]">{step.number}</span>
+                    <h3 class="mb-6 font-serif text-2xl font-normal leading-[1.25] xl:text-3xl 2xl:text-[2.5rem]">{step.header}</h3>
+                    <p class="text-lg leading-relaxed text-lexara-light-navy xl:text-xl 2xl:text-3xl" set:html={step.body} />
+                </li>
+            ))}
+        </ol>
+    </div>
+</section>

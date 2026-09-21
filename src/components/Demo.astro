@@ -1,0 +1,83 @@
+---
+import { getConsoleUrl } from '../lib/env';
+import Button from './ui/Button.astro';
+
+const consoleUrl = getConsoleUrl(Astro.locals);
+const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-lg';
+const intakeDetails = [
+    ['Client', 'Ellen Prasad · reached you 9:14 p.m.'],
+    ['Matter', 'Auto collision · personal injury'],
+    ['Treatment', 'ER same night, PT ongoing'],
+    ['Conflicts', 'No adverse party match — M. Vale, Cornerstone Mutual'],
+    ['Consult', 'Tue 10:00 a.m. with D. Ridgeway'],
+];
+---
+
+<section id="demo" aria-labelledby="demo-heading" class="bg-lexara-white-smoke px-4 py-10 text-lexara-dark-navy sm:px-6 sm:py-14 lg:px-12 lg:py-16">
+    <div class="mx-auto max-w-[1760px]">
+        <p class:list={[eyebrowClass, 'mb-6']}>DEMO</p>
+        <h2 id="demo-heading" class="font-serif text-4xl font-normal leading-tight sm:text-5xl lg:text-6xl 2xl:text-7xl">See an intake run start to finish.</h2>
+        <p class="mt-6 max-w-[1000px] text-lg leading-relaxed text-lexara-light-navy sm:text-xl 2xl:text-2xl">On the left is what your prospect sees: a conversation, and a consult on the calendar. On the right is what lands in Console for your firm — including the conflicts result, which the client never sees.</p>
+
+        <div class="mt-12 grid grid-cols-1 items-start gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-12">
+            <div class="min-w-0">
+                <p class:list={[eyebrowClass, 'mb-4']}>WHAT YOUR CLIENT SEES</p>
+                <div class="h-[600px] overflow-hidden rounded-[1.75rem] border border-lexara-dark-navy/10 bg-white shadow-2xl 2xl:h-[840px]">
+                    <iframe
+                        src="https://engage.lexara.app/demo"
+                        class="h-full w-full border-0"
+                        title="Engage Demo"
+                        allow="microphone"
+                        loading="lazy"
+                    ></iframe>
+                </div>
+            </div>
+
+            <div class="min-w-0">
+                <p class:list={[eyebrowClass, 'mb-4']}>WHAT ONLY YOUR FIRM SEES</p>
+                <!-- Illustrative Console preview; independent of the live demo iframe. -->
+                <div class="rounded-[1.75rem] bg-lexara-dark-navy p-6 text-lexara-sky-blue sm:p-8 2xl:p-9">
+                    <div class="mb-7 flex flex-wrap items-center justify-between gap-4">
+                        <p class="text-xs font-semibold uppercase tracking-[0.18em] sm:text-sm 2xl:text-base">CONSOLE · NEW INTAKE</p>
+                        <span class="inline-flex items-center gap-2 rounded-full bg-[#e3eee7] px-4 py-2 text-sm font-semibold text-[#467362] 2xl:text-base">
+                            <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 5H5a2 2 0 0 0-2 2v13M9 5V3h6v2M9 5h6M15 5h3a2 2 0 0 1 2 2M10 16l3 3 7-8" />
+                            </svg>
+                            Conflicts clear
+                        </span>
+                    </div>
+                    <dl class="grid grid-cols-[auto_minmax(0,1fr)] gap-x-5 gap-y-4 text-sm leading-relaxed sm:gap-x-6 sm:text-base 2xl:text-xl">
+                        {intakeDetails.map(([label, value]) => (
+                            <>
+                                <dt>{label}</dt>
+                                <dd>{value}</dd>
+                            </>
+                        ))}
+                    </dl>
+                    <div class="mt-7 border-t border-lexara-light-navy/60 pt-6 text-sm leading-relaxed 2xl:text-lg">
+                        <p>Attorney review required before any engagement.</p>
+                        <p class="mt-1 flex items-start gap-3">
+                            <span aria-hidden="true" class="mt-2 h-2 w-2 shrink-0 rounded-full bg-lexara-light-navy"></span>
+                            Listening — the brief builds as the conversation runs.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10 lg:mt-12">
+                    <h3 class="font-serif text-3xl font-normal leading-tight 2xl:text-4xl">Book your setup call</h3>
+                    <p class="mb-6 mt-3 text-lg leading-relaxed text-lexara-light-navy 2xl:text-xl">Thirty minutes, your practice areas, your questions. No charge.</p>
+                    <Button
+                        href={`${consoleUrl}/signup?plan=starter&utm_source=engage&utm_campaign=hero`}
+                        variant="primary"
+                    >
+                        Start 30-day Free Trial
+                    </Button>
+                    <div class="mt-10 lg:mt-14">
+                        <a href="/contact" class="inline-block rounded text-lg text-lexara-light-navy underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany 2xl:text-2xl">Request the call</a>
+                        <p class="mt-6 text-base leading-relaxed text-lexara-light-navy 2xl:text-lg">Rather start on your own? Begin the 30-day free trial and book the call from inside Console.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

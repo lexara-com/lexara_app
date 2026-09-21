@@ -12,10 +12,11 @@ const consoleUrl = getConsoleUrl(Astro.locals);
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div class="text-left">
         <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 leading-tight">
-          Powerful Features for<br />Modern Law Firms
+          Whenever Your<br />Prospect Reaches Out,<br /> Engage Is Ready
         </h1>
         <p class="text-xl text-gray-600 mb-10">
-          <span class="font-semibold italic">Engage</span> combines advanced AI with legal expertise to deliver the most comprehensive client intake solution for law firms.
+          Whether it's at 9 AM or 9 PM, <span class="font-semibold italic">Engage</span> is ready to conduct a high quality interview and conflicts check. Your Prospect is qualified, with a conflicts check in hand, and you go into your first client meeting ready to work, <br />not get background info.
+          <br />Welcome <span class="font-smibold italic">Engage</span>"
         </p>
       
         {showEmailCapture ? (
@@ -31,12 +32,12 @@ const consoleUrl = getConsoleUrl(Astro.locals);
               type="submit"
               class="px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors whitespace-nowrap"
             >
-              Start Free Trial
+              Start 30-day Free Trial
             </button>
           </div>
         </form>
         ) : (
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+        <div class="flex flex-col sm:flex-row gap-4 justify-left mb-4">
           <Button
             href={`${consoleUrl}/signup?plan=starter&utm_source=engage&utm_campaign=hero`}
             variant="primary"
@@ -57,15 +58,15 @@ const consoleUrl = getConsoleUrl(Astro.locals);
         <div class="flex flex-wrap items-center gap-6 text-sm text-gray-600">
           <div class="flex items-center gap-2">
             <div class="w-2 h-2 bg-lexara-mahogany rounded-full"></div>
-            <span>Customize to your practice areas</span>
+            <span>30 days free</span>
           </div>
           <div class="flex items-center gap-2">
             <div class="w-2 h-2 bg-lexara-mahogany rounded-full"></div>
-            <span>Responsive, Adaptable Agents</span>
+            <span>We can help you set up</span>
           </div>
           <div class="flex items-center gap-2">
             <div class="w-2 h-2 bg-lexara-mahogany rounded-full"></div>
-            <span>Fast Setup</span>
+            <span>Cancel anytime</span>
           </div>
         </div>
       </div>

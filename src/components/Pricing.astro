@@ -1,0 +1,112 @@
+---
+import { getConsoleUrl } from '../lib/env';
+import Button from './ui/Button.astro';
+
+const consoleUrl = getConsoleUrl(Astro.locals);
+const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-lg';
+const headingClass = 'font-serif text-3xl font-normal leading-tight 2xl:text-[2.5rem]';
+const benefits = [
+    'Unlimited intake conversations, around the clock',
+    'Real-time conflicts checks',
+    'Pre-meeting briefs in Console',
+    'Your branding, your voice, your practice areas',
+    'Routing by practice area and attorney',
+    'Works with the practice management software you have',
+];
+---
+<section id="pricing" class="bg-lexara-white-smoke px-4 py-10 text-lexara-dark-navy sm:px-6 sm:py-14 lg:px-12 lg:py-16">
+    <div class="mx-auto max-w-[1920px]">
+        <p class:list={[eyebrowClass, 'mb-8']}>PRICING</p>
+        <h2 class="max-w-[1200px] font-serif text-4xl font-normal leading-[1.12] sm:text-5xl lg:text-6xl 2xl:text-[5rem]">Unlimited Intake Conversations, Unlimited Conflicts Checks, One Predictable Price.</h2>
+        <p class="mt-8 max-w-[1100px] text-lg leading-relaxed text-lexara-light-navy sm:text-xl 2xl:text-3xl">$75 a month for your first attorney, $50 for each additional attorney. No charge for support staff and administrators.</p>
+
+        <div class="mt-14 grid grid-cols-1 items-start gap-12 lg:mt-24 lg:grid-cols-3 lg:gap-10">
+            <div data-pricing-calculator>
+                <p class={eyebrowClass}>YOUR MONTHLY PRICE</p>
+                <div class="mt-8" aria-live="polite" aria-atomic="true">
+                    <p class="flex flex-wrap items-baseline gap-x-3">
+                        <span data-monthly-total class="font-serif text-7xl leading-tight tracking-tight 2xl:text-8xl">$75</span>
+                        <span class="text-xl text-lexara-light-navy 2xl:text-2xl">/ month</span>
+                    </p>
+                    <p data-attorney-summary class="mt-3 text-lg text-lexara-light-navy 2xl:text-2xl">For 1 attorney</p>
+                </div>
+
+                <div class="my-10 flex flex-wrap items-center justify-between gap-4 border-y border-lexara-dark-navy/10 py-6">
+                    <label for="pricing-attorneys" class="text-lg font-semibold 2xl:text-2xl">Attorneys</label>
+                    <div class="flex items-center gap-2">
+                        <button data-decrease type="button" aria-label="Decrease number of attorneys" disabled class="flex h-11 w-11 items-center justify-center rounded text-2xl text-lexara-light-navy hover:bg-lexara-sky-blue/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lexara-mahogany disabled:cursor-not-allowed disabled:opacity-40">−</button>
+                        <input id="pricing-attorneys" data-attorneys type="number" min="1" step="1" value="1" inputmode="numeric" class="w-20 appearance-none rounded bg-transparent text-center font-serif text-3xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lexara-mahogany [MozAppearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" />
+                        <button data-increase type="button" aria-label="Increase number of attorneys" class="flex h-11 w-11 items-center justify-center rounded text-2xl text-lexara-light-navy hover:bg-lexara-sky-blue/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lexara-mahogany">+</button>
+                    </div>
+                </div>
+                <Button
+                    href={`${consoleUrl}/signup?plan=starter&utm_source=engage&utm_campaign=hero`}
+                    variant="primary"
+                >
+                    Start 30-day Free Trial
+                </Button>
+                <p class="mt-6 text-base leading-relaxed text-lexara-light-navy 2xl:text-xl">Two months free when paid yearly. Cancel any time.</p>
+            </div>
+
+            <div>
+                <h3 class={headingClass}>One Subscription:</h3>
+                <ul class="mt-10 list-disc space-y-4 pl-6 text-lg leading-relaxed text-lexara-light-navy 2xl:text-2xl">
+                    {benefits.map((benefit) => <li>{benefit}</li>)}
+                </ul>
+            </div>
+
+            <div>
+                <p class={eyebrowClass}>INCLUDED WITH EVERY FREE TRIAL</p>
+                <h3 class:list={[headingClass, 'mt-8']}>A complimentary 30-minute setup call</h3>
+                <p class="mb-8 mt-6 text-lg leading-relaxed text-lexara-light-navy 2xl:text-2xl">We sit with you and configure your intake questions, practice areas, and routing. No charge, whether or not you continue after the trial period is over.</p>
+                <Button
+                    href="https://www.youtube.com/watch?v=Nb9PdPXpu-c"
+                    variant="outline"
+                    class="!rounded-lg border-lexara-mahogany text-lexara-mahogany hover:!bg-lexara-mahogany hover:!text-white"
+                >
+                    Book your call
+                </Button>
+                <p class="mt-8 text-base leading-relaxed text-lexara-light-navy 2xl:text-xl">Bar associations and volunteer lawyer programs are priced separately - talk to us.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function initializePricing() {
+        document.querySelectorAll<HTMLElement>('[data-pricing-calculator]').forEach((calculator) => {
+            if (calculator.dataset.initialized) return;
+            const input = calculator.querySelector<HTMLInputElement>('[data-attorneys]')!;
+            const decrease = calculator.querySelector<HTMLButtonElement>('[data-decrease]')!;
+            const increase = calculator.querySelector<HTMLButtonElement>('[data-increase]')!;
+            const total = calculator.querySelector<HTMLElement>('[data-monthly-total]')!;
+            const summary = calculator.querySelector<HTMLElement>('[data-attorney-summary]')!;
+            const currency = new Intl.NumberFormat('en-US', {
+                style: 'currency', currency: 'USD', maximumFractionDigits: 0,
+            });
+            let attorneys = 1;
+
+            function update(value: number) {
+                attorneys = Number.isSafeInteger(value) && value >= 1 ? value : 1;
+                input.value = String(attorneys);
+                total.textContent = currency.format(75 + (attorneys - 1) * 50);
+                summary.textContent = `For ${attorneys} ${attorneys === 1 ? 'attorney' : 'attorneys'}`;
+                decrease.disabled = attorneys === 1;
+            }
+
+            decrease.addEventListener('click', () => update(attorneys - 1));
+            increase.addEventListener('click', () => update(attorneys + 1));
+            input.addEventListener('input', () => {
+                // Allow an empty field while replacing the count; normalize on blur.
+                if (input.value !== '') update(input.valueAsNumber);
+            });
+            input.addEventListener('change', () => update(input.valueAsNumber));
+            input.addEventListener('blur', () => update(input.valueAsNumber));
+            update(input.valueAsNumber);
+            calculator.dataset.initialized = 'true';
+        });
+    }
+
+    initializePricing();
+    document.addEventListener('astro:page-load', initializePricing);
+</script>

@@ -57,6 +57,17 @@ npm run build
 npm run preview
 ```
 
+### Quality Checks
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+```
+
+The same checks run for pull requests targeting `main`. A merge to `main`
+automatically builds and deploys the production Worker through GitHub Actions.
+
 ## 📁 Project Structure
 
 ```
@@ -114,7 +125,7 @@ This is configured via runtime environment variables in `wrangler.toml` and acce
 ### Deploy to Test
 
 ```bash
-npx wrangler deploy
+npm run deploy:test
 ```
 
 Deploys to `lexara-app-test` worker (default environment).
@@ -122,7 +133,7 @@ Deploys to `lexara-app-test` worker (default environment).
 ### Deploy to Dev
 
 ```bash
-npx wrangler deploy --env dev
+npm run deploy:dev
 ```
 
 Deploys to `lexara-app-dev` worker.
@@ -130,7 +141,7 @@ Deploys to `lexara-app-dev` worker.
 ### Deploy to Production
 
 ```bash
-npx wrangler deploy --env production
+npm run deploy:production
 ```
 
 Deploys to `lexara-app` worker, accessible at `lexara.app` and `www.lexara.app`.

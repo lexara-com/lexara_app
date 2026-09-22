@@ -5,15 +5,12 @@ compatibility_flags = ["nodejs_compat"]
 
 # CloudFlare account and worker settings
 account_id = "a3cce89f2c57186bc125faa4229cd5a9"
-# @astrojs/cloudflare v13 provides a single entrypoint used for both
+# @astrojs/cloudflare provides a single entrypoint used for both
 # `astro dev`/`preview` (workerd) and production deployments.
 main = "@astrojs/cloudflare/entrypoints/server"
 
 # Enable workers.dev subdomain for testing
 workers_dev = true
-
-# Routes - test.lexara.app DNS record configured
-route = "test.lexara.app/*"
 
 # Enable observability logs
 [observability.logs]
@@ -28,9 +25,18 @@ PUBLIC_CONSOLE_URL = "https://test.console.lexara.app"
 binding = "SESSION"
 id = "2007770273e44a0e8a8938ef8fa4a22a"
 
-# Build command
-[build]
-command = "npm run build"
+# ============================================
+# Test Environment
+# ============================================
+[env.test]
+name = "lexara-app-test"
+vars = { PUBLIC_CONSOLE_URL = "https://test.console.lexara.app" }
+workers_dev = true
+route = "test.lexara.app/*"
+
+[[env.test.kv_namespaces]]
+binding = "SESSION"
+id = "2007770273e44a0e8a8938ef8fa4a22a"
 
 # ============================================
 # Development Environment

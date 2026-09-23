@@ -3,8 +3,8 @@ const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] t
 const fieldClass = 'w-full min-w-0 rounded-[2rem] border-0 bg-white px-6 py-6 text-lg text-lexara-dark-navy placeholder:text-lexara-dark-navy focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany sm:px-8 sm:text-xl 2xl:py-8 2xl:text-3xl';
 const contacts = [
     { title: 'Sales', description: 'Pricing, trials and onboarding — reply within one business day.' },
-    { title: 'Support', description: 'Around the clock for firms with a live intake line.' },
-    { title: 'Bar and VLP partnerships', description: 'Engage packaged for associations and volunteer lawyer programs.' },
+    { title: 'Support', description: 'Dedicated support team.' },
+    { title: 'Bar and VLP partnerships', description: 'Contact us to see how Lexara can benefit your members.' },
 ];
 ---
 
@@ -14,7 +14,7 @@ const contacts = [
         <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
                 <h2 id="contact-heading" class="font-serif text-4xl font-normal leading-tight sm:text-5xl lg:text-6xl 2xl:text-7xl">Tell us about your intake.</h2>
-                <p class="mt-6 text-lg leading-relaxed text-lexara-light-navy sm:text-xl 2xl:text-2xl">Whether you are a two-attorney firm or a state bar program, we will tell you plainly whether Engage fits.</p>
+                <p class="mt-6 text-lg leading-relaxed text-lexara-light-navy sm:text-xl 2xl:text-2xl">Whether you are a two-attorney firm or a state bar program, we will tell you plainly whether <span class="italic">Engage </span>fits.</p>
                 <div class="mt-10 lg:mt-16">
                     {contacts.map(({ title, description }) => (
                         <div class="border-t border-lexara-dark-navy/10 py-7 sm:py-8">

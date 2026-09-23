@@ -272,7 +272,19 @@ const year = new Date().getFullYear();
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  .sbmi *{box-sizing:border-box;margin:0;padding:0}
+  /* The reset lives in its own cascade layer, and that is load-bearing.
+     Astro scopes a descendant selector by stamping the scope attribute on BOTH
+     halves, so `.sbmi *` compiles to
+       .sbmi[data-astro-cid-x] [data-astro-cid-x]
+     — one class plus two attribute selectors, specificity (0,3,0). Unlayered,
+     that outranks every layout rule here (`.wrap[data-astro-cid-x]` is (0,2,0))
+     and silently flattens margin and padding across the whole page. Any
+     layered rule loses to every unlayered one no matter its specificity, so
+     putting the reset in a layer keeps it from ever fighting the rules below.
+     Declared after Tailwind's layers, so it still beats preflight. */
+  @layer sbmi-reset{
+    .sbmi *{box-sizing:border-box;margin:0;padding:0}
+  }
   .sbmi em{font-style:italic}
   .sbmi img{max-width:100%}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}

@@ -1,0 +1,402 @@
+---
+// State Bar of Michigan Preferred Partner landing page (lexara.app/sbmi).
+//
+// Conversion-focused: it deliberately renders no site nav and its own compact
+// footer rather than HeaderLexara/Footer, so the only ways off the page are
+// the CTAs. Layout still supplies the fonts, analytics and cookie banner.
+//
+// The CTA carries ?promo=SBMI_PROMO_CODE into console signup. That parameter is
+// what makes the member discount apply automatically and what tells the
+// console's welcome page to render the State Bar of Michigan branding — see
+// firm-console's src/lib/partners.ts, which is keyed by this same code.
+import Layout from '@/layouts/Layout.astro';
+
+const SBMI_PROMO_CODE = 'MIBAR20';
+
+const CTA_URL =
+  `https://console.lexara.app/signup?promo=${SBMI_PROMO_CODE}` +
+  '&utm_source=sbm&utm_medium=partner_page&utm_campaign=sbmi_launch';
+
+const year = new Date().getFullYear();
+---
+
+<Layout
+  title="State Bar of Michigan Member Offer"
+  description="State Bar of Michigan members get 30 days free, 20% off the first year, and a complimentary onboarding session on Lexara Engage — AI-guided client intake with automatic conflict checks."
+>
+  <div class="sbmi">
+    <div class="topbar"></div>
+
+    <!-- Co-brand header -->
+    <header class="cobrand">
+      <div class="wrap">
+        <img class="lexara-logo" src="https://static.lexara.app/lexara_logo.svg" alt="Lexara" />
+        <div class="partner">
+          <span class="plabel">Preferred Partner of the</span>
+          <img class="sbm-logo" src="/images/SBM.png" alt="State Bar of Michigan" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="wrap">
+          <span class="badge">Exclusive for State Bar of Michigan Members</span>
+          <h1>
+            <span class="l1">Lexara <em>Engage</em> handles intake and conflict checks.</span><br /><span
+              class="accent">You handle the <em>judgment</em>.</span
+            >
+          </h1>
+          <p class="lede">
+            Guided AI intake and automatic conflict checks run 24/7 &mdash; so every prospect
+            arrives screened, organized, and ready. Walk into the first meeting already prepared to
+            start working, not gathering the basics.
+          </p>
+          <span class="founder-tag"
+            ><span class="dot" aria-hidden="true"></span> Built by a lawyer, for lawyers</span
+          >
+          <div class="cta-row">
+            <a class="btn" href={CTA_URL}>Claim your member offer</a>
+            <a class="btn btn-ghost" href="#how">See how it works</a>
+          </div>
+          <p class="microcopy">Start a 30-day free trial &middot; cancel anytime.</p>
+        </div>
+      </section>
+
+      <!-- Offer card -->
+      <div class="wrap offer">
+        <div class="offer-card">
+          <h2>Your State Bar of Michigan Member Benefits</h2>
+          <div class="offer-grid">
+            <div class="offer-item">
+              <div class="big">30 days free</div>
+              <div class="sub">Full-access trial &mdash; cancel anytime</div>
+            </div>
+            <div class="offer-item">
+              <div class="big">20% off</div>
+              <div class="sub">Your first year on any plan</div>
+            </div>
+            <div class="offer-item">
+              <div class="big">Guided setup</div>
+              <div class="sub">Complimentary 30-minute onboarding session</div>
+            </div>
+            <div class="offer-item">
+              <div class="big">+2 months</div>
+              <div class="sub">Free when you pay annually</div>
+            </div>
+          </div>
+          <p class="offer-note">
+            Member pricing is applied automatically when you start from this page, and you can
+            cancel anytime.
+          </p>
+        </div>
+      </div>
+
+      <!-- Value props -->
+      <section class="section" id="how">
+        <div class="wrap">
+          <h2 class="title">
+            <span class="nb">Client intake,</span><br /><span class="nb"
+              >the way it should work.</span
+            >
+          </h2>
+          <p class="subtitle">
+            <em>Engage</em> handles the first, most time-sensitive touchpoint &mdash; capturing and qualifying
+            prospects, screening conflicts, and organizing the matter before it ever reaches your desk.
+          </p>
+          <div class="cards">
+            <div class="card">
+              <div class="ico" aria-hidden="true">&#128172;</div>
+              <h3>AI-guided intake conversations</h3>
+              <p>
+                A guided interview captures new-client details around the clock, asks the right
+                follow-ups, and never lets an after-hours lead go cold.
+              </p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">&#9881;</div>
+              <h3>Your questions, or ours</h3>
+              <p>
+                Use Lexara's attorney-designed intake questions out of the box, or fully customize
+                them to match your practice area and how your firm works.
+              </p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">&#128269;</div>
+              <h3>Automatic conflict checks</h3>
+              <p>
+                Every intake is screened against your existing matters and parties, so potential
+                conflicts surface early &mdash; before you take the engagement.
+              </p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">&#9201;</div>
+              <h3>A valuable first meeting</h3>
+              <p>
+                Clients arrive already screened and organized, so your first consultation starts
+                with substance. You're ready to begin the work &mdash; not collect names and dates.
+              </p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">&#127991;</div>
+              <h3>White-label branding</h3>
+              <p>
+                Clients see your firm, not ours. The intake experience carries your name, colors,
+                and voice end to end.
+              </p>
+            </div>
+            <div class="card">
+              <div class="ico" aria-hidden="true">&#128279;</div>
+              <h3>Fits your existing stack</h3>
+              <p>
+                <em>Engage</em> integrates with the practice-management and productivity tools your firm
+                already relies on, so intake data lands where you need it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Founder band -->
+      <div class="founder">
+        <div class="wrap">
+          <div class="seal" aria-hidden="true">&#9878;</div>
+          <div class="txt">
+            <h3>Built by a lawyer, for lawyers.</h3>
+            <p>
+              Lexara <em>Engage</em> was designed by a practicing attorney who has lived the intake and
+              conflict-check grind firsthand. Every workflow reflects how firms really operate &mdash;
+              so the tool fits your practice instead of fighting it.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust bar -->
+      <div class="trust">
+        <div class="wrap">
+          <span class="chip"><span class="dot" aria-hidden="true"></span> SOC 2&ndash;aligned controls</span>
+          <span class="chip"><span class="dot" aria-hidden="true"></span> Encrypted in transit &amp; at rest</span>
+          <span class="chip"><span class="dot" aria-hidden="true"></span> Cancel anytime</span>
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <section class="section">
+        <div class="wrap">
+          <h2 class="title">Live in a single afternoon</h2>
+          <div class="steps">
+            <div class="step">
+              <div class="n" aria-hidden="true">1</div>
+              <h4>Start your free trial</h4>
+              <p>Sign up from this page to activate your SBM member pricing and 30-day trial.</p>
+            </div>
+            <div class="step">
+              <div class="n" aria-hidden="true">2</div>
+              <h4>Brand it and set your questions</h4>
+              <p>
+                Add your firm's logo and colors, then use our intake questions or build your own and
+                set your conflict rules.
+              </p>
+            </div>
+            <div class="step">
+              <div class="n" aria-hidden="true">3</div>
+              <h4>Go live &mdash; with help</h4>
+              <p>
+                Use your complimentary 30-minute onboarding call to launch confidently and start
+                capturing clients.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="final">
+        <div class="wrap">
+          <h2>How professionals handle <span class="accent">intake and conflict checks</span></h2>
+          <p>
+            Join the Michigan attorneys using Lexara <em>Engage</em> to capture more clients, screen
+            conflicts automatically, and make every first meeting count.
+          </p>
+          <a class="btn" href={CTA_URL}>Claim your member offer</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="sbmi-footer">
+      <div class="wrap">
+        <div class="f-brand">
+          <strong>Lexara <em>Engage</em></strong><br />
+          <a href="/">lexara.app</a>
+          <span class="f-sep" aria-hidden="true">&middot;</span>
+          <a href="/privacy">Privacy</a>
+          <span class="f-sep" aria-hidden="true">&middot;</span>
+          <a href="/terms">Terms</a>
+        </div>
+        <p class="disclaimer">
+          Offer available to active members of the State Bar of Michigan. Participation in the SBM
+          Preferred Partner Program does not constitute endorsement by the State Bar of Michigan;
+          members should evaluate services independently. &copy; {year} Lexara Consulting, LLC. All
+          rights reserved.
+        </p>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  /* Tokens live on the page wrapper rather than :root: Astro leaves :root
+     unscoped, and names this generic (--body, --line, --bg) would sit in the
+     same global scope as the Tailwind theme. */
+  .sbmi{
+    --navy:#1E2B3B;        /* Dark Navy */
+    --navy-2:#3B576C;      /* Light Navy */
+    --green:#00953b;       /* SBM green — Michigan accent */
+    --green-dark:#007d31;
+    --green-light:#3fc873; /* highlight on dark */
+    --body:#3B576C;
+    --muted:#6b7686;
+    --line:#e4ddd6;        /* warm border */
+    --bg:#F3F0ED;          /* White Smoke */
+    --white:#ffffff;
+    --serif:'Lora',Georgia,'Times New Roman',serif;
+    --sans:'Open Sans',Arial,Helvetica,sans-serif;
+
+    /* The page paints its own ground instead of styling <body>, which belongs
+       to Layout (and carries Tailwind's bg-white). */
+    background:var(--bg);
+    font-family:var(--sans);
+    color:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sbmi *{box-sizing:border-box;margin:0;padding:0}
+  .sbmi em{font-style:italic}
+  .sbmi img{max-width:100%}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* Keyboard focus. The design has no focus treatment of its own and the dark
+     bands would swallow the UA default ring. */
+  .sbmi a:focus-visible{outline:3px solid var(--green-light);outline-offset:3px;border-radius:4px}
+
+  /* Michigan green top bar */
+  .topbar{height:5px;background:var(--green);width:100%}
+
+  /* Co-brand bar */
+  .cobrand{background:var(--white);border-bottom:1px solid var(--line)}
+  .cobrand .wrap{display:flex;align-items:center;justify-content:space-between;height:96px;gap:16px}
+  .lexara-logo{height:60px;width:auto;display:block}
+  .partner{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--muted)}
+  .partner .plabel{max-width:9ch;line-height:1.3;text-align:right;font-weight:600}
+  .sbm-logo{height:78px;width:auto;display:block}
+
+  /* Hero */
+  .hero{background:linear-gradient(155deg,var(--navy) 0%,#25384c 60%,var(--navy-2) 100%);color:#eaf1fb;padding:64px 0 74px}
+  .badge{display:inline-block;background:rgba(0,149,59,.18);color:#8fe6ad;border:1px solid rgba(0,149,59,.55);padding:6px 15px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:22px}
+  .hero h1{font-family:var(--serif);font-size:44.8px;line-height:1.16;font-weight:600;letter-spacing:-.5px;color:#fff}
+  .hero h1 .accent{color:var(--green-light)}
+  .hero p.lede{font-size:19px;color:#cdd9e8;margin-top:22px}
+  .founder-tag{display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-size:14px;font-weight:600;color:#e4edf7;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:8px 16px;border-radius:100px}
+  .founder-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--green-light)}
+  .cta-row{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-block;font-family:var(--sans);background:var(--green);color:#fff;font-weight:700;font-size:16px;padding:15px 32px;border-radius:10px;text-decoration:none;transition:transform .08s ease,box-shadow .2s,background .2s;box-shadow:0 6px 20px rgba(0,149,59,.30)}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,149,59,.42);background:var(--green-dark)}
+  .btn-ghost{background:transparent;color:#eaf1fb;border:1px solid rgba(255,255,255,.35);box-shadow:none;font-weight:600}
+  .btn-ghost:hover{background:rgba(255,255,255,.08)}
+  .microcopy{font-size:13px;color:#9fb4d4;margin-top:14px}
+
+  /* Offer card */
+  .offer{margin-top:-40px;position:relative;z-index:2}
+  .offer-card{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 40px rgba(30,43,59,.12);padding:34px 32px;border-top:4px solid var(--green)}
+  .offer-card h2{font-family:var(--sans);font-size:14px;text-transform:uppercase;letter-spacing:1.2px;color:var(--green-dark);font-weight:700;margin-bottom:22px}
+  .offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .offer-item{padding-left:16px;border-left:3px solid var(--green)}
+  .offer-item .big{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--navy);line-height:1.1}
+  .offer-item .sub{font-size:14px;color:var(--body);margin-top:6px}
+  .offer-note{margin-top:22px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+  /* Sections */
+  .section{padding:64px 0}
+  .section h2.title{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--navy);letter-spacing:-.3px;text-align:center;max-width:640px;margin:0 auto}
+  .section p.subtitle{text-align:center;color:var(--body);font-size:17px;margin:14px auto 0;max-width:64ch}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:44px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .card .ico{width:46px;height:46px;border-radius:10px;background:#eef1f4;color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;border-bottom:2px solid var(--green)}
+  .card h3{font-family:var(--sans);font-size:19px;color:var(--navy);font-weight:700}
+  .card p{color:var(--body);font-size:15px;margin-top:8px}
+
+  /* Founder band */
+  .founder{background:var(--navy);color:#eaf1fb}
+  .founder .wrap{display:flex;align-items:center;gap:28px;padding:44px 24px;flex-wrap:wrap}
+  .founder .seal{flex:0 0 auto;width:112px;height:112px;border-radius:50%;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:75px;line-height:1}
+  .founder .txt{flex:1;min-width:280px}
+  .founder h3{font-family:var(--serif);font-size:25px;color:#fff;font-weight:600;letter-spacing:-.2px}
+  .founder p{color:#cdd9e8;font-size:16px;margin-top:8px;max-width:70ch}
+
+  /* Trust */
+  .trust{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust .wrap{display:flex;flex-wrap:wrap;gap:14px 30px;justify-content:center;align-items:center;padding:24px}
+  .chip{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:var(--navy);font-weight:600}
+  .chip .dot{width:9px;height:9px;border-radius:50%;background:var(--green)}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+  .step{position:relative;padding:26px;background:var(--white);border-radius:14px;border:1px solid var(--line)}
+  .step .n{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:14px}
+  .step h4{font-family:var(--sans);font-size:17px;color:var(--navy);font-weight:700}
+  .step p{font-size:14px;color:var(--body);margin-top:6px}
+
+  /* Final CTA */
+  .final{background:linear-gradient(155deg,var(--navy),var(--navy-2));color:#fff;text-align:center;padding:66px 0}
+  .final h2{font-family:var(--serif);font-size:36px;font-weight:600;letter-spacing:-.4px;max-width:24ch;margin:0 auto}
+  .final h2 .accent{color:var(--green-light)}
+  .final p{color:#cdd9e8;font-size:17px;margin:16px auto 30px;max-width:52ch}
+
+  /* Footer */
+  .sbmi-footer{background:#16222f;color:#93a3b6;padding:36px 0;font-size:13px}
+  .sbmi-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+  .sbmi-footer a{color:#cfe0f5;text-decoration:none}
+  .sbmi-footer a:hover{text-decoration:underline}
+  .f-brand strong{color:#fff;font-weight:700}
+  .f-sep{padding:0 6px;color:#5c6b7d}
+  .disclaimer{max-width:70ch;line-height:1.55;color:#7d8da5}
+
+  /* The hero's first line is held on one line only while the 1080px content
+     column is at full width — below that it would overflow horizontally
+     rather than wrap, so the nowrap is opt-in per breakpoint, not a default. */
+  @media(min-width:1080px){
+    .hero h1 .l1{white-space:nowrap}
+    .section h2.title .nb{white-space:nowrap}
+  }
+
+  @media(max-width:820px){
+    .offer-grid{grid-template-columns:repeat(2,1fr)}
+    .cards{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .hero h1{font-size:26px}
+    .section h2.title{font-size:27px}
+    .final h2{font-size:28px}
+    .partner .plabel{display:none}
+    .lexara-logo{height:50px}
+    .sbm-logo{height:65px}
+  }
+
+  /* Two "30 days free"-sized figures side by side stop fitting well before
+     the feature cards do, so the offer grid gets its own, later break. */
+  @media(max-width:520px){
+    .offer-grid{grid-template-columns:1fr}
+    .offer-card{padding:26px 20px}
+    .hero{padding:48px 0 58px}
+    .section{padding:48px 0}
+    .cta-row .btn{width:100%;text-align:center}
+    .founder .wrap{gap:20px}
+    .founder .seal{width:84px;height:84px;font-size:54px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .btn{transition:none}
+    .btn:hover{transform:none}
+  }
+</style>

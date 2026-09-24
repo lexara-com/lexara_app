@@ -53,14 +53,13 @@ const year = new Date().getFullYear();
             arrives screened, organized, and ready. Walk into the first meeting already prepared to
             start working, not gathering the basics.
           </p>
-          <span class="founder-tag"
-            ><span class="dot" aria-hidden="true"></span> Built by a lawyer, for lawyers</span
-          >
           <div class="cta-row">
-            <a class="btn" href={CTA_URL}>Claim your member offer</a>
-            <a class="btn btn-ghost" href="#how">See how it works</a>
+              <a class="btn" href={CTA_URL}>Claim your member offer</a>
+              <a class="btn btn-ghost" href="#how">See how it works</a>
           </div>
-          <p class="microcopy">Start a 30-day free trial &middot; cancel anytime.</p>
+          <div class="cta-row" style="margin-top:0px">
+            <p class="microcopy">Start a 30-day free trial &middot; cancel anytime.</p>
+          </div>
         </div>
       </section>
 
@@ -283,26 +282,70 @@ const year = new Date().getFullYear();
      putting the reset in a layer keeps it from ever fighting the rules below.
      Declared after Tailwind's layers, so it still beats preflight. */
   @layer sbmi-reset{
-    .sbmi *{box-sizing:border-box;margin:0;padding:0}
+    .sbmi 
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0
+    }
   }
   .sbmi em{font-style:italic}
   .sbmi img{max-width:100%}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .wrap
+  {
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px
+  }
 
   /* Keyboard focus. The design has no focus treatment of its own and the dark
      bands would swallow the UA default ring. */
-  .sbmi a:focus-visible{outline:3px solid var(--green-light);outline-offset:3px;border-radius:4px}
+  .sbmi a:focus-visible
+  {
+    outline:3px solid var(--green-light);
+    outline-offset:3px;
+    border-radius:4px
+  }
 
   /* Michigan green top bar */
-  .topbar{height:5px;background:var(--green);width:100%}
+  .topbar
+  {
+    height:5px;
+    background:var(--green);
+    width:100%
+  }
 
   /* Co-brand bar */
-  .cobrand{background:var(--white);border-bottom:1px solid var(--line)}
-  .cobrand .wrap{display:flex;align-items:center;justify-content:space-between;height:96px;gap:16px}
-  .lexara-logo{height:60px;width:auto;display:block}
-  .partner{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--muted)}
+  .cobrand
+  {
+    background:var(--white);
+    border-bottom:1px solid var(--line)
+  }
+  .cobrand .wrap
+  {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:96px;
+    gap:16px
+  }
+  .lexara-logo{height:72px;width:auto;display:block}
+  .partner
+  {
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-size:13px;
+    color:var(--muted);
+    height: fit-content;
+  }
   .partner .plabel{max-width:9ch;line-height:1.3;text-align:right;font-weight:600}
-  .sbm-logo{height:78px;width:auto;display:block}
+  .sbm-logo
+  {
+    height:125px;
+    width:auto;
+    display:block
+  }
 
   /* Hero */
   .hero{background:linear-gradient(155deg,var(--navy) 0%,#25384c 60%,var(--navy-2) 100%);color:#eaf1fb;padding:64px 0 74px}
@@ -312,7 +355,15 @@ const year = new Date().getFullYear();
   .hero p.lede{font-size:19px;color:#cdd9e8;margin-top:22px}
   .founder-tag{display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-size:14px;font-weight:600;color:#e4edf7;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:8px 16px;border-radius:100px}
   .founder-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--green-light)}
-  .cta-row{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .cta-row
+  {
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center
+  }
   .btn{display:inline-block;font-family:var(--sans);background:var(--green);color:#fff;font-weight:700;font-size:16px;padding:15px 32px;border-radius:10px;text-decoration:none;transition:transform .08s ease,box-shadow .2s,background .2s;box-shadow:0 6px 20px rgba(0,149,59,.30)}
   .btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(0,149,59,.42);background:var(--green-dark)}
   .btn-ghost{background:transparent;color:#eaf1fb;border:1px solid rgba(255,255,255,.35);box-shadow:none;font-weight:600}

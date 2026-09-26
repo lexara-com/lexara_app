@@ -2,7 +2,7 @@
 const steps = [
     {
         number: "01",
-        header: "Prospects Reach Out at Their Convenience And Instantly Feel Heard",
+        header: "Prospects Reach Out at Their Convenience and Instantly Feel Heard",
         body: "A prospect opens your intake link and <span class='italic'>Engage</span> gathers the background info you need and conducts an interview. More than a chatbot, better than a form, <span class='italic'>Engage</span> asks what you would ask."
     },
     {
@@ -20,15 +20,15 @@ const steps = [
 ---
 <section class="bg-lexara-white-smoke px-4 py-10 text-lexara-dark-navy sm:px-6 sm:py-14 lg:px-12 lg:py-16">
     <div class="mx-auto max-w-[1920px]">
-        <p class="mb-8 text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-xl">HOW ENGAGE WORKS</p>
-        <h2 class="font-serif text-3xl font-normal leading-[1.15] sm:text-4xl lg:text-5xl 2xl:text-[4.5rem]">For less than the cost of 1 billable hour per month, you get smart intake and real-time conflicts checks.</h2>
-        <p class="font-serif text-3xl italic leading-[1.15] sm:text-4xl lg:text-5xl 2xl:text-[4.5rem]">And, you get your time back.</p>
-        <ol role="list" class="mt-14 grid list-none grid-cols-1 gap-12 lg:mt-24 lg:grid-cols-3 lg:gap-14 2xl:mt-28">
+        <p class="mb-8 text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-xl">How Engage Works</p>
+        <h2 class="font-serif font-normal leading-[1.15] text-[1.6875rem] sm:text-[2.025rem] lg:text-[2.7rem] 2xl:text-[4.05rem]">For Less Than the Cost of 1 Billable Hour per Month, <br> You Get Smart Intake and Real-Time Conflicts Checks.</h2>
+        <p class="font-serif italic leading-[1.15] text-[1.6875rem] sm:text-[2.025rem] lg:text-[2.7rem] 2xl:text-[4.05rem]">And, You Get Your Time Back.</p>
+        <ol role="list" class="mt-14 grid list-none grid-cols-1 gap-6 lg:mt-24 lg:grid-cols-3 lg:gap-10 2xl:mt-28">
             {steps.map((step) => (
-                <li>
-                    <span aria-hidden="true" class="mb-6 block font-serif text-4xl leading-none text-lexara-mahogany lg:mb-12 2xl:text-[3.5rem]">{step.number}</span>
+                <li class="rounded-[2rem] border-2 border-[#E0DCD7] bg-white p-7 sm:p-10 lg:p-8 xl:p-10 2xl:p-14">
+                    <span aria-hidden="true" class="mb-8 block font-serif text-4xl leading-none text-lexara-mahogany 2xl:mb-10 2xl:text-[3.5rem]">{step.number}</span>
                     <h3 class="mb-6 font-serif text-2xl font-normal leading-[1.25] xl:text-3xl 2xl:text-[2.5rem]">{step.header}</h3>
-                    <p class="text-lg leading-relaxed text-lexara-light-navy xl:text-xl 2xl:text-3xl" set:html={step.body} />
+                    <p class="text-lg leading-[1.5] text-lexara-light-navy xl:text-xl 2xl:text-[1.75rem]" set:html={step.body} />
                 </li>
             ))}
         </ol>

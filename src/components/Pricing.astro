@@ -16,13 +16,13 @@ const benefits = [
 ---
 <section id="pricing" class="bg-lexara-white-smoke px-4 py-10 text-lexara-dark-navy sm:px-6 sm:py-14 lg:px-12 lg:py-16">
     <div class="mx-auto max-w-[1920px]">
-        <p class:list={[eyebrowClass, 'mb-8']}>PRICING</p>
-        <h2 class="max-w-[1200px] font-serif text-4xl font-normal leading-[1.12] sm:text-5xl lg:text-6xl 2xl:text-[5rem]">Unlimited Intake Conversations, Unlimited Conflicts Checks, One Predictable Price.</h2>
-        <p class:list={[headingClass, 'mt-8 max-w-[1100px] text-center']}>$75 a month for your first attorney, $50 for each additional attorney. <br> No charge for support staff and administrators.</p>
+        <p class:list={[eyebrowClass, 'mb-8']}>Pricing</p>
+        <h2 class="max-w-[1200px] font-serif font-normal leading-[1.12] text-[1.6875rem] sm:text-[2.025rem] lg:text-[2.7rem] 2xl:text-[4.05rem]"><span class="font-bold">Unlimited</span> Intake Conversations, <br> <span class="font-bold">Unlimited</span> Conflicts Checks, <br> <span class="font-bold">One</span> Predictable Price.</h2>
+        <p class:list={[headingClass, 'mt-8 max-w-[1100px] text-left']}>$75 a month for your first attorney, $50 for each additional attorney. <br> No charge for support staff and administrators.</p>
 
-        <div class="mt-14 grid grid-cols-1 items-start gap-12 lg:mt-24 lg:grid-cols-3 lg:gap-10">
-            <div data-pricing-calculator>
-                <p class={eyebrowClass}>YOUR MONTHLY PRICE</p>
+        <div class="mt-8 grid grid-cols-1 items-stretch gap-12 lg:grid-cols-3 lg:gap-10">
+            <div data-pricing-calculator class="lg:flex lg:flex-col lg:items-start">
+                <p class={eyebrowClass}>Your Monthly Price</p>
                 <div class="mt-8" aria-live="polite" aria-atomic="true">
                     <p class="flex flex-wrap items-baseline gap-x-3">
                         <span data-monthly-total class="font-serif text-7xl leading-tight tracking-tight 2xl:text-8xl">$75</span>
@@ -31,7 +31,7 @@ const benefits = [
                     <p data-attorney-summary class="mt-3 text-lg text-lexara-light-navy 2xl:text-2xl">For 1 attorney</p>
                 </div>
 
-                <div class="my-10 flex flex-wrap items-center justify-between gap-4 border-y border-lexara-dark-navy/10 py-6">
+                <div class="my-8 flex w-full flex-wrap items-center justify-between gap-4 border-y border-lexara-dark-navy/10 py-6">
                     <label for="pricing-attorneys" class="text-lg font-semibold 2xl:text-2xl">Attorneys</label>
                     <div class="flex items-center gap-2">
                         <button data-decrease type="button" aria-label="Decrease number of attorneys" disabled class="flex h-11 w-11 items-center justify-center rounded text-2xl text-lexara-light-navy hover:bg-lexara-sky-blue/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lexara-mahogany disabled:cursor-not-allowed disabled:opacity-40">−</button>
@@ -45,19 +45,19 @@ const benefits = [
                 >
                     Start 30-day Free Trial
                 </Button>
-                <p class="mt-6 text-base leading-relaxed text-lexara-light-navy 2xl:text-xl">Two months free when paid yearly. Cancel any time.</p>
+                <p class="mt-6 text-base leading-relaxed text-lexara-light-navy lg:mt-auto lg:pt-6 2xl:text-xl">Two months free when paid yearly. Cancel any time.</p>
             </div>
 
-            <div>
-                <h3 class={headingClass}>One Subscription:</h3>
-                <ul class="mt-10 list-disc space-y-4 pl-6 text-lg leading-relaxed text-lexara-light-navy 2xl:text-2xl">
+            <div class="lg:flex lg:flex-col">
+                <h3 class:list={[eyebrowClass, 'font-sans']}>One Subscription:</h3>
+                <ul class="mt-8 list-disc space-y-4 pl-6 lg:flex lg:flex-1 lg:flex-col lg:justify-between text-lg leading-relaxed text-lexara-light-navy 2xl:text-2xl">
                     {benefits.map((benefit) => <li>{benefit}</li>)}
                 </ul>
             </div>
 
-            <div>
-                <p class={eyebrowClass}>INCLUDED WITH EVERY FREE TRIAL</p>
-                <h3 class:list={[headingClass, 'mt-8']}>A complimentary 30-minute setup call</h3>
+            <div class="lg:flex lg:flex-col lg:items-start">
+                <p class={eyebrowClass}>Included with Every Free Trial</p>
+                <h3 class:list={[headingClass, 'mt-8']}>A Complimentary 30-Minute Setup Call</h3>
                 <p class="mb-8 mt-6 text-lg leading-relaxed text-lexara-light-navy 2xl:text-2xl">We sit with you and configure your intake questions, practice areas, and routing. No charge, whether or not you continue after the trial period is over.</p>
                 <Button
                     href="https://www.youtube.com/watch?v=Nb9PdPXpu-c"
@@ -66,7 +66,7 @@ const benefits = [
                 >
                     Book your call
                 </Button>
-                <p class="mt-8 text-base leading-relaxed text-lexara-light-navy 2xl:text-xl">Volunteer lawyer programs — ask us about our complimentary intake software.</p>
+                <p class="mt-6 text-base leading-relaxed text-lexara-light-navy lg:mt-auto lg:pt-6 2xl:text-xl">Volunteer lawyer programs — ask us about our complimentary intake software.</p>
             </div>
         </div>
     </div>

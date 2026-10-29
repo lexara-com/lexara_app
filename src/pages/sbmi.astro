@@ -17,6 +17,10 @@ const CTA_URL =
   `https://console.lexara.app/signup?promo=${SBMI_PROMO_CODE}` +
   '&utm_source=sbm&utm_medium=partner_page&utm_campaign=sbmi_launch';
 
+// "How it works" steps: each step's number links to where that step happens.
+const FEATURES_URL = '/features';
+const SETUP_CALL_URL = 'https://calendly.com/natalie-lexara/engage-set-up';
+
 const year = new Date().getFullYear();
 ---
 
@@ -183,15 +187,15 @@ const year = new Date().getFullYear();
       <!-- Steps -->
       <section class="section">
         <div class="wrap">
-          <h2 class="title">Live in a single afternoon</h2>
+          <h2 class="title">Up and running in a single afternoon</h2>
           <div class="steps">
             <div class="step">
-              <div class="n" aria-hidden="true">1</div>
+              <a class="n" href={CTA_URL} aria-label="Step 1: start your free trial">1</a>
               <h4>Start your free trial</h4>
               <p>Sign up from this page to activate your SBM member pricing and 30-day trial.</p>
             </div>
             <div class="step">
-              <div class="n" aria-hidden="true">2</div>
+              <a class="n" href={FEATURES_URL} aria-label="Step 2: see Lexara Engage's features">2</a>
               <h4>Brand it and set your questions</h4>
               <p>
                 Add your firm's logo and colors, then use our intake questions or build your own and
@@ -199,7 +203,13 @@ const year = new Date().getFullYear();
               </p>
             </div>
             <div class="step">
-              <div class="n" aria-hidden="true">3</div>
+              <a
+                class="n"
+                href={SETUP_CALL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Step 3: book your onboarding call (opens in a new tab)">3</a
+              >
               <h4>Go live &mdash; with help</h4>
               <p>
                 Use your complimentary 30-minute onboarding call to launch confidently and start
@@ -413,7 +423,8 @@ const year = new Date().getFullYear();
   /* Steps */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
   .step{position:relative;padding:26px;background:var(--white);border-radius:14px;border:1px solid var(--line)}
-  .step .n{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:14px}
+  .step .n{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px;margin-bottom:14px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+  .step .n:hover,.step .n:focus-visible{transform:scale(1.08);box-shadow:0 0 0 4px rgba(0,0,0,.08)}
   .step h4{font-family:var(--sans);font-size:17px;color:var(--navy);font-weight:700}
   .step p{font-size:14px;color:var(--body);margin-top:6px}
 
@@ -467,5 +478,7 @@ const year = new Date().getFullYear();
   @media(prefers-reduced-motion:reduce){
     .btn{transition:none}
     .btn:hover{transform:none}
+    .step .n{transition:none}
+    .step .n:hover,.step .n:focus-visible{transform:none}
   }
 </style>

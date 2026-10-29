@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SBMI, WYSB, partnerSignupUrl } from "./partners";
+import { PARTNERS, SBMI, WYSB, partnerSignupUrl } from "./partners";
 
 describe("partnerSignupUrl", () => {
   it("keeps the State Bar of Michigan link exactly as it shipped", () => {
@@ -16,14 +16,14 @@ describe("partnerSignupUrl", () => {
 });
 
 describe("partner entries", () => {
-  it.each([SBMI, WYSB])("$slug has an uppercase Stripe-shaped promo code", (partner) => {
+  it.each(PARTNERS)("$slug has an uppercase Stripe-shaped promo code", (partner) => {
     // firm-console's normalizePromoCode rejects anything else, which would
     // silently drop the member discount at signup.
     expect(partner.promoCode).toMatch(/^[A-Z0-9_-]{1,64}$/);
   });
 
   it("gives every partner its own promo code", () => {
-    const codes = [SBMI, WYSB].map((p) => p.promoCode);
+    const codes = PARTNERS.map((p) => p.promoCode);
     expect(new Set(codes).size).toBe(codes.length);
   });
 });

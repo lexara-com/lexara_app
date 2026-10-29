@@ -105,6 +105,10 @@ export const WYSB: PartnerLanding = {
   },
 };
 
+/** Every partner with a landing page. A new partner goes here too, which is
+    what puts it under the promo-code tests in partners.test.ts. */
+export const PARTNERS: readonly PartnerLanding[] = [SBMI, WYSB];
+
 /**
  * The console signup link for a partner: the promo code that applies the
  * member offer, plus UTM tags so the partner's traffic can be told apart.

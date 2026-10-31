@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeaderLexara from '@/components/HeaderLexara.astro';
+import Footer from '@/components/Footer.astro';
+---
+
+<Layout title="Page Not Found" noindex>
+  <HeaderLexara />
+  <main>
+    <section class="bg-lexara-white-smoke px-4 py-24 text-center lg:py-32">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy">404</p>
+      <h1 class="font-serif text-4xl font-normal text-lexara-dark-navy lg:text-5xl">Page not found</h1>
+      <p class="mx-auto mt-6 max-w-xl text-lg text-lexara-light-navy">
+        The page you're looking for doesn't exist or has moved.
+      </p>
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="/" class="rounded-lg bg-lexara-mahogany px-6 py-3 font-semibold text-white hover:opacity-90">Go to the Lexara <em>Engage</em> home page</a>
+        <a href="/contact" class="rounded-lg border border-lexara-mahogany px-6 py-3 font-semibold text-lexara-mahogany hover:bg-lexara-mahogany hover:text-white">Contact us</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

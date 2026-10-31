@@ -59,7 +59,7 @@ const NATALIE_SETUP_CALL = 'https://calendly.com/natalie-lexara/engage-set-up';
 
 export const SBMI: PartnerLanding = {
   slug: 'sbmi',
-  promoCode: 'MIBAR20',
+  promoCode: 'SBM20',
   utmSource: 'sbm',
   utmCampaign: 'sbmi_launch',
   name: 'State Bar of Michigan',

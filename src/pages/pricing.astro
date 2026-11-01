@@ -100,10 +100,10 @@ const faqs = [
           <h1 class="text-4xl md:text-5xl font-semibold text-lexara-dark-navy mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+          <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-5">
             Only pay for what you need. Priced per attorney and no hidden fees. Less than 1 billable hour a month.
           </p>
-          <p class="text-sm text-lexara-dark-navy font-semibold">
+          <p class="text-lg md:text-xl text-lexara-dark-navy font-semibold">
             Save 2 months when you pay annually
           </p>
         </div>
@@ -115,19 +115,19 @@ const faqs = [
       <Container size="medium">
         <!-- Billing Toggle -->
         <div class="flex justify-center mb-12">
-          <div class="inline-flex items-center bg-lexara-white-smoke rounded-full p-1">
+          <div class="inline-flex items-center bg-lexara-white-smoke rounded-full p-1.5 shadow-lg">
             <button 
               id="monthly-toggle"
-              class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 bg-lexara-dark-navy text-white"
+              class="px-9 py-3.5 rounded-full text-lg md:text-xl font-semibold transition-all duration-200 bg-lexara-dark-navy text-white"
             >
               Monthly
             </button>
             <button 
               id="annual-toggle"
-              class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-lexara-dark-navy"
+              class="px-9 py-3.5 rounded-full text-lg md:text-xl font-semibold transition-all duration-200 text-lexara-dark-navy"
             >
               Annual
-              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">Save 17%</span>
+              <span class="ml-2 text-sm bg-green-100 text-green-700 px-2.5 py-1 rounded-full">Save 17%</span>
             </button>
           </div>
         </div>
@@ -144,31 +144,31 @@ const faqs = [
               <div class="space-y-6 mb-8">
                 <div class="border-b border-gray-200 pb-6">
                   <div class="flex items-baseline justify-between mb-2">
-                    <span class="text-lg text-gray-700">First attorney</span>
+                    <span class="text-xl text-gray-700">First attorney</span>
                     <div class="text-right">
                       <span class="text-3xl font-bold text-lexara-dark-navy monthly-price">$75</span>
                       <span class="text-3xl font-bold text-lexara-dark-navy annual-price hidden">$750</span>
-                      <span class="text-gray-600 ml-1 monthly-period">/month</span>
-                      <span class="text-gray-600 ml-1 annual-period hidden">/year</span>
+                      <span class="text-lg text-gray-600 ml-1 monthly-period">/month</span>
+                      <span class="text-lg text-gray-600 ml-1 annual-period hidden">/year</span>
                     </div>
                   </div>
                 </div>
                 
                 <div class="border-b border-gray-200 pb-6">
                   <div class="flex items-baseline justify-between mb-2">
-                    <span class="text-lg text-gray-700">Each additional attorney</span>
+                    <span class="text-xl text-gray-700">Each additional attorney</span>
                     <div class="text-right">
                       <span class="text-3xl font-bold text-lexara-dark-navy monthly-price">$50</span>
                       <span class="text-3xl font-bold text-lexara-dark-navy annual-price hidden">$500</span>
-                      <span class="text-gray-600 ml-1 monthly-period">/month</span>
-                      <span class="text-gray-600 ml-1 annual-period hidden">/year</span>
+                      <span class="text-lg text-gray-600 ml-1 monthly-period">/month</span>
+                      <span class="text-lg text-gray-600 ml-1 annual-period hidden">/year</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <p class="text-sm text-blue-900">
+                <p class="text-base text-blue-900">
                   <strong>Annual savings:</strong> When paid annually, receive 2 months of free service. 
                   Save $150/year on your first attorney and $100/year on each additional attorney.
                 </p>
@@ -185,7 +185,7 @@ const faqs = [
 
             <!-- Features List -->
             <div>
-              <h3 class="text-xl font-semibold text-lexara-dark-navy mb-6">
+              <h3 class="text-2xl font-semibold text-lexara-dark-navy mb-6">
                 Everything Included
               </h3>
               <ul class="space-y-3">
@@ -194,7 +194,7 @@ const faqs = [
                     <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span class="text-gray-700">{feature}</span>
+                    <span class="text-lg text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -210,7 +210,7 @@ const faqs = [
         </div>
 
         <div class="text-center mt-8">
-          <p class="text-gray-300 text-sm">
+          <p class="text-gray-300 text-lg">
             Need pricing for 50+ attorneys? 
             <a href="https://console.lexara.app/contact-sales" class="text-white underline hover:text-gray-100">
               Contact sales for volume discounts
@@ -231,12 +231,12 @@ const faqs = [
           {faqs.map((faq, index) => (
             <details class="group border-b border-gray-200">
               <summary class="py-6 px-4 cursor-pointer list-none flex items-center justify-between hover:bg-gray-50 transition-colors">
-                <h3 class="font-semibold text-lexara-dark-navy pr-8" set:html={faq.question}></h3>
+                <h3 class="text-lg md:text-xl font-semibold text-lexara-dark-navy pr-8" set:html={faq.question}></h3>
                 <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-              <div class="px-4 pb-6 text-gray-600">
+              <div class="px-4 pb-6 text-lg text-gray-600">
                 {faq.answer}
               </div>
             </details>

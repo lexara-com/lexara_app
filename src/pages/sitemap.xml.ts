@@ -9,7 +9,6 @@ const PAGES = [
   '/integrations',
   '/demo',
   '/contact',
-  '/help',
   '/sbmi',
   '/wysb',
   '/privacy',

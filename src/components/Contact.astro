@@ -25,7 +25,7 @@ const contacts = [
                 </div>
             </div>
 
-            <form data-contact-form action="mailto:sales@lexara.com" method="post" enctype="text/plain" aria-label="Contact Lexara" aria-describedby="contact-form-note" class="min-w-0 grid gap-5">
+            <form data-contact-form action="mailto:support@lexara.com" method="post" enctype="text/plain" aria-label="Contact Lexara" aria-describedby="contact-form-note" class="min-w-0 grid gap-5">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
                         <label for="contact-first-name" class="sr-only">First Name</label>
@@ -45,7 +45,7 @@ const contacts = [
                     <textarea id="contact-message" name="message" rows="4" placeholder="Message" required class:list={[fieldClass, 'block resize-y']} />
                 </div>
                 <button type="submit" class="justify-self-start min-h-[48px] rounded-full bg-lexara-mahogany px-7 py-3 text-base font-semibold text-white shadow-md hover:bg-lexara-mahogany/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany">Submit</button>
-                <p id="contact-form-note" class="text-sm leading-relaxed text-lexara-light-navy">Submit opens your email app with a draft addressed to sales@lexara.com.</p>
+                <p id="contact-form-note" class="text-sm leading-relaxed text-lexara-light-navy">Submit opens your email app with a draft addressed to support@lexara.com.</p>
             </form>
         </div>
     </div>
@@ -60,7 +60,7 @@ const contacts = [
                 const data = new FormData(form);
                 const name = `${String(data.get('firstName') ?? '').trim()} ${String(data.get('lastName') ?? '').trim()}`;
                 const body = `Name: ${name}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
-                window.location.href = `mailto:sales@lexara.com?subject=${encodeURIComponent('Engage intake inquiry')}&body=${encodeURIComponent(body)}`;
+                window.location.href = `mailto:support@lexara.com?subject=${encodeURIComponent('Engage intake inquiry')}&body=${encodeURIComponent(body)}`;
             });
             form.dataset.initialized = 'true';
         });

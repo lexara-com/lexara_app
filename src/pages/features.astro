@@ -44,8 +44,8 @@ const features = [
   <main>
     <!-- Hero Section -->
     <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl">
+      <div class="container mx-auto px-4 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_420px]">
+        <div>
           <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Powerful Features for<br />Modern Law Firms
           </h1>
@@ -60,17 +60,19 @@ const features = [
               Start Free Trial
             </a>
             <a 
-              href="/demo"
+              href="https://www.youtube.com/watch?v=H0zwv3Ppsyw"
+              target="_blank"
+              rel="noopener"
               class="px-6 py-3 bg-white text-gray-900 font-medium rounded border border-gray-300 hover:bg-gray-50 transition-colors"
             >
-              Watch Demo
+              Watch the 1-Minute Demo
             </a>
           </div>
           
           <div class="flex flex-wrap items-center gap-6 mt-8 text-sm text-gray-600">
             <div class="flex items-center gap-2">
               <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>Customized to your practice Areas</span>
+              <span>Customized to your practice areas</span>
             </div>
             <div class="flex items-center gap-2">
               <div class="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -78,17 +80,19 @@ const features = [
             </div>
             <div class="flex items-center gap-2">
               <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span>Fast Set up</span>
+              <span>Fast setup</span>
             </div>
           </div>
         </div>
         
         <!-- Chat Preview -->
-        <div class="absolute right-0 top-16 hidden lg:block">
-          <div class="bg-white rounded-xl shadow-2xl p-6 max-w-md">
-            <img src="https://static.lexara.app/images/engage-chat-sample-detail.png" alt="Engage Chat Interface" class="w-full" />
-          </div>
-        </div>
+        <figure class="hidden lg:block m-0">
+          <img
+            src="https://static.lexara.app/images/engage-chat-sample-detail.png"
+            alt="A sample Engage intake conversation about a car accident"
+            class="w-full rounded-xl border border-gray-200 bg-white shadow-lg"
+          />
+        </figure>
       </div>
     </section>
 

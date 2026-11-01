@@ -3,6 +3,7 @@ import Button from './ui/Button.astro';
 import { getConsoleUrl } from '../lib/env';
 
 const navItems = [
+  { href: '/features', label: 'Features' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/demo', label: 'Demo' },
   { href: '/contact', label: 'Contact' },
@@ -14,18 +15,18 @@ const consoleUrl = getConsoleUrl(Astro.locals);
 
 <header class="bg-white border-b border-gray-200">
   <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between h-16">
+    <div class="flex items-center justify-between h-20">
       <div class="flex items-center">
         <a href="/" class="flex items-center">
-          <img src="https://static.lexara.app/lexara_logo.svg" alt="Lexara" class="h-8" />
+          <img src="https://static.lexara.app/lexara_logo.svg" alt="Lexara" class="h-10" />
         </a>
       </div>
       
-      <nav class="hidden md:flex items-center space-x-8">
+      <nav class="hidden md:flex items-center space-x-10">
         {navItems.map((item) => (
           <a
             href={item.href}
-            class={`text-sm font-medium transition-colors ${
+            class={`text-[17px] font-medium transition-colors ${
               currentPath === item.href
                 ? 'text-gray-900'
                 : 'text-gray-700 hover:text-gray-900'
@@ -37,14 +38,13 @@ const consoleUrl = getConsoleUrl(Astro.locals);
       </nav>
       
       <div class="hidden md:flex items-center space-x-4">
-        <a href={`${consoleUrl}/api/auth/login`} class="text-sm font-medium text-gray-700 hover:text-gray-900">
+        <a href={`${consoleUrl}/api/auth/login`} class="text-[17px] font-medium text-gray-700 hover:text-gray-900">
           Sign In
         </a>
         <Button
           href={`${consoleUrl}/signup?utm_source=engage&utm_campaign=header`}
-          size="small"
           variant="primary"
-          class="!rounded"
+          class="!rounded !text-[17px]"
         >
           Get Started
         </Button>
@@ -65,7 +65,7 @@ const consoleUrl = getConsoleUrl(Astro.locals);
       {navItems.map((item) => (
         <a
           href={item.href}
-          class={`block text-sm font-medium ${
+          class={`block text-base font-medium ${
             currentPath === item.href
               ? 'text-gray-900'
               : 'text-gray-700'

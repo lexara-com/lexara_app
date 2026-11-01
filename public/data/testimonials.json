@@ -2,10 +2,30 @@
   "testimonials": [
     {
       "id": 1,
-      "text": "I would absolutely recommend Lexara to colleagues and other professional contacts. It is rare to find a legal‑tech product that is both innovative and practical, and even rarer to find a team that understands the ethical, operational, and human dimensions of law‑firm intake. Lexara delivers on all of those fronts.",
-      "author": "Gabrielle Vazquez",
-      "company": "Vazquez Law Office",
-      "photo": "/images/testimonials/gabrielle-vazquez.jpg"
+      "text": "This is phenomenal. It will save our small firm thousands of dollars in non-billable time per month.",
+      "author": "Janine S.",
+      "role": "Partner",
+      "company": "Small Law Firm",
+      "rating": 5,
+      "avatar": "/images/avatars/avatar-1.jpg"
+    },
+    {
+      "id": 2,
+      "text": "Engage is what AI should be for lawyers. It's easy to use for me and my team.",
+      "author": "Bart H.",
+      "role": "Managing Partner",
+      "company": "Law Office",
+      "rating": 5,
+      "avatar": "/images/avatars/avatar-2.jpg"
+    },
+    {
+      "id": 3,
+      "text": "I love that you can customize the questions you want to ask in order to screen potential clients.",
+      "author": "Lisa B.",
+      "role": "Attorney",
+      "company": "Legal Practice",
+      "rating": 5,
+      "avatar": "/images/avatars/avatar-3.jpg"
     }
   ]
 }

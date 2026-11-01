@@ -1,6 +1,6 @@
 ---
 const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-lg';
-const fieldClass = 'w-full min-w-0 rounded-[2rem] border-0 bg-white px-6 py-6 text-lg text-lexara-dark-navy placeholder:text-lexara-dark-navy focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany sm:px-8 sm:text-xl 2xl:py-8 2xl:text-3xl';
+const fieldClass = 'w-full min-w-0 rounded-2xl border-0 bg-white px-5 py-4 text-lg text-lexara-dark-navy placeholder:text-lexara-dark-navy focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany sm:px-8 sm:text-xl 2xl:py-8';
 const contacts = [
     { title: 'Sales', description: "Questions about enterprise rates, pricing, or trials? We'll reply within one business day." },
     { title: 'Support', description: "Need help with your account or setup? We reply within one business day." },
@@ -8,18 +8,18 @@ const contacts = [
 ];
 ---
 
-<section id="contact" aria-labelledby="contact-heading" class="bg-lexara-white-smoke px-4 py-10 text-lexara-dark-navy sm:px-6 sm:py-14 lg:px-12 lg:py-16">
-    <div class="mx-auto max-w-[1760px]">
+<section id="contact" aria-labelledby="contact-heading" class="bg-lexara-white-smoke px-6 py-14 text-lexara-dark-navy lg:py-20">
+    <div class="mx-auto max-w-[1200px]">
         <p class:list={[eyebrowClass, 'mb-6']}>Contact</p>
-        <h2 id="contact-heading" class="text-balance font-serif font-normal leading-tight text-[1.6875rem] sm:text-[2.025rem] lg:text-[2.7rem] 2xl:text-[4.05rem]">Tell Us About Your Intake... or Ask Us About Ours.</h2>
+        <h2 id="contact-heading" class="text-balance font-serif font-normal leading-tight text-[2rem] lg:text-[2.6rem]">Tell Us About Your Intake... or Ask Us About Ours.</h2>
         <div class="grid grid-cols-1 items-start gap-12 lg:mt-6 lg:grid-cols-2 lg:items-stretch lg:gap-20">
             <div>
-                <p class="mt-6 text-lg leading-relaxed text-lexara-light-navy sm:text-xl lg:mt-0 2xl:text-2xl">Lexara <span class="italic">Engage</span> has a provable ROI. Whether you’re a solo practitioner or at a large firm, we will show you how much administrative time Lexara <span class="italic">Engage</span> can save you.</p>
+                <p class="mt-6 text-lg leading-relaxed text-lexara-light-navy sm:text-xl lg:mt-0">Lexara <span class="italic">Engage</span> has a provable ROI. Whether you’re a solo practitioner or at a large firm, we will show you how much administrative time Lexara <span class="italic">Engage</span> can save you.</p>
                 <div class="mt-6 lg:mt-8">
                     {contacts.map(({ title, description }) => (
                         <div class="border-t border-lexara-dark-navy/10 py-4 sm:py-5 lg:last:pb-0">
                             <h3 class:list={[eyebrowClass, 'font-sans']}>{title}</h3>
-                            <p class="mt-2 text-lg leading-relaxed text-lexara-light-navy 2xl:text-2xl">{description}</p>
+                            <p class="mt-2 text-lg leading-relaxed text-lexara-light-navy">{description}</p>
                         </div>
                     ))}
                 </div>
@@ -44,7 +44,7 @@ const contacts = [
                     <label for="contact-message" class="sr-only">Send Message</label>
                     <textarea id="contact-message" name="message" rows="5" placeholder="Send Message" required class:list={[fieldClass, 'block resize-y lg:h-full lg:min-h-0']} />
                 </div>
-                <button type="submit" class="w-full rounded-[2rem] bg-lexara-mahogany px-8 py-6 text-xl font-semibold text-white transition-colors hover:bg-lexara-mahogany/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany 2xl:py-8 2xl:text-3xl">Submit</button>
+                <button type="submit" class="w-full rounded-2xl bg-lexara-mahogany px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-lexara-mahogany/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany 2xl:py-8">Submit</button>
                 <p id="contact-form-note" class="text-sm leading-relaxed text-lexara-light-navy">Submit opens your email app with a draft addressed to sales@lexara.com.</p>
             </form>
         </div>

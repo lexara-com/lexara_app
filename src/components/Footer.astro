@@ -1,85 +1,138 @@
 ---
+// Matches the lexara.com footer: the Lexara "L" pattern over light navy,
+// brand on the left, link columns grouped on the right.
 const currentYear = new Date().getFullYear();
+
+const columns = [
+  {
+    heading: 'Product',
+    links: [
+      { href: '/features?utm_source=footer', label: 'Features' },
+      { href: '/pricing?utm_source=footer', label: 'Pricing' },
+      { href: '/demo?utm_source=footer', label: 'Demo' },
+      { href: '/integrations?utm_source=footer', label: 'Integrations' },
+    ],
+  },
+  {
+    heading: 'Support',
+    links: [
+      { href: '/help', label: 'Help Center' },
+      { href: '/contact?utm_source=footer', label: 'Contact' },
+    ],
+  },
+  {
+    heading: 'Lexara',
+    links: [
+      { href: 'https://lexara.com/consulting?utm_source=lexara.app&utm_medium=footer', label: 'AI Consulting' },
+      { href: 'https://lexara.com/courses?utm_source=lexara.app&utm_medium=footer', label: 'Courses' },
+      { href: 'https://lexara.com/articles?utm_source=lexara.app&utm_medium=footer', label: 'Articles' },
+      { href: 'https://lexara.com/resources?utm_source=lexara.app&utm_medium=footer', label: 'Free Resources' },
+      { href: 'https://lexara.com/about?utm_source=lexara.app&utm_medium=footer', label: 'About Lexara' },
+    ],
+  },
+];
+
+const legal = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms', label: 'Terms' },
+  { href: '/cookies', label: 'Cookies' },
+];
 ---
 
-<footer class="bg-lexara-dark-navy text-white relative overflow-hidden border-t-4 border-white">
-  <!-- Background pattern -->
-  <div class="absolute inset-0 opacity-50">
-    <img 
-      src="https://static.lexara.app/lexara-logo-pattern.jpg" 
-      alt="" 
-      class="w-full h-full object-cover"
-    />
-  </div>
-  
-  <!-- Content wrapper -->
-  <div class="relative z-10">
-  <div class="container mx-auto px-4 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-      <!-- Logo and Description -->
-      <div class="md:col-span-1">
-        <div class="flex items-center gap-3 mb-4">
-          <img 
-            src="https://static.lexara.app/Lexara-logo-white.svg"
-            alt="Lexara" 
-          />
-          <!-- <span class="text-xl font-semibold">LEXARA</span> -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <img src="/images/logos/Lexara-logo-white.svg" alt="Lexara" class="footer-logo-img" />
+      <p class="footer-tagline">AI-guided client intake and conflict checks for law firms.</p>
+    </div>
+    <div class="footer-links">
+      {columns.map((col) => (
+        <div class="footer-col">
+          <h4>{col.heading}</h4>
+          {col.links.map((link) => <a href={link.href}>{link.label}</a>)}
         </div>
-        <p class="text-gray-300 text-sm leading-relaxed">
-          AI-guided client intake and conflict checks for law firms.
-        </p>
-      </div>
-      
-      <!-- Product Links -->
-      <div>
-        <h4 class="font-semibold mb-4 text-lg">Product</h4>
-        <ul class="space-y-3">
-          <li><a href="/features?utm_source=footer" class="text-gray-300 hover:text-white transition-colors">Features</a></li>
-          <li><a href="/pricing?utm_source=footer" class="text-gray-300 hover:text-white transition-colors">Pricing</a></li>
-          <li><a href="/demo?utm_source=footer" class="text-gray-300 hover:text-white transition-colors">Demo</a></li>
-          <li><a href="/integrations?utm_source=footer" class="text-gray-300 hover:text-white transition-colors">Integrations</a></li>
-        </ul>
-      </div>
-      
-      <!-- Support Links -->
-      <div>
-        <h4 class="font-semibold mb-4 text-lg">Support</h4>
-        <ul class="space-y-3">
-          <li><a href="/help" class="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
-          <li><a href="/contact?utm_source=footer" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-          <li><a href="/privacy" class="text-gray-300 hover:text-white transition-colors">Privacy</a></li>
-          <li><a href="/terms" class="text-gray-300 hover:text-white transition-colors">Terms</a></li>
-        </ul>
-      </div>
-      
-      <!-- Lexara (lexara.com) Links -->
-      <div>
-        <h4 class="font-semibold mb-4 text-lg">Lexara</h4>
-        <ul class="space-y-3">
-          <li><a href="https://lexara.com/consulting?utm_source=lexara.app&utm_medium=footer" class="text-gray-300 hover:text-white transition-colors">AI Consulting</a></li>
-          <li><a href="https://lexara.com/courses?utm_source=lexara.app&utm_medium=footer" class="text-gray-300 hover:text-white transition-colors">Courses</a></li>
-          <li><a href="https://lexara.com/articles?utm_source=lexara.app&utm_medium=footer" class="text-gray-300 hover:text-white transition-colors">Articles</a></li>
-          <li><a href="https://lexara.com/resources?utm_source=lexara.app&utm_medium=footer" class="text-gray-300 hover:text-white transition-colors">Free Resources</a></li>
-          <li><a href="https://lexara.com/about?utm_source=lexara.app&utm_medium=footer" class="text-gray-300 hover:text-white transition-colors">About Lexara</a></li>
-        </ul>
-      </div>
+      ))}
     </div>
   </div>
-  
-  <!-- Bottom Bar -->
-  <div class="border-t border-gray-600">
-    <div class="container mx-auto px-4 py-6">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-gray-300 text-sm">
-          © {currentYear} Lexara Consulting LLC. All rights reserved.
-        </p>
-        <div class="flex gap-6 text-sm">
-          <a href="/privacy" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
-          <a href="/terms" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a>
-          <a href="/cookies" class="text-gray-300 hover:text-white transition-colors">Cookies</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="footer-bottom">
+    <p>&copy; {currentYear} Lexara Consulting LLC. All rights reserved.</p>
+    <nav class="footer-legal" aria-label="Legal">
+      {legal.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
   </div>
 </footer>
+
+<style>
+  .site-footer {
+    background: #3B576C url('/images/footer-pattern.svg') center / cover no-repeat;
+    color: #ffffff;
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+  }
+  .footer-content,
+  .footer-bottom {
+    width: 90%;
+    margin-inline: auto;
+  }
+  .footer-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 64px;
+    padding: 96px 0 48px;
+  }
+  .footer-logo-img {
+    display: block;
+    height: 24px;
+    width: auto;
+  }
+  .footer-tagline {
+    max-width: 30rem;
+    margin: 8px 0 0;
+    color: #C6D8DB;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    column-gap: clamp(48px, 6vw, 112px);
+    row-gap: 32px;
+  }
+  .footer-col h4 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .footer-col a {
+    display: block;
+    padding: 6px 0;
+    color: #C6D8DB;
+    font-size: 17px;
+    line-height: 1.7;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover,
+  .footer-legal a:hover { color: #ffffff; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0;
+    border-top: 1px solid #C6D8DB;
+    color: #C6D8DB;
+    font-size: 15px;
+  }
+  .footer-bottom p { margin: 0; }
+  .footer-legal { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+  .footer-legal a { color: #C6D8DB; text-decoration: none; transition: color 0.15s; }
+  @media (max-width: 768px) {
+    .footer-content { grid-template-columns: 1fr; gap: 40px; padding-top: 64px; }
+    .footer-links { column-gap: 40px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>

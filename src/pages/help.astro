@@ -46,7 +46,7 @@ const categories = [
 ];
 ---
 
-<Layout title="Help Center - Engage by Lexara">
+<Layout title="Help Center">
   <HeaderLexara />
   
   <main>
@@ -101,9 +101,7 @@ const categories = [
               <ul class="space-y-3">
                 {category.articles.map((article) => (
                   <li>
-                    <a href="#" class="text-gray-700 hover:text-lexara-mahogany transition-colors">
-                      {article}
-                    </a>
+                    <span class="text-gray-700">{article}</span>
                   </li>
                 ))}
               </ul>
@@ -118,13 +116,13 @@ const categories = [
             </a>
           </h3>
           <p class="text-gray-600 mb-8">
-            Our support team is available 24/7 to assist you.
+            Contact our support team and we’ll reply within one business day.
           </p>
           <div class="flex flex-wrap gap-4 justify-center">
             <Button href="/contact" variant="primary">
               Contact Support
             </Button>
-            <Button href="/demo" variant="outline">
+            <Button href="https://calendly.com/amy-lexara/lexara-engage-demo-1" variant="outline">
               Schedule a Demo
             </Button>
           </div>

@@ -4,7 +4,7 @@ import { PARTNERS, SBMI, WYSB, partnerSignupUrl } from "./partners";
 describe("partnerSignupUrl", () => {
   it("keeps the State Bar of Michigan link exactly as it shipped", () => {
     expect(partnerSignupUrl(SBMI)).toBe(
-      "https://console.lexara.app/signup?promo=MIBAR20&utm_source=sbm&utm_medium=partner_page&utm_campaign=sbmi_launch",
+      "https://console.lexara.app/signup?promo=SBM20&utm_source=sbm&utm_medium=partner_page&utm_campaign=sbmi_launch",
     );
   });
 

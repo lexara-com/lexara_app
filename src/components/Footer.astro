@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear();
 
 const columns = [
   {
-    heading: 'Product',
+    heading: 'Products',
     links: [
       { href: '/features?utm_source=footer', label: 'Features' },
       { href: '/pricing?utm_source=footer', label: 'Pricing' },
@@ -74,6 +74,8 @@ const legal = [
     margin-inline: auto;
   }
   .footer-content {
+    box-sizing: border-box;
+    min-height: 390px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 64px;

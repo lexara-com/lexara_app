@@ -12,3 +12,14 @@
     @apply font-sans;
   }
 }
+/* Every button grows slightly and lifts on hover (matches the Features hero buttons). */
+:is(a, button)[class*="rounded"][class*="px-"] {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+:is(a, button)[class*="rounded"][class*="px-"]:is(:hover, :focus-visible) {
+  transform: scale(1.05);
+  box-shadow: 0 16px 32px rgba(30, 43, 59, 0.2), 0 4px 8px rgba(30, 43, 59, 0.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(a, button)[class*="rounded"][class*="px-"] { transform: none !important; }
+}

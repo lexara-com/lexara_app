@@ -21,32 +21,32 @@ import Section from '@/components/ui/Section.astro';
             See how Lexara <em>Engage</em> handles intake and conflict checks for your firm.
           </p>
           
-          <div class="bg-lexara-white-smoke rounded-2xl p-12 max-w-2xl mx-auto">
-            <h2 class="text-2xl font-semibold text-lexara-dark-navy mb-6">
+          <div class="bg-lexara-white-smoke rounded-3xl px-8 py-12 sm:p-14 max-w-3xl mx-auto shadow-md">
+            <h2 class="text-3xl md:text-4xl font-semibold text-lexara-dark-navy mb-6">
               Schedule Your Demo
             </h2>
-            <p class="text-gray-600 mb-8">
+            <p class="text-lg md:text-xl leading-relaxed text-gray-600 mb-10">
               Our team will show you how Engage can help your firm capture more leads, qualify clients faster, and improve conversion rates.
             </p>
             
-            <div class="space-y-4 text-left mb-8">
+            <div class="space-y-5 text-left mb-10 max-w-xl mx-auto">
               <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 flex-shrink-0 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span class="text-gray-700">Live demonstration of AI-powered intake</span>
+                <span class="text-lg md:text-xl text-gray-700">Live demonstration of AI-powered intake</span>
               </div>
               <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 flex-shrink-0 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span class="text-gray-700">Custom configuration for your practice areas</span>
+                <span class="text-lg md:text-xl text-gray-700">Custom configuration for your practice areas</span>
               </div>
               <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 flex-shrink-0 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span class="text-gray-700">Integration options and pricing discussion</span>
+                <span class="text-lg md:text-xl text-gray-700">Integration options and pricing discussion</span>
               </div>
             </div>
             
@@ -54,23 +54,23 @@ import Section from '@/components/ui/Section.astro';
               href="https://calendly.com/amy-lexara/lexara-engage-demo-1"
               variant="primary"
               size="large"
-              class="w-full sm:w-auto"
+              class="w-full sm:w-auto !rounded-full !px-10 !py-4 text-lg md:!text-xl"
             >
               Schedule Demo
             </Button>
-            <p class="mt-6 text-gray-600">
+            <p class="mt-8 text-lg md:text-xl text-gray-600">
               Short on time?{' '}
               <a href="https://www.youtube.com/watch?v=H0zwv3Ppsyw" target="_blank" rel="noopener" class="font-medium text-lexara-mahogany underline hover:no-underline">Watch the 1-minute demo</a>
             </p>
             
-            <p class="text-sm text-gray-500 mt-6">
+            <p class="text-base md:text-lg text-gray-500 mt-8">
               Or start your free trial immediately
             </p>
             <Button 
               href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=demo&utm_campaign=demo_page`}
               variant="outline"
-              size="medium"
-              class="mt-2"
+              size="large"
+              class="mt-3 !rounded-full !px-10 !py-4 text-lg"
             >
               Start Free Trial
             </Button>

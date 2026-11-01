@@ -1,45 +1,56 @@
 ---
-// Load testimonials data
+// Real client testimonials only. Add entries to public/data/testimonials.json
+// (with written permission from the person quoted).
 import testimonialsData from '../../public/data/testimonials.json';
-const testimonials = testimonialsData.testimonials;
+
+interface Testimonial {
+  id: number;
+  text: string;
+  author: string;
+  role?: string;
+  company?: string;
+  photo?: string;
+}
+
+const testimonials: Testimonial[] = testimonialsData.testimonials;
 ---
 
-<section class="py-20 bg-white">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-semibold text-lexara-dark-navy mb-4">What Our Clients Are Saying</h2>
-      <p class="text-lg text-gray-600">Start your free 30-day trial and see how much administrative time you and your team get back</p>
+{testimonials.length > 0 && (
+  <section class="bg-lexara-white-smoke px-4 py-16 lg:py-24" aria-labelledby="testimonials-title">
+    <div class="mx-auto max-w-5xl">
+      <p class="text-center text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy">What lawyers are saying</p>
+      <h2 id="testimonials-title" class="sr-only">Testimonials</h2>
+      <div class="mt-10 grid gap-8">
+        {testimonials.map((t) => (
+          <figure class="rounded-3xl bg-white p-8 shadow-[0_1px_2px_rgba(30,43,59,.06),0_12px_32px_rgba(30,43,59,.08)] sm:p-12">
+            <svg class="h-10 w-10 text-lexara-mahogany" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+              <path d="M16 10c-6 2-10 7-10 14v6h11V19H11c0-4 2-6 6-7zm17 0c-6 2-10 7-10 14v6h11V19h-6c0-4 2-6 6-7z" />
+            </svg>
+            <blockquote class="mt-6 font-serif text-xl leading-relaxed text-lexara-dark-navy sm:text-2xl lg:text-[1.75rem] lg:leading-[1.5]">
+              {t.text}
+            </blockquote>
+            <figcaption class="mt-8 flex items-center gap-5">
+              {t.photo && (
+                <img
+                  src={t.photo}
+                  alt={t.author}
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-20 w-20 shrink-0 rounded-full object-cover ring-4 ring-lexara-white-smoke"
+                />
+              )}
+              <div>
+                <p class="text-lg font-semibold text-lexara-dark-navy">{t.author}</p>
+                {(t.role || t.company) && (
+                  <p class="text-base text-lexara-light-navy">{[t.role, t.company].filter(Boolean).join(', ')}</p>
+                )}
+              </div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      {testimonials.map((testimonial) => (
-        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-          <!-- Star Rating -->
-          <div class="flex gap-1 mb-6">
-            {[...Array(testimonial.rating)].map(() => (
-              <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-              </svg>
-            ))}
-          </div>
-          
-          <!-- Testimonial Text -->
-          <p class="text-gray-700 mb-8 leading-relaxed">"{testimonial.text}"</p>
-          
-          <!-- Author Info -->
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-              <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-semibold text-lexara-dark-navy">{testimonial.author}</p>
-              <p class="text-sm text-gray-600">{testimonial.role} • {testimonial.company}</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+  </section>
+)}

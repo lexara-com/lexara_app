@@ -41,13 +41,12 @@ const consoleUrl = getConsoleUrl(Astro.locals);
         <a href={`${consoleUrl}/api/auth/login`} class="text-[19px] font-medium text-gray-700 hover:text-gray-900">
           Sign In
         </a>
-        <Button
+        <a
           href={`${consoleUrl}/signup?utm_source=engage&utm_campaign=header`}
-          variant="primary"
-          class="!rounded !text-[19px] !px-7 !py-3"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-lexara-mahogany px-[26px] py-3 font-sans text-base font-semibold leading-normal text-white no-underline shadow-[0_12px_28px_rgba(30,43,59,0.14),0_2px_5px_rgba(30,43,59,0.12)] transition-[background-color,box-shadow,transform] duration-300 hover:bg-lexara-dark-navy focus-visible:outline-2 focus-visible:outline-offset-[5px] focus-visible:outline-lexara-mahogany"
         >
           Get Started
-        </Button>
+        </a>
       </div>
       
       <div class="md:hidden">

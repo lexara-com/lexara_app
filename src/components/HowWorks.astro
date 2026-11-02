@@ -23,9 +23,9 @@ const steps = [
 ---
 <section class="bg-lexara-white-smoke px-6 py-14 text-lexara-dark-navy lg:py-20">
     <div class="mx-auto max-w-[1200px]">
-        <p class="mb-8 text-sm lg:text-lg font-semibold uppercase tracking-[0.2em] text-lexara-light-navy">How Engage Works</p>
-        <h2 class="font-serif font-normal leading-[1.15] text-[2rem] lg:text-[2.6rem]">For Less Than the Cost of One Billable Hour per Month, <br> You Get Smart Intake and Real-Time Conflicts Checks.</h2>
-        <p class="font-serif italic leading-[1.15] text-[2rem] lg:text-[2.6rem]">And, You Get Your Time Back.</p>
+        <p class="mb-8 text-sm lg:text-base font-semibold uppercase tracking-[0.2em] text-lexara-light-navy">How Engage Works</p>
+        <h2 class="font-serif font-normal leading-[1.15] text-[1.75rem] lg:text-4xl">For Less Than the Cost of One Billable Hour per Month, <br> You Get Smart Intake and Real-Time Conflicts Checks.</h2>
+        <p class="font-serif italic leading-[1.15] text-[1.75rem] lg:text-4xl">And, You Get Your Time Back.</p>
         <ol role="list" class="mt-10 grid list-none grid-cols-1 gap-6 lg:mt-12 lg:grid-cols-3">
             {steps.map((step) => (
                 <li class="rounded-[1.75rem] border border-[#E0DCD7] bg-white p-7 shadow-[0_1px_2px_rgba(30,43,59,.05),0_10px_28px_rgba(30,43,59,.06)] lg:p-8">
@@ -33,10 +33,10 @@ const steps = [
                         <span aria-hidden="true" class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-lexara-white-smoke text-lexara-mahogany">
                             <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={step.icon} />
                         </span>
-                        <span aria-hidden="true" class="font-serif text-3xl leading-none text-lexara-mahogany">{step.number}</span>
+                        <span aria-hidden="true" class="font-serif text-2xl leading-none text-lexara-mahogany">{step.number}</span>
                     </div>
-                    <h3 class="mb-3 font-serif text-2xl font-normal leading-[1.25]">{step.header}</h3>
-                    <p class="text-lg leading-[1.55] text-lexara-light-navy" set:html={step.body} />
+                    <h3 class="mb-3 font-serif text-xl font-normal leading-[1.25]">{step.header}</h3>
+                    <p class="text-base leading-[1.55] text-lexara-light-navy" set:html={step.body} />
                 </li>
             ))}
         </ol>

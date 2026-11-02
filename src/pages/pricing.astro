@@ -97,13 +97,13 @@ const faqs = [
     <Section background="white" padding="large">
       <Container size="medium">
         <div class="text-center">
-          <h1 class="text-4xl md:text-5xl font-semibold text-lexara-dark-navy mb-6">
+          <h1 class="text-3xl md:text-[2.5rem] font-semibold text-lexara-dark-navy mb-6">
             Simple, Transparent Pricing
           </h1>
-          <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-5">
+          <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-5">
             Only pay for what you need. Priced per attorney and no hidden fees. Less than 1 billable hour a month.
           </p>
-          <p class="text-lg md:text-xl text-lexara-dark-navy font-semibold">
+          <p class="text-base md:text-lg text-lexara-dark-navy font-semibold">
             Save 2 months when you pay annually
           </p>
         </div>
@@ -118,13 +118,13 @@ const faqs = [
           <div class="inline-flex items-center bg-lexara-white-smoke rounded-full p-1.5 shadow-lg">
             <button 
               id="monthly-toggle"
-              class="px-9 py-3.5 rounded-full text-lg md:text-xl font-semibold transition-all duration-200 bg-lexara-dark-navy text-white"
+              class="px-9 py-3.5 rounded-full text-base md:text-lg font-semibold transition-all duration-200 bg-lexara-dark-navy text-white"
             >
               Monthly
             </button>
             <button 
               id="annual-toggle"
-              class="px-9 py-3.5 rounded-full text-lg md:text-xl font-semibold transition-all duration-200 text-lexara-dark-navy"
+              class="px-9 py-3.5 rounded-full text-base md:text-lg font-semibold transition-all duration-200 text-lexara-dark-navy"
             >
               Annual
               <span class="ml-2 text-sm bg-green-100 text-green-700 px-2.5 py-1 rounded-full">Save 17%</span>
@@ -137,31 +137,31 @@ const faqs = [
           <div class="grid md:grid-cols-2 gap-12">
             <!-- Pricing Details -->
             <div>
-              <h2 class="text-3xl font-semibold text-lexara-dark-navy mb-6">
+              <h2 class="text-2xl font-semibold text-lexara-dark-navy mb-6">
                 Per-Attorney Pricing
               </h2>
               
               <div class="space-y-6 mb-8">
                 <div class="border-b border-gray-200 pb-6">
                   <div class="flex items-baseline justify-between mb-2">
-                    <span class="text-xl text-gray-700">First attorney</span>
+                    <span class="text-lg text-gray-700">First attorney</span>
                     <div class="text-right">
-                      <span class="text-3xl font-bold text-lexara-dark-navy monthly-price">$75</span>
-                      <span class="text-3xl font-bold text-lexara-dark-navy annual-price hidden">$750</span>
-                      <span class="text-lg text-gray-600 ml-1 monthly-period">/month</span>
-                      <span class="text-lg text-gray-600 ml-1 annual-period hidden">/year</span>
+                      <span class="text-2xl font-bold text-lexara-dark-navy monthly-price">$75</span>
+                      <span class="text-2xl font-bold text-lexara-dark-navy annual-price hidden">$750</span>
+                      <span class="text-base text-gray-600 ml-1 monthly-period">/month</span>
+                      <span class="text-base text-gray-600 ml-1 annual-period hidden">/year</span>
                     </div>
                   </div>
                 </div>
                 
                 <div class="border-b border-gray-200 pb-6">
                   <div class="flex items-baseline justify-between mb-2">
-                    <span class="text-xl text-gray-700">Each additional attorney</span>
+                    <span class="text-lg text-gray-700">Each additional attorney</span>
                     <div class="text-right">
-                      <span class="text-3xl font-bold text-lexara-dark-navy monthly-price">$50</span>
-                      <span class="text-3xl font-bold text-lexara-dark-navy annual-price hidden">$500</span>
-                      <span class="text-lg text-gray-600 ml-1 monthly-period">/month</span>
-                      <span class="text-lg text-gray-600 ml-1 annual-period hidden">/year</span>
+                      <span class="text-2xl font-bold text-lexara-dark-navy monthly-price">$50</span>
+                      <span class="text-2xl font-bold text-lexara-dark-navy annual-price hidden">$500</span>
+                      <span class="text-base text-gray-600 ml-1 monthly-period">/month</span>
+                      <span class="text-base text-gray-600 ml-1 annual-period hidden">/year</span>
                     </div>
                   </div>
                 </div>
@@ -185,7 +185,7 @@ const faqs = [
 
             <!-- Features List -->
             <div>
-              <h3 class="text-2xl font-semibold text-lexara-dark-navy mb-6">
+              <h3 class="text-xl font-semibold text-lexara-dark-navy mb-6">
                 Everything Included
               </h3>
               <ul class="space-y-3">
@@ -194,7 +194,7 @@ const faqs = [
                     <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span class="text-lg text-gray-700">{feature}</span>
+                    <span class="text-base text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -204,13 +204,13 @@ const faqs = [
 
         <!-- Pricing Examples -->
         <div class="text-center mb-8">
-          <h3 class="text-2xl font-semibold text-white mb-8">
+          <h3 class="text-xl font-semibold text-white mb-8">
             Price per Attorney, Not per Seat
           </h3>
         </div>
 
         <div class="text-center mt-8">
-          <p class="text-gray-300 text-lg">
+          <p class="text-gray-300 text-base">
             Need pricing for 50+ attorneys?{' '}
             <a href="mailto:support@lexara.com?subject=Volume%20pricing%20for%2050%2B%20attorneys" class="text-white underline hover:text-gray-100">
               Contact sales for volume discounts
@@ -223,7 +223,7 @@ const faqs = [
     <!-- FAQ Section -->
     <Section background="white" padding="xlarge">
       <Container size="medium">
-        <h2 class="text-3xl font-semibold text-center text-lexara-dark-navy mb-12">
+        <h2 class="text-2xl font-semibold text-center text-lexara-dark-navy mb-12">
           Frequently Asked Questions
         </h2>
         
@@ -231,12 +231,12 @@ const faqs = [
           {faqs.map((faq, index) => (
             <details class="group border-b border-gray-200">
               <summary class="py-6 px-4 cursor-pointer list-none flex items-center justify-between hover:bg-gray-50 transition-colors">
-                <h3 class="text-lg md:text-xl font-semibold text-lexara-dark-navy pr-8" set:html={faq.question}></h3>
+                <h3 class="text-base md:text-lg font-semibold text-lexara-dark-navy pr-8" set:html={faq.question}></h3>
                 <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-              <div class="px-4 pb-6 text-lg text-gray-600">
+              <div class="px-4 pb-6 text-base text-gray-600">
                 {faq.answer}
               </div>
             </details>
@@ -249,10 +249,10 @@ const faqs = [
     <Section background="dark-navy" padding="xlarge">
       <Container size="medium">
         <div class="text-center">
-          <h2 class="text-3xl font-semibold text-white mb-4">
+          <h2 class="text-2xl font-semibold text-white mb-4">
             Ready to Get Started?
           </h2>
-          <p class="text-lg text-gray-300 mb-8">
+          <p class="text-base text-gray-300 mb-8">
             Start your free 30-day trial and see how much administrative time you and your team get back.
           </p>
           <Button 

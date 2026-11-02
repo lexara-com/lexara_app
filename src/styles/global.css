@@ -2,6 +2,12 @@
 @config "../../tailwind.config.mjs";
 
 @layer base {
+  /* Whole-site scale: 15px root (Nov 2026, Amy). Every rem-based size
+     steps down ~6% — body 16 -> 15, 18 -> ~17, hero 46 -> ~43. */
+  html {
+    font-size: 93.75%;
+  }
+
   /* Headlines use Lora serif font */
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;

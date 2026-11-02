@@ -64,7 +64,7 @@ const consoleUrl = getConsoleUrl(Astro.locals);
       {navItems.map((item) => (
         <a
           href={item.href}
-          class={`block text-lg font-medium ${
+          class={`block text-base font-medium ${
             currentPath === item.href
               ? 'text-gray-900'
               : 'text-gray-700'

@@ -16,35 +16,35 @@ const testimonials: Testimonial[] = testimonialsData.testimonials;
 ---
 
 {testimonials.length > 0 && (
-  <section class="bg-lexara-white-smoke px-4 py-16 lg:py-24" aria-labelledby="testimonials-title">
-    <div class="mx-auto max-w-5xl">
-      <p class="text-center text-sm lg:text-lg font-semibold uppercase tracking-[0.2em] text-lexara-light-navy">What lawyers are saying</p>
+  <section class="bg-lexara-white-smoke px-4 py-10 lg:py-14" aria-labelledby="testimonials-title">
+    <div class="mx-auto max-w-2xl">
+      <p class="text-center text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy">What lawyers are saying</p>
       <h2 id="testimonials-title" class="sr-only">Testimonials</h2>
-      <div class="mt-10 grid gap-8">
+      <div class="mt-6 grid gap-6">
         {testimonials.map((t) => (
-          <figure class="rounded-3xl bg-white p-8 shadow-[0_1px_2px_rgba(30,43,59,.06),0_12px_32px_rgba(30,43,59,.08)] sm:p-12">
-            <svg class="h-10 w-10 text-lexara-mahogany" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+          <figure class="rounded-2xl bg-white p-6 shadow-[0_1px_2px_rgba(30,43,59,.06),0_12px_32px_rgba(30,43,59,.08)] sm:p-8">
+            <svg class="h-7 w-7 text-lexara-mahogany" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
               <path d="M16 10c-6 2-10 7-10 14v6h11V19H11c0-4 2-6 6-7zm17 0c-6 2-10 7-10 14v6h11V19h-6c0-4 2-6 6-7z" />
             </svg>
-            <blockquote class="mt-6 font-serif text-xl leading-relaxed text-lexara-dark-navy sm:text-2xl lg:text-[1.75rem] lg:leading-[1.5]">
+            <blockquote class="mt-4 font-serif text-base leading-relaxed text-lexara-dark-navy sm:text-lg">
               {t.text}
             </blockquote>
-            <figcaption class="mt-8 flex items-center gap-5">
+            <figcaption class="mt-6 flex items-center gap-4">
               {t.photo && (
                 <img
                   src={t.photo}
                   alt={t.author}
-                  width="80"
-                  height="80"
+                  width="56"
+                  height="56"
                   loading="lazy"
                   decoding="async"
-                  class="h-20 w-20 shrink-0 rounded-full object-cover ring-4 ring-lexara-white-smoke"
+                  class="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-lexara-white-smoke"
                 />
               )}
               <div>
-                <p class="text-lg font-semibold text-lexara-dark-navy">{t.author}</p>
+                <p class="text-base font-semibold text-lexara-dark-navy">{t.author}</p>
                 {(t.role || t.company) && (
-                  <p class="text-base text-lexara-light-navy">{[t.role, t.company].filter(Boolean).join(', ')}</p>
+                  <p class="text-sm text-lexara-light-navy">{[t.role, t.company].filter(Boolean).join(', ')}</p>
                 )}
               </div>
             </figcaption>

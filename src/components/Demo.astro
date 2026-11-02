@@ -3,7 +3,7 @@ import { getConsoleUrl } from '../lib/env';
 import Button from './ui/Button.astro';
 
 const consoleUrl = getConsoleUrl(Astro.locals);
-const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-lg';
+const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-base';
 const intakeDetails = [
     ['Client', 'Ellen Prasad · reached you 9:14 p.m.'],
     ['Matter', 'Auto collision · personal injury'],
@@ -16,8 +16,8 @@ const intakeDetails = [
 <section id="demo" aria-labelledby="demo-heading" class="bg-lexara-white-smoke px-4 py-10 text-lexara-dark-navy sm:px-6 sm:py-14 lg:px-12 lg:py-16">
     <div class="mx-auto max-w-[1760px]">
         <p class:list={[eyebrowClass, 'mb-6']}>Demo</p>
-        <h2 id="demo-heading" class="font-serif text-4xl font-normal leading-tight sm:text-5xl lg:text-6xl 2xl:text-7xl">See an Intake Run Start to Finish.</h2>
-        <p class="mt-6 max-w-[1000px] text-lg leading-relaxed text-lexara-light-navy sm:text-xl 2xl:text-2xl">On the left is what your prospect sees: a conversation, and a consult on the calendar. On the right is what lands in Console for your firm — including the conflicts result, which the client never sees.</p>
+        <h2 id="demo-heading" class="font-serif text-3xl font-normal leading-tight sm:text-[2.5rem] lg:text-[2.875rem] 2xl:text-[3rem]">See an Intake Run Start to Finish.</h2>
+        <p class="mt-6 max-w-[1000px] text-base leading-relaxed text-lexara-light-navy sm:text-lg 2xl:text-xl">On the left is what your prospect sees: a conversation, and a consult on the calendar. On the right is what lands in Console for your firm — including the conflicts result, which the client never sees.</p>
 
         <div class="mt-12 grid grid-cols-1 items-start gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-12">
             <div class="min-w-0">
@@ -46,7 +46,7 @@ const intakeDetails = [
                             Conflicts clear
                         </span>
                     </div>
-                    <dl class="grid grid-cols-[auto_minmax(0,1fr)] gap-x-5 gap-y-4 text-sm leading-relaxed sm:gap-x-6 sm:text-base 2xl:text-xl">
+                    <dl class="grid grid-cols-[auto_minmax(0,1fr)] gap-x-5 gap-y-4 text-sm leading-relaxed sm:gap-x-6 sm:text-base 2xl:text-lg">
                         {intakeDetails.map(([label, value]) => (
                             <>
                                 <dt>{label}</dt>
@@ -54,7 +54,7 @@ const intakeDetails = [
                             </>
                         ))}
                     </dl>
-                    <div class="mt-7 border-t border-lexara-light-navy/60 pt-6 text-sm leading-relaxed 2xl:text-lg">
+                    <div class="mt-7 border-t border-lexara-light-navy/60 pt-6 text-sm leading-relaxed 2xl:text-base">
                         <p>Attorney review required before any engagement.</p>
                         <p class="mt-1 flex items-start gap-3">
                             <span aria-hidden="true" class="mt-2 h-2 w-2 shrink-0 rounded-full bg-lexara-light-navy"></span>
@@ -64,8 +64,8 @@ const intakeDetails = [
                 </div>
 
                 <div class="mt-10 lg:mt-12">
-                    <h3 class="font-serif text-3xl font-normal leading-tight 2xl:text-4xl">Book Your Setup Call</h3>
-                    <p class="mb-6 mt-3 text-lg leading-relaxed text-lexara-light-navy 2xl:text-xl">Thirty minutes, your practice areas, your questions. No charge.</p>
+                    <h3 class="font-serif text-2xl font-normal leading-tight 2xl:text-3xl">Book Your Setup Call</h3>
+                    <p class="mb-6 mt-3 text-base leading-relaxed text-lexara-light-navy 2xl:text-lg">Thirty minutes, your practice areas, your questions. No charge.</p>
                     <Button
                         href={`${consoleUrl}/signup?plan=starter&utm_source=engage&utm_campaign=hero`}
                         variant="primary"
@@ -73,8 +73,8 @@ const intakeDetails = [
                         Start 30-day Free Trial
                     </Button>
                     <div class="mt-10 lg:mt-14">
-                        <a href="/contact" class="inline-block rounded text-lg text-lexara-light-navy underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany 2xl:text-2xl">Request the call</a>
-                        <p class="mt-6 text-base leading-relaxed text-lexara-light-navy 2xl:text-lg">Rather start on your own? Begin the 30-day free trial and book the call from inside Console.</p>
+                        <a href="/contact" class="inline-block rounded text-base text-lexara-light-navy underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany 2xl:text-xl">Request the call</a>
+                        <p class="mt-6 text-base leading-relaxed text-lexara-light-navy 2xl:text-base">Rather start on your own? Begin the 30-day free trial and book the call from inside Console.</p>
                     </div>
                 </div>
             </div>

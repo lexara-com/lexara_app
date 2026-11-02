@@ -1,5 +1,5 @@
 ---
-const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-lg';
+const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-base';
 const fieldClass = 'w-full min-w-0 min-h-[56px] rounded-[18px] border border-lexara-light-navy/35 bg-white px-4 py-3.5 text-base text-lexara-dark-navy placeholder:text-lexara-light-navy focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany';
 const contacts = [
     { title: 'Sales', description: "Questions about enterprise rates, pricing, or trials? We'll reply within one business day." },
@@ -11,15 +11,15 @@ const contacts = [
 <section id="contact" aria-labelledby="contact-heading" class="bg-lexara-white-smoke px-6 py-14 text-lexara-dark-navy lg:py-20">
     <div class="mx-auto max-w-[1200px]">
         <p class:list={[eyebrowClass, 'mb-6']}>Contact</p>
-        <h2 id="contact-heading" class="text-balance font-serif font-normal leading-tight text-[2rem] lg:text-[2.6rem]">Tell Us About Your Intake... or Ask Us About Ours.</h2>
+        <h2 id="contact-heading" class="text-balance font-serif font-normal leading-tight text-[1.75rem] lg:text-4xl">Tell Us About Your Intake... or Ask Us About Ours.</h2>
         <div class="grid grid-cols-1 items-start gap-12 lg:mt-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:items-start lg:gap-16">
             <div>
-                <p class="mt-6 text-lg leading-relaxed text-lexara-light-navy sm:text-xl lg:mt-0">Lexara <span class="italic">Engage</span> has a provable ROI. Whether you’re a solo practitioner or at a large firm, we will show you how much administrative time Lexara <span class="italic">Engage</span> can save you.</p>
+                <p class="mt-6 text-base leading-relaxed text-lexara-light-navy sm:text-lg lg:mt-0">Lexara <span class="italic">Engage</span> has a provable ROI. Whether you’re a solo practitioner or at a large firm, we will show you how much administrative time Lexara <span class="italic">Engage</span> can save you.</p>
                 <div class="mt-6 lg:mt-8">
                     {contacts.map(({ title, description }) => (
                         <div class="border-t border-lexara-dark-navy/10 py-4 sm:py-5 lg:last:pb-0">
                             <h3 class:list={[eyebrowClass, 'font-sans']}>{title}</h3>
-                            <p class="mt-2 text-lg leading-relaxed text-lexara-light-navy">{description}</p>
+                            <p class="mt-2 text-base leading-relaxed text-lexara-light-navy">{description}</p>
                         </div>
                     ))}
                 </div>

@@ -46,16 +46,16 @@ const features = [
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_420px]">
         <div>
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 class="text-3xl md:text-[2.5rem] font-bold text-gray-900 mb-6">
             Powerful Features for<br />Modern Law Firms
           </h1>
-          <p class="text-lg text-gray-600 mb-8">
+          <p class="text-base text-gray-600 mb-8">
             <span class="font-semibold italic">Engage</span> combines advanced AI with legal expertise to deliver the most comprehensive client intake solution for law firms.
           </p>
           <div class="flex flex-wrap gap-4">
             <a 
               href={`${import.meta.env.PUBLIC_CONSOLE_URL}/signup?utm_source=engage&utm_campaign=features_hero`}
-              class="inline-block px-7 py-3.5 bg-lexara-mahogany text-white text-lg font-medium rounded-lg shadow-md transition-all duration-200 hover:scale-105 hover:shadow-xl"
+              class="inline-block px-7 py-3.5 bg-lexara-mahogany text-white text-base font-medium rounded-lg shadow-md transition-all duration-200 hover:scale-105 hover:shadow-xl"
             >
               Start Free Trial
             </a>
@@ -63,7 +63,7 @@ const features = [
               href="https://www.youtube.com/watch?v=H0zwv3Ppsyw"
               target="_blank"
               rel="noopener"
-              class="inline-block px-7 py-3.5 bg-white text-gray-900 text-lg font-medium rounded-lg border border-gray-300 shadow-md transition-all duration-200 hover:scale-105 hover:shadow-xl"
+              class="inline-block px-7 py-3.5 bg-white text-gray-900 text-base font-medium rounded-lg border border-gray-300 shadow-md transition-all duration-200 hover:scale-105 hover:shadow-xl"
             >
               Watch the 1-Minute Demo
             </a>
@@ -99,8 +99,8 @@ const features = [
     <!-- Everything You Need Section -->
     <section class="py-20 bg-white">
       <div class="container mx-auto px-4">
-        <h2 class="text-4xl md:text-5xl font-bold text-center mb-5">Everything You Need for Client Intake</h2>
-        <p class="text-center text-xl md:text-2xl text-gray-600 mb-14 max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-[2.5rem] font-bold text-center mb-5">Everything You Need for Client Intake</h2>
+        <p class="text-center text-lg md:text-xl text-gray-600 mb-14 max-w-3xl mx-auto">
           Comprehensive features designed specifically for legal professionals
         </p>
         
@@ -139,7 +139,7 @@ const features = [
                   </svg>
                 )}
               </div>
-              <h3 class="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+              <h3 class="text-base font-semibold text-gray-900 mb-2">{feature.title}</h3>
               <p class="text-sm text-gray-600">{feature.description}</p>
             </div>
           ))}

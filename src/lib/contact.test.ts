@@ -9,11 +9,12 @@ const form = (entries: Record<string, string>) => {
 
 describe("buildSubmission", () => {
   it("maps the /contact form fields to the CMS form keys", () => {
-    const p = buildSubmission(form({ name: " Pat Lee ", email: "pat@firm.com", firm: "Lee Law", message: "Hi", cf_ts: "123" }));
+    const p = buildSubmission(form({ name: " Pat Lee ", email: "pat@firm.com", firm: "Lee Law", attorneys: "4", message: "Hi", cf_ts: "123" }));
     expect(p.get("cf_slug")).toBe(FORM_SLUG);
     expect(p.get("name")).toBe("Pat Lee");
     expect(p.get("email")).toBe("pat@firm.com");
     expect(p.get("firm")).toBe("Lee Law");
+    expect(p.get("attorneys")).toBe("4");
     expect(p.get("message")).toBe("Hi");
     expect(p.get("cf_ts")).toBe("123");
   });

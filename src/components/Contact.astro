@@ -47,6 +47,10 @@ const contacts = [
                     <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="Email" required class={fieldClass} />
                 </div>
                 <div>
+                    <label for="contact-attorneys" class="sr-only">Number of attorneys at your firm</label>
+                    <input id="contact-attorneys" name="attorneys" type="number" min="1" step="1" inputmode="numeric" placeholder="Number of attorneys at your firm" required class={fieldClass} />
+                </div>
+                <div>
                     <label for="contact-message" class="sr-only">Message</label>
                     <textarea id="contact-message" name="message" rows="4" placeholder="Message" required class:list={[fieldClass, 'block resize-y']} />
                 </div>

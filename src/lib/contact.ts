@@ -23,6 +23,7 @@ export function buildSubmission(fd: FormData): URLSearchParams {
   p.set("name", name);
   p.set("email", str(fd, "email"));
   p.set("firm", str(fd, "firm"));
+  p.set("attorneys", str(fd, "attorneys"));
   p.set("message", str(fd, "message"));
   return p;
 }

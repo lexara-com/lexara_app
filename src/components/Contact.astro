@@ -1,4 +1,7 @@
 ---
+import { messageFor } from '../lib/contact';
+const formMessage = messageFor(Astro.url.searchParams.get('contact'));
+const renderedAt = Date.now();
 const eyebrowClass = 'eyebrow text-sm font-semibold uppercase tracking-[0.2em] text-lexara-light-navy lg:text-base';
 const fieldClass = 'w-full min-w-0 min-h-[56px] rounded-[18px] border border-lexara-light-navy/35 bg-white px-4 py-3.5 text-base text-lexara-dark-navy placeholder:text-lexara-light-navy focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany';
 const contacts = [
@@ -25,7 +28,10 @@ const contacts = [
                 </div>
             </div>
 
-            <form data-contact-form action="mailto:support@lexara.com" method="post" enctype="text/plain" aria-label="Contact Lexara" aria-describedby="contact-form-note" class="min-w-0 grid gap-5">
+            <form id="contact-form" action="/api/contact" method="post" aria-label="Contact Lexara" class="min-w-0 grid gap-5">
+                <input type="hidden" name="return" value="/" />
+                <input type="hidden" name="cf_ts" value={renderedAt} />
+                <p class="absolute -left-[100vw] h-px w-px overflow-hidden" aria-hidden="true"><label>Leave this field empty <input type="text" name="cf_hp" tabindex="-1" autocomplete="off" /></label></p>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
                         <label for="contact-first-name" class="sr-only">First Name</label>
@@ -41,30 +47,14 @@ const contacts = [
                     <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="Email" required class={fieldClass} />
                 </div>
                 <div>
-                    <label for="contact-message" class="sr-only">Send Message</label>
+                    <label for="contact-message" class="sr-only">Message</label>
                     <textarea id="contact-message" name="message" rows="4" placeholder="Message" required class:list={[fieldClass, 'block resize-y']} />
                 </div>
-                <button type="submit" class="justify-self-start min-h-[48px] rounded-full bg-lexara-mahogany px-7 py-3 text-base font-semibold text-white shadow-md hover:bg-lexara-mahogany/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany">Submit</button>
-                <p id="contact-form-note" class="text-sm leading-relaxed text-lexara-light-navy">Submit opens your email app with a draft addressed to support@lexara.com.</p>
+                <button type="submit" class="justify-self-start min-h-[48px] rounded-full bg-lexara-mahogany px-7 py-3 text-base font-semibold text-white shadow-md hover:bg-lexara-mahogany/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lexara-mahogany">Send Message</button>
+                {formMessage && (
+                    <p role={formMessage.ok ? 'status' : 'alert'} class:list={['rounded-xl px-4 py-3 text-sm', formMessage.ok ? 'bg-white text-lexara-dark-navy' : 'bg-lexara-mahogany/15 text-lexara-dark-navy']}>{formMessage.text}</p>
+                )}
             </form>
         </div>
     </div>
 </section>
-
-<script>
-    function initializeContactForms() {
-        document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
-            if (form.dataset.initialized) return;
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const data = new FormData(form);
-                const name = `${String(data.get('firstName') ?? '').trim()} ${String(data.get('lastName') ?? '').trim()}`;
-                const body = `Name: ${name}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
-                window.location.href = `mailto:support@lexara.com?subject=${encodeURIComponent('Engage intake inquiry')}&body=${encodeURIComponent(body)}`;
-            });
-            form.dataset.initialized = 'true';
-        });
-    }
-    initializeContactForms();
-    document.addEventListener('astro:page-load', initializeContactForms);
-</script>

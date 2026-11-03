@@ -6,6 +6,11 @@ import CTA from '@/components/CTA.astro';
 
 const features = [
   {
+    icon: 'conflicts',
+    title: 'Conflicts Checks on Every Intake',
+    description: 'Engage checks every prospect against your firm\'s existing clients and matters. Possible conflicts are flagged for your review, and you decide whether the interview waits until you have cleared them.'
+  },
+  {
     icon: 'chart',
     title: 'Analytics & Reporting',
     description: 'Track conversation metrics, conversion rates, and client acquisition insights with detailed analytics.'
@@ -17,18 +22,13 @@ const features = [
   },
   {
     icon: 'shield',
-    title: 'Privacy and Compliance Built In',
-    description: 'Enterprise-grade security: client data is encrypted in transit and at rest, with data protection built into every interaction.'
+    title: 'Privacy and Security Built In',
+    description: 'Client data is encrypted in transit and at rest and is never used to train AI models. SOC 2 audit in progress; BAA available on request.'
   },
   {
     icon: 'mobile',
     title: 'Mobile Responsive',
-    description: 'Smooth experience across all devices - desktop, tablet, and mobile for clients on-the-go.'
-  },
-  {
-    icon: 'security',
-    title: 'Enterprise Security',
-    description: 'Client data encrypted in transit and at rest'
+    description: 'Prospects can complete intake on a phone, tablet, or computer.'
   },
   {
     icon: 'api',
@@ -47,10 +47,10 @@ const features = [
       <div class="container mx-auto px-4 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_420px]">
         <div>
           <h1 class="text-3xl md:text-[2.5rem] font-bold text-gray-900 mb-6">
-            Powerful Features for<br />Modern Law Firms
+            Everything Your Intake Needs.<br />Nothing It Doesn't.
           </h1>
           <p class="text-base text-gray-600 mb-8">
-            <span class="font-semibold italic">Engage</span> combines advanced AI with legal expertise to deliver the most comprehensive client intake solution for law firms.
+            <span class="font-semibold italic">Engage</span> runs a guided intake interview and your conflicts check, then gives your attorneys a summary to review. Your lawyers make every decision.
           </p>
           <div class="flex flex-wrap gap-4">
             <a 
@@ -108,6 +108,11 @@ const features = [
           {features.map((feature) => (
             <div class="bg-gray-50 rounded-xl p-6 shadow-md transition-all duration-200 hover:scale-105 hover:shadow-xl">
               <div class="w-12 h-12 bg-lexara-dark-navy rounded-lg flex items-center justify-center mb-4">
+                {feature.icon === 'conflicts' && (
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                  </svg>
+                )}
                 {feature.icon === 'chart' && (
                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />

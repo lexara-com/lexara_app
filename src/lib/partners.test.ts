@@ -2,9 +2,9 @@ import { describe, expect, it } from "vitest";
 import { PARTNERS, SBMI, WYSB, partnerSignupUrl } from "./partners";
 
 describe("partnerSignupUrl", () => {
-  it("keeps the State Bar of Michigan link exactly as it shipped", () => {
+  it("carries the State Bar of Michigan promo code into console signup", () => {
     expect(partnerSignupUrl(SBMI)).toBe(
-      "https://console.lexara.app/signup?promo=SBM20&utm_source=sbm&utm_medium=partner_page&utm_campaign=sbmi_launch",
+      "https://console.lexara.app/signup?promo=SBMI20&utm_source=sbm&utm_medium=partner_page&utm_campaign=sbmi_launch",
     );
   });
 

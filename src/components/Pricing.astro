@@ -50,8 +50,15 @@ const benefits = [
 
             <div class="lg:flex lg:flex-col">
                 <h3 class:list={[eyebrowClass, 'font-sans']}>One Subscription:</h3>
-                <ul class="mt-8 list-disc space-y-4 pl-6 lg:flex lg:flex-1 lg:flex-col lg:justify-between text-base leading-relaxed text-lexara-light-navy">
-                    {benefits.map((benefit) => <li>{benefit}</li>)}
+                <ul class="mt-8 space-y-5 lg:flex lg:flex-1 lg:flex-col lg:justify-between lg:space-y-0">
+                    {benefits.map((benefit) => (
+                        <li class="flex items-start gap-3 text-lg leading-snug text-lexara-dark-navy">
+                            <span aria-hidden="true" class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lexara-mahogany/10 text-lexara-mahogany">
+                                <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 10.5 3.2 3.2L15 6.8" /></svg>
+                            </span>
+                            <span>{benefit}</span>
+                        </li>
+                    ))}
                 </ul>
             </div>
 
